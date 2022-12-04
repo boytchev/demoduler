@@ -1,30 +1,29 @@
 # THIS IS UNDER CONSTRUCTION
-### Do not use it, yet
+### Do not use it, yet. Don't!
 
 
-# demoduler
-
-The **demoduler** will be a simple tool that converts JavaScript modules into
-old-fashioned moduleless JavaScript files. The primary purpose is to convert
-some of the Three.js files that will soon be provided only as modules.
+When finished, the **demoduler** will be a simple tool that converts Three.js
+JavaScript modules from the `examples\jsm` folder into JavaScript scripts from
+the `examples\js` folder. Three.js r147 will be the last release that has both
+JSM and JS examples. In some very specific circumstances Three.js users may
+still need JS files. The **demoduler**  could create them. Hopefully.
 
 ### Notable restrictions
 
-- Conversion will be done without any semantic parsing.
-- Conversion will not work for any module, it will work for the Three.js modules
-which I am interested in, and as a side effect, it may work for some other
-Three.js modules.
-- Conversion will not scan folders and other files to resolve cross-module
-references.
-- Conversion will not work into the local filesystem. At least for now.
+- Conversion will be done by plain text replacement, there will be no any
+sophisticated parsing.
+- Conversion will not work for any module out there. It will work for those
+Three.js modules, that I use. It is expected, that other Three.js modules may
+also be demoduled by the demoduler.
+- Conversion will not process cross-modules dependencies (imports and exports),
+as my goal is to make the simplest tool that helps me, instead of the most
+general tool. However, depending on my spare time, at some point in the future
+I might improve the demoduler into something better and more useer-friendly.
 
-When I gain enough knowledge, I will try to make a better demoduler ... by that
-time, I might not it at all.
+### Go to the <a href="https://boytchev.github.io/demoduler/">demoduler</a>
 
-### Modules and non-modules
-Three.js r147 will be the last one providing modular and non-modular versions of
-examples. In r147 they are in folders `examples\jsm` and `examples\js`.
 
+<!--
 | examples\jsm | file | status |
 | --- | --- | --- |
 | **animation** | | |
@@ -74,4 +73,4 @@ examples. In r147 they are in folders `examples\jsm` and `examples\js`.
 | **utils** | | |
 
 
-
+-->
