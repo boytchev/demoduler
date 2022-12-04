@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Demoduler</title>
+	<meta charset="utf-8">
+	<style>
+		* {
+			text-align: center;
+		}
+		
+		#dropzone {
+			 width: 60%;
+			 height: 5em;
+			 margin: 2em auto 2em auto;
+			 border: dashed crimson 1px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Demoduler</h1>
+	<p>Convert a JS module file from Three.js's <code>examples\jsm</code>
+	folder to <code>\examples\js</code> folder.</p>
+	
+	<div id="dropzone" ondrop="drop(event);" ondragover="dragOver(event);">
+		<p>Drag one or more files to this <i>drop zone</i>.</p>
+	</div>
+
+	<script>
+	// https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
+	// https://web.dev/read-files/#read-content
+
+
+	var reader = new FileReader();
+		reader.addEventListener( 'load', processFile );
+
+
+	function dragOver( event )
+	{
+		event.preventDefault( );
+	}
+	
+	
+	function drop(ev)
+	{
+	  console.log('File(s) dropped');
+
+	  // Prevent default behavior (Prevent file from being opened)
+	  ev.preventDefault();
+
+	  if (ev.dataTransfer.items) {
+		// Use DataTransferItemList interface to access the file(s)
+		[...ev.dataTransfer.items].forEach((item, i) => {
+		  // If dropped items aren't files, reject them
+		  if (item.kind === 'file') {
+			const file = item.getAsFile();
+
+			loadFile( file );
+		  }
+		});
+	  } else {
+		// Use DataTransfer interface to access the file(s)
+		[...ev.dataTransfer.files].forEach((file, i) => {
+		
+			loadFile( file );
+		});
+	  }
+	}
+
+	function loadFile( file )
+	{
+	  reader.readAsText( file );
+	}
+	
+	function processFile( event )
+	{
+		console.log( event.target.result );
+	}
+	
+	</script>
+	
+</body>
+</html>
