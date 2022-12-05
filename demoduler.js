@@ -62,10 +62,33 @@ class Demoduler
 	
 
 
+	// validate a string wether it contains 'expected' characters
+	valideText( )
+	{
+		for( var i=0; i<this.js.length; i++ )
+		{
+			var code = this.js.codePointAt( i );
+			
+			if( code<31 && code!=9 && code!=10 && code!=13 )
+				return false;
+		}
+
+		return true;
+	}
+	
+	
+	
 	// process a JS file
 	process( )
 	{
+		if( !this.valideText( ) )
+		{
+			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; contains invalid characters`;
+			return;
+		}
+			
 		console.log( this.js );
+		
 	}
 	
 /*
