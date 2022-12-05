@@ -4,80 +4,225 @@
 <head>
 	<title>Demoduler</title>
 	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 	<style>
 		* {
 			text-align: center;
 		}
 		
+		body {
+			font-family: 'Roboto', sans-serif;
+		}
+		
 		#dropzone {
-			 width: 60%;
-			 height: 5em;
-			 margin: 2em auto 2em auto;
-			 border: dashed crimson 1px;
+			width: 60%;
+			height: 20em;
+			margin: 2em auto auto auto;
+			border: dashed crimson 1px;
+		}
+		
+		#info {
+				margin-top: 9em;
+		}
+		
+		#log p {
+				margin-left: 10em;
+				text-align: left;
+		}
+		
+		code {
+			font-size: 125%;
 		}
 	</style>
 </head>
 
 <body>
 	<h1>Demoduler</h1>
-	<p>Convert a JS module file from Three.js's <code>examples\jsm</code>
-	folder to <code>\examples\js</code> folder.</p>
+	<p>Three.js <code>examples\jsm</code> &rarr; <code>examples\js</code>.</p>
 	
 	<div id="dropzone" ondrop="drop(event);" ondragover="dragOver(event);">
-		<p>Drag one or more files to this <i>drop zone</i>.</p>
+		<div id="info" >Drag-and-drop here one or more <code>*.js</code> files from Three.js's folder <code>examples\jsm</code>.</div>
+		<div id="log"></div>
 	</div>
 
 	<script>
 	// https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
 	// https://web.dev/read-files/#read-content
 
+test_jsm = `
+import {
+	BufferGeometry,
+	Float32BufferAttribute
+} from 'three';
 
-	var reader = new FileReader();
-		reader.addEventListener( 'load', processFile );
+class BoxLineGeometry extends BufferGeometry {
 
+	constructor( width = 1, height = 1, depth = 1, widthSegments = 1, heightSegments = 1, depthSegments = 1 ) {
 
+		super();
+
+		widthSegments = Math.floor( widthSegments );
+		heightSegments = Math.floor( heightSegments );
+		depthSegments = Math.floor( depthSegments );
+
+		const widthHalf = width / 2;
+		const heightHalf = height / 2;
+		const depthHalf = depth / 2;
+
+		const vertices = [];
+
+		let x = - widthHalf;
+		let y = - heightHalf;
+		let z = - depthHalf;
+
+		for ( let i = 0; i <= widthSegments; i ++ ) {
+
+			vertices.push( x, - heightHalf, - depthHalf, x, heightHalf, - depthHalf );
+			vertices.push( x, heightHalf, - depthHalf, x, heightHalf, depthHalf );
+			vertices.push( x, heightHalf, depthHalf, x, - heightHalf, depthHalf );
+			vertices.push( x, - heightHalf, depthHalf, x, - heightHalf, - depthHalf );
+
+			x += segmentWidth;
+
+		}
+
+		this.setAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+
+	}
+
+}
+
+export { BoxLineGeometry };
+
+`
+
+	var files = [];
+	
 	function dragOver( event )
 	{
 		event.preventDefault( );
 	}
 	
 	
-	function drop(ev)
+	function drop( event )
 	{
-	  console.log('File(s) dropped');
+	  event.preventDefault();
 
-	  // Prevent default behavior (Prevent file from being opened)
-	  ev.preventDefault();
-
-	  if (ev.dataTransfer.items) {
-		// Use DataTransferItemList interface to access the file(s)
-		[...ev.dataTransfer.items].forEach((item, i) => {
-		  // If dropped items aren't files, reject them
-		  if (item.kind === 'file') {
-			const file = item.getAsFile();
-
+	  if( event.dataTransfer.items )
+	  {
+		// DataTransferItemList interface
+		for( var item of event.dataTransfer.items )
+		  if( item.kind === 'file' )
+			loadFile( item.getAsFile() );
+	  }
+	  else
+	  {
+		// DataTransfer interface
+		for( var file of event.dataTransfer.files )
 			loadFile( file );
-		  }
-		});
-	  } else {
-		// Use DataTransfer interface to access the file(s)
-		[...ev.dataTransfer.files].forEach((file, i) => {
-		
-			loadFile( file );
-		});
 	  }
 	}
 
+
 	function loadFile( file )
 	{
-	  reader.readAsText( file );
+		var reader = new FileReader();
+			reader.addEventListener( 'load', event => processFile(event,file) );
+			reader.readAsText( file );
 	}
+
 	
-	function processFile( event )
+	function processFile( event, file )
 	{
-		console.log( event.target.result );
+		var message = '';
+		var fileExt = file.name.split( '.' ).pop( );
+		
+		if( fileExt == 'js' )
+		{
+			message = file.name;
+		}
+		else
+		{
+			message = file.name + ' is not a <code>*.js</code> file';
+		}
+		
+		message += '<pre>'+event.target.result+'</pre>';
+		
+		document.getElementById( 'log' ).innerHTML += '<p>'+message+'</p>';
+		//console.log( event.target );
+		//console.log( event.target.result );
 	}
 	
+	
+	class Demodulizer
+	{
+		constructor ( js )
+		{
+			this.js = js;
+		}
+
+		consume( word )
+		{
+			var pos = this.js.indexOf( word );
+			if( pos < 0 ) return;
+			
+			this.js = this.js.substring( pos+word.length );
+		}
+
+		consumeWS( )
+		{
+			for( var pos = 0; pos<this.js.length; pos++ )
+			{
+				if( this.js[pos] > ' ' )
+					break;
+			}
+			
+			this.js = this.js.substring( pos );
+		}
+		
+		
+		consumeToken( )
+		{
+			this.consumeWS( );
+			
+			for( var pos = 0; pos<this.js.length; pos++ )
+			{
+				if( this.js[pos]<' ' || this.js[pos]==',' )
+					break;
+			}
+			
+			var token = this.js.substring( 0, pos );
+			
+			this.js = this.js.substring( pos );
+			return token;
+		}
+		
+		
+	}
+	
+	
+	/*
+	
+	function demodulize( jsm )
+	{
+		var js = jsm,
+			token = '';
+		
+		js = consume( js, 'import' );
+		js = consume( js, '{' );
+		
+		var {js,token} = consumeToken( js );
+		
+		console.log('imported ->',token);
+		
+		console.log( js );
+	}
+	
+	
+	demodulize( test_jsm );
+	*/
 	</script>
 	
 </body>
