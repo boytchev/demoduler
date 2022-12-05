@@ -9,49 +9,105 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 	<style>
 		* {
-			text-align: center;
+			margin: 0;
 		}
 		
+		html {
+			text-align: center;
+			height: 100%;
+		}
+
 		body {
 			font-family: 'Roboto', sans-serif;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
 		}
 		
-		#dropzone {
-			width: 60%;
-			height: 20em;
-			margin: 2em auto auto auto;
-			border: dashed crimson 1px;
+		#drop-zone {
+			position: absolute;
+			margin: 0 !important;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			background: whitesmoke;
 		}
 		
-		#info {
-				margin-top: 9em;
+		#log {
+			width: 40%;
+			min-width: 20em;
+			margin: 0.5em auto auto auto;
 		}
 		
-		#log p {
-				margin-left: 10em;
-				text-align: left;
+		.file {
+			text-align: left;
+			padding: 0.25em;
+			margin: 0.25em;
+			background: white;
+		}
+		
+		.error {
+			color: crimson;
 		}
 		
 		code {
 			font-size: 125%;
 		}
+
+		h1 {
+			margin: 1em 0 0.25em 0;
+		}
+		
+		h3 {
+			margin-bottom: 1em;
+			font-weight: normal;
+		}
 	</style>
+	<script src="demoduler.js"></script>
 </head>
 
 <body>
-	<h1>Demoduler</h1>
-	<p>Three.js <code>examples\jsm</code> &rarr; <code>examples\js</code>.</p>
-	
-	<div id="dropzone" ondrop="drop(event);" ondragover="dragOver(event);">
-		<div id="info" >Drag-and-drop here one or more <code>*.js</code> files from Three.js's folder <code>examples\jsm</code>.</div>
-		<div id="log"></div>
+	<div id="drop-zone" ondrop="drop(event)" ondragover="dragOver(event)">
+		<h1>Demoduler</h1>
+		<h3>Drag-and-drop here any <code>*.js</code> file from Three.js's folder <code>examples\jsm</code></h3>
+
+		<div id="log">
+		</div>
 	</div>
 
 	<script>
 	// https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
 	// https://web.dev/read-files/#read-content
 
-test_jsm = `
+	function dragOver( event )
+	{
+		event.preventDefault( );
+	}
+	
+	
+	function drop( event )
+	{
+		event.preventDefault();
+
+		if( event.dataTransfer.items )
+		{
+			// DataTransferItemList interface
+			for( var item of event.dataTransfer.items )
+				if( item.kind === 'file' )
+					new Demoduler( item.getAsFile() );
+		}
+		else
+		{
+			// DataTransfer interface
+			for( var file of event.dataTransfer.files )
+				new Demoduler( file );
+		}
+	}
+
+///*********************** TEST ZONE **********
+
+	new Demoduler(test_jsm = `
 import {
 	BufferGeometry,
 	Float32BufferAttribute
@@ -96,134 +152,9 @@ class BoxLineGeometry extends BufferGeometry {
 
 export { BoxLineGeometry };
 
-`
+` );
 
-	var files = [];
-	
-	function dragOver( event )
-	{
-		event.preventDefault( );
-	}
-	
-	
-	function drop( event )
-	{
-	  event.preventDefault();
-
-	  if( event.dataTransfer.items )
-	  {
-		// DataTransferItemList interface
-		for( var item of event.dataTransfer.items )
-		  if( item.kind === 'file' )
-			loadFile( item.getAsFile() );
-	  }
-	  else
-	  {
-		// DataTransfer interface
-		for( var file of event.dataTransfer.files )
-			loadFile( file );
-	  }
-	}
-
-
-	function loadFile( file )
-	{
-		var reader = new FileReader();
-			reader.addEventListener( 'load', event => processFile(event,file) );
-			reader.readAsText( file );
-	}
-
-	
-	function processFile( event, file )
-	{
-		var message = '';
-		var fileExt = file.name.split( '.' ).pop( );
-		
-		if( fileExt == 'js' )
-		{
-			message = file.name;
-		}
-		else
-		{
-			message = file.name + ' is not a <code>*.js</code> file';
-		}
-		
-		message += '<pre>'+event.target.result+'</pre>';
-		
-		document.getElementById( 'log' ).innerHTML += '<p>'+message+'</p>';
-		//console.log( event.target );
-		//console.log( event.target.result );
-	}
-	
-	
-	class Demodulizer
-	{
-		constructor ( js )
-		{
-			this.js = js;
-		}
-
-		consume( word )
-		{
-			var pos = this.js.indexOf( word );
-			if( pos < 0 ) return;
-			
-			this.js = this.js.substring( pos+word.length );
-		}
-
-		consumeWS( )
-		{
-			for( var pos = 0; pos<this.js.length; pos++ )
-			{
-				if( this.js[pos] > ' ' )
-					break;
-			}
-			
-			this.js = this.js.substring( pos );
-		}
-		
-		
-		consumeToken( )
-		{
-			this.consumeWS( );
-			
-			for( var pos = 0; pos<this.js.length; pos++ )
-			{
-				if( this.js[pos]<' ' || this.js[pos]==',' )
-					break;
-			}
-			
-			var token = this.js.substring( 0, pos );
-			
-			this.js = this.js.substring( pos );
-			return token;
-		}
-		
-		
-	}
-	
-	
-	/*
-	
-	function demodulize( jsm )
-	{
-		var js = jsm,
-			token = '';
-		
-		js = consume( js, 'import' );
-		js = consume( js, '{' );
-		
-		var {js,token} = consumeToken( js );
-		
-		console.log('imported ->',token);
-		
-		console.log( js );
-	}
-	
-	
-	demodulize( test_jsm );
-	*/
-	</script>
+</script>
 	
 </body>
 </html>
