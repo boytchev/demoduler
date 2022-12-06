@@ -7,7 +7,8 @@ class Demoduler
 	{
 		this.NL = ''; // code for new lines (a combination of line feeds and carriage returns)
 		this.tokens = [];
-		this.imports = [];
+		this.importedSymbols = [];
+		this.importedNamespaces = [];
 		
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
@@ -139,39 +140,94 @@ class Demoduler
 	//		var _scriptDir = import.meta.url;
 	//		// Make available for import by `require()`
 	
+	processImportCase1( idx )
+	{
+		// 0      1 2       3
+		// import { symbol, symbol, ... } from 'string';
+		if( this.tokens[idx+1] != '{' ) return idx;
+
+		for( var i=idx+2; i<this.tokens.length; i++ )
+		{
+			if( this.tokens[i] == '}' ) break;
+			
+			var symbol = this.tokens[i].split(',')[0];
+			if( this.importedSymbols.indexOf( symbol ) < 0 )
+				this.importedSymbols.push( symbol );
+		}
+		
+		return i;
+	}
+	
+	processImportCase3( idx )
+	{
+		// 0      1      2    3
+		// import symbol from 'string';
+		if( this.tokens[idx+2] != 'from' ) return idx;
+		if( this.tokens[idx+3][0] != "'" && this.tokens[idx+3][0] != '"' ) return idx;
+
+		var symbol = this.tokens[idx+1];
+		if( this.importedSymbols.indexOf( symbol ) < 0 )
+			this.importedSymbols.push( symbol );
+				
+		return idx+3;
+	}
+	
+	processImportCase2( idx )
+	{
+		// 0      1 2  3         4    5
+		// import * as namespace from 'string';
+		if( this.tokens[idx+2] != 'as' ) return idx;
+		if( this.tokens[idx+4] != 'from' ) return idx;
+		if( this.tokens[idx+5][0] != "'" && this.tokens[idx+5][0] != '"' ) return idx;
+
+		var namespace = this.tokens[idx+3];
+		if( this.importedNamespaces.indexOf( namespace ) < 0 )
+			this.importedNamespaces.push( namespace );
+				
+		return idx+3;
+	}
+	
 	processImports( )
 	{
+		// extract imported symbols
 		for( var i=0; i<this.tokens.length; i++ )
 		{
 			if( this.tokens[i-1] != '//' && this.tokens[i] == 'import' )
 			{
-				if( this.tokens[i+1] == '{' )
-					console.log( '(1)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
-				if( this.tokens[i+1] == '*' && this.tokens[i+2] == 'as' )
+				i = this.processImportCase1( i );
+				i = this.processImportCase2( i );
+				i = this.processImportCase3( i );
+				
+/*				if( this.tokens[i+1] == '*' && this.tokens[i+2] == 'as' )
 					console.log( '(2)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
-				if( this.tokens[i+2] == 'from' && (this.tokens[i+3][1] == "'" || this.tokens[i+3][1] == '"') )
-					console.log( '(3)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
+				
+				*/
 			}
 		}
+
+		console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
+		console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
 	}
 	
 	
 	// process a JS file
 	process( )
 	{
+		console.log( `processing file ${this.file.name}` );
+
 		if( !this.valideText( ) )
 		{
 			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; contains invalid characters`;
 			return;
 		}
 			
-		console.log( this.js );
+		//console.log( this.js );
 		
 		this.getNL( );
 		
 		this.tokens = ['',...this.js.split( /\s/ ).filter( x => x!='' ),''];
 		
-		console.log( this.tokens );
+		//console.log( this.tokens );
 		this.processImports( );
 	}
 	
