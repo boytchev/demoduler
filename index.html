@@ -113,9 +113,21 @@ import {
 	Float32BufferAttribute
 } from 'three';
 
+import {
+	Vector2,
+	Vector3,
+	DirectionalLight,
+	MathUtils,
+	ShaderChunk,
+	Matrix4,
+	Box3
+} from 'three';
+import { CSMFrustum } from './CSMFrustum.js';
+import { CSMShader } from './CSMShader.js';
+
 class BoxLineGeometry extends BufferGeometry {
 
-	constructor( width = 1, height = 1, depth = 1, widthSegments = 1, heightSegments = 1, depthSegments = 1 ) {
+	constructor( width = 1, height = 1 ) {
 
 		super();
 
@@ -123,25 +135,9 @@ class BoxLineGeometry extends BufferGeometry {
 		heightSegments = Math.floor( heightSegments );
 		depthSegments = Math.floor( depthSegments );
 
-		const widthHalf = width / 2;
-		const heightHalf = height / 2;
-		const depthHalf = depth / 2;
-
-		const vertices = [];
-
-		let x = - widthHalf;
-		let y = - heightHalf;
-		let z = - depthHalf;
-
 		for ( let i = 0; i <= widthSegments; i ++ ) {
 
 			vertices.push( x, - heightHalf, - depthHalf, x, heightHalf, - depthHalf );
-			vertices.push( x, heightHalf, - depthHalf, x, heightHalf, depthHalf );
-			vertices.push( x, heightHalf, depthHalf, x, - heightHalf, depthHalf );
-			vertices.push( x, - heightHalf, depthHalf, x, - heightHalf, - depthHalf );
-
-			x += segmentWidth;
-
 		}
 
 		this.setAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );

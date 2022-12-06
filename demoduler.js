@@ -5,6 +5,8 @@ class Demoduler
 	
 	constructor ( file )
 	{
+		this.NL = ''; // code for new lines (a combination of line feeds and carriage returns)
+		
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
 		{
@@ -78,6 +80,47 @@ class Demoduler
 	
 	
 	
+	// find all sequences of tokens separated by whitespace
+	// returns char position {from,to}
+	findTokens( tokens )
+	{
+		var result = [],
+			pos = 0;
+		
+		while( pos < this.js.length )
+		{
+		}
+	}
+	
+	
+	
+	// gets the first new line code
+	getNL( )
+	{
+		var posCR = this.js.indexOf( '\r' ),
+			posNL = this.js.indexOf( '\n' );
+			
+		if( 0<=posCR && posNL==posCR+1 )
+			this.NL = '\r\n';
+		else
+		if( 0<=posNL && posCR==posNL+1 )
+			this.NL = '\n\r';
+		else
+		if( 0<=posCR && posNL>posCR+1 )
+			this.NL = '\r';
+		else
+		if( 0<=posNL && posCR>posNL+1 )
+			this.NL = '\n';
+		else
+		if( 0<=posCR && posNL<0 )
+			this.NL = '\r';
+		else
+		if( 0<=posNL && posCR<0 )
+			this.NL = '\n';
+	}
+	
+	
+	
 	// process a JS file
 	process( )
 	{
@@ -89,6 +132,8 @@ class Demoduler
 			
 		console.log( this.js );
 		
+		this.getNL( );
+		console.log( 1,this.NL );
 	}
 	
 /*
