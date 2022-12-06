@@ -6,6 +6,8 @@ class Demoduler
 	constructor ( file )
 	{
 		this.NL = ''; // code for new lines (a combination of line feeds and carriage returns)
+		this.tokens = [];
+		this.imports = [];
 		
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
@@ -121,6 +123,39 @@ class Demoduler
 	
 	
 	
+	// process imports (if any) and fill array imports
+	//
+	// good imports:
+	// 1.   import { Material, ShaderMaterial } from 'three';
+	// 2.	import * as NURBSUtils from '../curves/NURBSUtils.js';
+	//		import * as THREE from 'three';
+	// 3.	import lottie from '../libs/lottie_canvas.module.js';
+	//
+	// bad imports:
+	//		throw new Error( 'THREE.MMDAnimationHelper: Import CCDIKSolver.' );
+	//		// In case of cinematicCamera, having a default lens set is important
+	//		// import Howl from '../../3rd_party/howler';
+	//		ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
+	//		var _scriptDir = import.meta.url;
+	//		// Make available for import by `require()`
+	
+	processImports( )
+	{
+		for( var i=0; i<this.tokens.length; i++ )
+		{
+			if( this.tokens[i-1] != '//' && this.tokens[i] == 'import' )
+			{
+				if( this.tokens[i+1] == '{' )
+					console.log( '(1)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
+				if( this.tokens[i+1] == '*' && this.tokens[i+2] == 'as' )
+					console.log( '(2)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
+				if( this.tokens[i+2] == 'from' && (this.tokens[i+3][1] == "'" || this.tokens[i+3][1] == '"') )
+					console.log( '(3)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
+			}
+		}
+	}
+	
+	
 	// process a JS file
 	process( )
 	{
@@ -133,7 +168,11 @@ class Demoduler
 		console.log( this.js );
 		
 		this.getNL( );
-		console.log( 1,this.NL );
+		
+		this.tokens = ['',...this.js.split( /\s/ ).filter( x => x!='' ),''];
+		
+		console.log( this.tokens );
+		this.processImports( );
 	}
 	
 /*

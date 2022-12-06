@@ -38,9 +38,9 @@ of the full [zoo of imports](https://developer.mozilla.org/en-US/docs/Web/JavaSc
 Demoduler processes only this limited set.
 
 ```js
-import * as name from "module-name";
-import export from "module-name";
-import { export1, export2 } from "module-name";
+import * as name1 from "module-name";
+import name1 from "module-name";
+import { name1, name2 } from "module-name";
 ```
 
 <!--
