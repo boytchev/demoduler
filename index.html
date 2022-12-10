@@ -108,10 +108,22 @@
 ///*********************** TEST ZONE **********
 
 	new Demoduler(test_jsm = `
-import {
-	BufferGeometry,
+aimport {
+	BufferGeometry,	
 	Float32BufferAttribute
 } from 'three';
+
+aimport * as THREE from 'three';
+
+aimport Bezier from 'bezierutils';
+
+import { Material, ShaderMaterial } from 'three';
+import * as NURBSUtils from '../curves/NURBSUtils.js';
+import * as THREE from 'three';
+import lottie from '../libs/lottie_canvas.module.js';
+
+
+
 
 class BoxLineGeometry extends BufferGeometry {
 

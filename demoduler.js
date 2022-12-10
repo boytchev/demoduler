@@ -5,10 +5,10 @@ class Demoduler
 	
 	constructor ( file )
 	{
-		this.NL = ''; // code for new lines (a combination of line feeds and carriage returns)
 		this.tokens = [];
 		this.importedSymbols = [];
 		this.importedNamespaces = [];
+		this.importSections = [];
 		
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
@@ -97,29 +97,20 @@ class Demoduler
 	
 	
 	
-	// gets the first new line code
-	getNL( )
+	// get a list of tokens
+	getTokens( )
 	{
-		var posCR = this.js.indexOf( '\r' ),
-			posNL = this.js.indexOf( '\n' );
-			
-		if( 0<=posCR && posNL==posCR+1 )
-			this.NL = '\r\n';
-		else
-		if( 0<=posNL && posCR==posNL+1 )
-			this.NL = '\n\r';
-		else
-		if( 0<=posCR && posNL>posCR+1 )
-			this.NL = '\r';
-		else
-		if( 0<=posNL && posCR>posNL+1 )
-			this.NL = '\n';
-		else
-		if( 0<=posCR && posNL<0 )
-			this.NL = '\r';
-		else
-		if( 0<=posNL && posCR<0 )
-			this.NL = '\n';
+		var result;
+		var regex = /[^\s\,\;\(\)]+|\,|\;|\(|\)/g;
+		
+		while( result = regex.exec(this.js) )
+		{
+			var start = result.index,
+				end = start + result[0].length,
+				string = this.js.substring( start, end );
+				
+			this.tokens.push({ string: string, start: start, end: end});
+		}
 	}
 	
 	
@@ -139,74 +130,99 @@ class Demoduler
 	//		ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
 	//		var _scriptDir = import.meta.url;
 	//		// Make available for import by `require()`
-	
-	processImportCase1( idx )
-	{
-		// 0      1 2       3
-		// import { symbol, symbol, ... } from 'string';
-		if( this.tokens[idx+1] != '{' ) return idx;
 
-		for( var i=idx+2; i<this.tokens.length; i++ )
+	getImports( )
+	{
+		// 1: import { symbol, symbol, ... } from 'string';
+		// 2: import * as namespace from 'string';
+		// 3: import symbol from 'string';
+
+		var i, importStart, importEnd, token;
+
+		var that = this;
+		
+		function consume( tokens )
 		{
-			if( this.tokens[i] == '}' ) break;
-			
-			var symbol = this.tokens[i].split(',')[0];
-			if( this.importedSymbols.indexOf( symbol ) < 0 )
-				this.importedSymbols.push( symbol );
+			for( token of tokens )
+			{
+				if( that.tokens[i].string == token || token!='*' )
+					i++;
+				else
+					break;
+			}
 		}
 		
-		return i;
-	}
-	
-	processImportCase3( idx )
-	{
-		// 0      1      2    3
-		// import symbol from 'string';
-		if( this.tokens[idx+2] != 'from' ) return idx;
-		if( this.tokens[idx+3][0] != "'" && this.tokens[idx+3][0] != '"' ) return idx;
-
-		var symbol = this.tokens[idx+1];
-		if( this.importedSymbols.indexOf( symbol ) < 0 )
-			this.importedSymbols.push( symbol );
-				
-		return idx+3;
-	}
-	
-	processImportCase2( idx )
-	{
-		// 0      1 2  3         4    5
-		// import * as namespace from 'string';
-		if( this.tokens[idx+2] != 'as' ) return idx;
-		if( this.tokens[idx+4] != 'from' ) return idx;
-		if( this.tokens[idx+5][0] != "'" && this.tokens[idx+5][0] != '"' ) return idx;
-
-		var namespace = this.tokens[idx+3];
-		if( this.importedNamespaces.indexOf( namespace ) < 0 )
-			this.importedNamespaces.push( namespace );
-				
-		return idx+3;
-	}
-	
-	processImports( )
-	{
 		// extract imported symbols
-		for( var i=0; i<this.tokens.length; i++ )
+		for( i=0; i<this.tokens.length; i++ )
 		{
-			if( this.tokens[i-1] != '//' && this.tokens[i] == 'import' )
+			if( this.tokens[i].string != 'import' )
+				continue;
+
+			importStart = this.tokens[i].start;
+			
+			// import { symbol , symbol , ... } from 'string' ;
+			if( this.tokens[i+1].string == '{' )
 			{
-				i = this.processImportCase1( i );
-				i = this.processImportCase2( i );
-				i = this.processImportCase3( i );
+				for( i=i+2; i<this.tokens.length && this.tokens[i].string!='}'; i++ )
+					if( this.tokens[i].string != ',' )
+						this.importedSymbols.push( this.tokens[i].string );
+		
+				consume( ['}', 'from', '*'] );
 				
-/*				if( this.tokens[i+1] == '*' && this.tokens[i+2] == 'as' )
-					console.log( '(2)=>', this.tokens[i], this.tokens[i+1], this.tokens[i+2], this.tokens[i+3] );
+				importEnd = this.tokens[i].end;
 				
-				*/
+				this.importSections.push( {
+					string: this.js.substring( importStart, importEnd ),
+					start: importStart,
+					end: importEnd
+				} );
+				
+				continue;
+			}
+				
+			// import * as namespace from 'string';
+			if( this.tokens[i+1].string == '*' && 
+				this.tokens[i+2].string == 'as' &&
+				this.tokens[i+4].string == 'from'
+			)
+			{
+				this.importedNamespaces.push( this.tokens[i+3].string );
+				i += 6;
+				
+				importEnd = this.tokens[i].end;
+				
+				this.importSections.push( {
+					string: this.js.substring( importStart, importEnd ),
+					start: importStart,
+					end: importEnd
+				} );
+
+				continue;
+			}
+				
+			// import symbol from 'string';
+			if( this.tokens[i+2].string == 'from' )
+			{
+				this.importedSymbols.push( this.tokens[i+1].string );
+				i += 4;
+				
+				importEnd = this.tokens[i].end;
+				
+				this.importSections.push( {
+					string: this.js.substring( importStart, importEnd ),
+					start: importStart,
+					end: importEnd
+				} );
+
+				continue;
 			}
 		}
 
 		console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
 		console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
+		console.log( `\t importsections:` );
+		for( var section of this.importSections )
+			console.log( section.string );
 	}
 	
 	
@@ -223,12 +239,11 @@ class Demoduler
 			
 		//console.log( this.js );
 		
-		this.getNL( );
-		
-		this.tokens = ['',...this.js.split( /\s/ ).filter( x => x!='' ),''];
+		this.getTokens( );
 		
 		//console.log( this.tokens );
-		this.processImports( );
+		
+		this.getImports( );
 	}
 	
 /*
