@@ -114,6 +114,17 @@ class Demoduler
 	}
 	
 	
+	// bad exports:
+	//		* https://github.com/gkjohnson/collada-exporter-js
+	//		*  const exporter = new ColladaExporter();
+	//		*  const data = exporter.parse(mesh);
+	//		console.warn( `ColladaExporter : Version ${ version } not supported for export. Only 1.4.1 and 1.5.0.` );
+	//		// Do not export and alpha map for the reasons mentioned in issue (#13792)
+	//		'<authoring_tool>three.js Collada Exporter</authoring_tool>' +
+	//		 * Export draco compressed files from threejs geometry objects.
+	//		class GLTFExporter {
+	//				// Skip creating an accessor if the attribute doesn't have data to export
+	//			 * @param  {String} mimeType export format
 	
 	// process imports (if any) and fill array imports
 	//
@@ -246,64 +257,4 @@ class Demoduler
 		this.getImports( );
 	}
 	
-/*
-	consume( word )
-	{
-		var pos = this.js.indexOf( word );
-		if( pos < 0 ) return;
-		
-		this.js = this.js.substring( pos+word.length );
-	}
-
-	consumeWS( )
-	{
-		for( var pos = 0; pos<this.js.length; pos++ )
-		{
-			if( this.js[pos] > ' ' )
-				break;
-		}
-		
-		this.js = this.js.substring( pos );
-	}
-	
-	
-	consumeToken( )
-	{
-		this.consumeWS( );
-		
-		for( var pos = 0; pos<this.js.length; pos++ )
-		{
-			if( this.js[pos]<' ' || this.js[pos]==',' )
-				break;
-		}
-		
-		var token = this.js.substring( 0, pos );
-		
-		this.js = this.js.substring( pos );
-		return token;
-	}
-	*/
-	
 }
-	
-	
-	/*
-	
-	function demodulize( jsm )
-	{
-		var js = jsm,
-			token = '';
-		
-		js = consume( js, 'import' );
-		js = consume( js, '{' );
-		
-		var {js,token} = consumeToken( js );
-		
-		console.log('imported ->',token);
-		
-		console.log( js );
-	}
-	
-	
-	demodulize( test_jsm );
-	*/

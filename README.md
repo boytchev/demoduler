@@ -10,13 +10,12 @@ still need JS files. The **demoduler**  could create them. Hopefully.
 
 ### Metodology
 
-Modules from `examples\jsm` and their corresponding scripts from `examples\js`
-will be studied in order to find the simplest text transformation. Then:
+The (author of) demoduler will learn how to convert modules to non-modules by
+comparing corresponding files from `examples\jsm` and `examples\js` in r147.
 
-- Demoduler gets a file from `examples\jsm` and demodules it
-- The minified demodulized version is compared with the minified script from `examples\js`
-- If they match, we are happy and we expect that this module in future releases
-of Three.js will still be demoduled correctly
+Files from `examples\jsm` in future releases will be converted based on this
+knowledge. The demoduler relies on the consistency of Three.js's source code
+and hopes it will not change drastically in the future.
 
 
 ### Notable restrictions
@@ -35,12 +34,32 @@ we might improve the demoduler into something better and more useer-friendly.
 
 Thankfully, Three.js r147 uses only a limited set of import statments, instead
 of the full [zoo of imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
-Demoduler processes only this limited set.
+Demoduler processes only this limited set:
 
 ```js
 import * as name1 from "module-name";
 import name1 from "module-name";
-import { name1, name2 } from "module-name";
+import { name1, name2, ... } from "module-name";
+```
+
+### Parsing `export` statements
+
+Also thankfully, Three.js r147 uses a few types of export statments. This is the
+full list of possible [export patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
+Demoduler processes only these:
+
+```js
+export { name1, name2, ... };
+export class name { ...
+export class name1 extends name2 { ...
+export function name ( ...
+export { name as default };
+export let name = ...
+export const name = ...
+export default name;
+export * from 'module-name';
+export { name } from 'module-name';
+export { default as name } from 'module-name';
 ```
 
 <!--
