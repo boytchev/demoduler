@@ -44,9 +44,7 @@ import { name1, name2, ... } from "module-name";
 
 ### Parsing `export` statements
 
-Also thankfully, Three.js r147 uses a few types of export statments. This is the
-full list of possible [export patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
-Demoduler processes only these:
+Three.js r147 uses quite a lot types of [export patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export):
 
 ```js
 export { name1, name2, ... };
@@ -61,6 +59,12 @@ export * from 'module-name';
 export { name } from 'module-name';
 export { default as name } from 'module-name';
 ```
+
+Demoduler processes only this:
+```js
+export { name1, name2, ... };
+```
+
 
 <!--
 | examples\jsm | file | status |

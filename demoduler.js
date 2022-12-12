@@ -5,10 +5,13 @@ class Demoduler
 	
 	constructor ( file )
 	{
+		this.idx = -1;
 		this.tokens = [];
 		this.importedSymbols = [];
 		this.importedNamespaces = [];
 		this.importSections = [];
+		this.exportedSymbols = [];
+		this.exportSections = [];
 		
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
@@ -142,98 +145,157 @@ class Demoduler
 	//		var _scriptDir = import.meta.url;
 	//		// Make available for import by `require()`
 
+
+	consume( tokens )
+	{
+		for( var token of tokens )
+		{
+			if( this.tokens[this.idx].string == token || token!='*' )
+				this.idx++;
+			else
+				break;
+		}
+	}
+
+
+	// import { symbol , symbol , ... } from 'string' ;
+	getImport_SymbolList( )
+	{
+		if( this.tokens[this.idx+1].string != '{' ) return null;
+		
+		for( this.idx=this.idx+2; this.idx<this.tokens.length && this.tokens[this.idx].string!='}'; this.idx++ )
+			if( this.tokens[this.idx].string != ',' )
+				this.importedSymbols.push( this.tokens[this.idx].string );
+
+		this.consume( ['}', 'from', '*'] );
+		
+		return this.tokens[this.idx].end;
+	}
+
+
+	// import * as namespace from 'string';
+	getImport_Namespace( )
+	{
+		if( this.tokens[this.idx+1].string != '*' ) return null;
+		if( this.tokens[this.idx+2].string != 'as' ) return null;
+		if( this.tokens[this.idx+4].string != 'from' ) return null;
+
+		this.importedNamespaces.push( this.tokens[this.idx+3].string );
+		this.idx += 6;
+		
+		return this.tokens[this.idx].end;
+	}
+
+
+	// import symbol from 'string';
+	getImport_Symbol( )
+	{
+		if( this.tokens[this.idx+2].string != 'from' ) return null;
+
+		this.importedSymbols.push( this.tokens[this.idx+1].string );
+		this.idx += 4;
+
+		return this.tokens[this.idx].end;
+	}
+	
+	
 	getImports( )
 	{
-		// 1: import { symbol, symbol, ... } from 'string';
-		// 2: import * as namespace from 'string';
-		// 3: import symbol from 'string';
-
-		var i, importStart, importEnd, token;
-
-		var that = this;
-		
-		function consume( tokens )
+		// extract imported symbols and namespaces
+		for( this.idx=0; this.idx<this.tokens.length; this.idx++ )
 		{
-			for( token of tokens )
-			{
-				if( that.tokens[i].string == token || token!='*' )
-					i++;
-				else
-					break;
-			}
-		}
-		
-		// extract imported symbols
-		for( i=0; i<this.tokens.length; i++ )
-		{
-			if( this.tokens[i].string != 'import' )
+			if( this.tokens[this.idx].string != 'import' )
 				continue;
 
-			importStart = this.tokens[i].start;
-			
+			var importStart = this.tokens[this.idx].start,
+				importEnd = null;
+
 			// import { symbol , symbol , ... } from 'string' ;
-			if( this.tokens[i+1].string == '{' )
-			{
-				for( i=i+2; i<this.tokens.length && this.tokens[i].string!='}'; i++ )
-					if( this.tokens[i].string != ',' )
-						this.importedSymbols.push( this.tokens[i].string );
-		
-				consume( ['}', 'from', '*'] );
-				
-				importEnd = this.tokens[i].end;
-				
-				this.importSections.push( {
-					string: this.js.substring( importStart, importEnd ),
-					start: importStart,
-					end: importEnd
-				} );
-				
-				continue;
-			}
-				
+			importEnd = this.getImport_SymbolList( );
+
 			// import * as namespace from 'string';
-			if( this.tokens[i+1].string == '*' && 
-				this.tokens[i+2].string == 'as' &&
-				this.tokens[i+4].string == 'from'
-			)
-			{
-				this.importedNamespaces.push( this.tokens[i+3].string );
-				i += 6;
-				
-				importEnd = this.tokens[i].end;
-				
-				this.importSections.push( {
-					string: this.js.substring( importStart, importEnd ),
-					start: importStart,
-					end: importEnd
-				} );
+			if( importEnd == null )
+			importEnd = this.getImport_Namespace( );
 
-				continue;
-			}
-				
 			// import symbol from 'string';
-			if( this.tokens[i+2].string == 'from' )
+			if( importEnd == null )
+			importEnd = this.getImport_Symbol( );
+
+			if( importEnd != null )
 			{
-				this.importedSymbols.push( this.tokens[i+1].string );
-				i += 4;
-				
-				importEnd = this.tokens[i].end;
-				
 				this.importSections.push( {
 					string: this.js.substring( importStart, importEnd ),
 					start: importStart,
 					end: importEnd
 				} );
-
-				continue;
 			}
+		
 		}
 
+		console.group( 'Imports' );
 		console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
 		console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
-		console.log( `\t importsections:` );
+		console.group( `\t sections:` );
 		for( var section of this.importSections )
 			console.log( section.string );
+		console.groupEnd( );
+		console.groupEnd( );
+	}
+	
+	
+
+
+	// export { symbol , symbol , ... };
+	getExport_SymbolList( )
+	{
+		if( this.tokens[this.idx+1].string != '{' ) return null;
+		
+		for( this.idx=this.idx+2; this.idx<this.tokens.length && this.tokens[this.idx].string!='}'; this.idx++ )
+			if( this.tokens[this.idx].string != ',' )
+				this.exportedSymbols.push( this.tokens[this.idx].string );
+
+		this.consume( ['}'] );
+		
+		return this.tokens[this.idx].end;
+	}
+
+
+	getExports( )
+	{
+		// extract exported symbols
+		for( this.idx=0; this.idx<this.tokens.length; this.idx++ )
+		{
+			if( this.tokens[this.idx].string != 'export' )
+				continue;
+
+			var exportStart = this.tokens[this.idx].start,
+				exportEnd = null;
+
+			// export { symbol , symbol , ... };
+			exportEnd = this.getExport_SymbolList( );
+
+////			// import * as namespace from 'string';
+////			if( importEnd == null )
+////			importEnd = this.getImport_Namespace( );
+
+			if( exportEnd != null )
+			{
+				this.exportSections.push( {
+					string: this.js.substring( exportStart, exportEnd ),
+					start: exportStart,
+					end: exportEnd
+				} );
+			}
+		
+		}
+
+		console.group( 'Exports' );
+		console.log( `\t symbols: ${this.exportedSymbols.join(' ')}` );
+		console.group( `\t sections:` );
+		for( var section of this.exportSections )
+			console.log( section.string );
+		console.groupEnd( );
+		console.groupEnd( );
 	}
 	
 	
@@ -253,8 +315,9 @@ class Demoduler
 		this.getTokens( );
 		
 		//console.log( this.tokens );
-		
+
 		this.getImports( );
+		this.getExports( );
 	}
 	
 }
