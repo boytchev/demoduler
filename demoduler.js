@@ -1,7 +1,9 @@
-	
+
 class Demoduler
 {
 	static id = 0;
+
+	static LOGO = '// DMDLR';
 	
 	constructor ( file )
 	{
@@ -82,20 +84,6 @@ class Demoduler
 		}
 
 		return true;
-	}
-	
-	
-	
-	// find all sequences of tokens separated by whitespace
-	// returns char position {from,to}
-	findTokens( tokens )
-	{
-		var result = [],
-			pos = 0;
-		
-		while( pos < this.js.length )
-		{
-		}
 	}
 	
 	
@@ -299,6 +287,89 @@ class Demoduler
 	}
 	
 	
+	insertCode( code, position )
+	{
+		this.js = this.js.substring( 0, position ) + code + this.js.substring( position );
+	}
+	
+	
+	appendCode( code )
+	{
+		if( code )
+		{
+			this.js += `${code} ${Demoduler.LOGO}`;
+		}
+		this.js += `\n\r`;
+	}
+	
+	
+	prependCode( code )
+	{
+		if( code )
+			this.js = `${code} ${Demoduler.LOGO}\n\r` + this.js;
+		else
+			this.js = '\n\r' + this.js;
+	}
+	
+	
+	// transform js->jsm
+	demodulize( )
+	{
+		// remove import and export sections, add namespaces to symbol
+		// do this backwards, because these modifications destroy known positions of tokens
+		var actions = [];
+		
+		for( var section of this.importSections )
+			actions.push( {type:'remove', object:section} );
+
+		for( var section of this.exportSections )
+			actions.push( {type:'remove', object:section} );
+
+		for( var token of this.tokens )
+		{
+			if( this.importedSymbols.indexOf( token.string ) > -1 )
+			{
+				// if this token is in import section, then do not replace it
+				if( !this.importSections.find( sec => sec.start<=token.start && sec.end>=token.end ) )
+					actions.push( {type:'add', object:token} );
+			}
+		}
+
+		console.group( 'Actions' );
+		actions.sort( (a,b) => b.object.start-a.object.start );
+		for( var action of actions )
+			console.log( `\t ${action.object.start} ${action.type} ${action.object.string}` );
+
+		// process actions
+		for( var action of actions )
+			if( action.type=='add' )
+				this.insertCode( 'THREE.', action.object.start );
+			else
+			{
+			}
+		
+		// appends after main code (they do not change token positions)
+		this.appendCode( );
+		for( var symbol of this.exportedSymbols )
+		{
+			this.appendCode( `\tTHREE.${symbol} = ${symbol};` );
+			this.appendCode( );
+		}
+		this.appendCode( '} )();' );
+		
+
+		// insert before main code (must be the last text modification)
+		this.prependCode( );
+		this.prependCode( '( function () {' );
+
+		
+		console.group( 'Result' );
+		console.log( this.js );
+		console.groupEnd( );
+		
+	}
+	
+	
 	// process a JS file
 	process( )
 	{
@@ -318,6 +389,7 @@ class Demoduler
 
 		this.getImports( );
 		this.getExports( );
+		this.demodulize( );
 	}
 	
 }
