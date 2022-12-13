@@ -2,8 +2,9 @@
 class Demoduler
 {
 	static id = 0;
+	static demodulers = [];
 
-	static LOGO = '// DMDLR';
+	static LOGO = '^..^';
 	
 	constructor ( file )
 	{
@@ -15,23 +16,24 @@ class Demoduler
 		this.exportedSymbols = [];
 		this.exportSections = [];
 		
+		this.js = '';
+		this.id = Demoduler.id++;
+		Demoduler.demodulers[ this.id ] = this;
+
 		// if file is string, then this is fake file for debug purposes
 		if( typeof file === 'string' )
 		{
 			this.file = {name:'test-file'};
 			this.js = file;
-			this.id = Demoduler.id++;
-			document.getElementById( 'log' ).innerHTML += `<p class="file">test-file <span id="size-${this.id}">(${file.length} bytes)</span> <span class="error" id="error-${this.id}"></span></p>`;
+			document.getElementById( 'log' ).innerHTML += `<p class="file">test-file <span id="size-${this.id}">(${file.length} bytes)</span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span></p>`;
 			this.process( );
 			return;
 		}
 			
 		
 		this.file = file;
-		this.js = '';
-		this.id = Demoduler.id++;
 		
-		document.getElementById( 'log' ).innerHTML += `<p class="file">${file.name} <span id="size-${this.id}"></span> <span class="error" id="error-${this.id}"></span></p>`;
+		document.getElementById( 'log' ).innerHTML += `<p class="file">${file.name} <span id="size-${this.id}"></span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span></p>`;
 		
 
 		if( file.name.split( '.' ).pop( ) != 'js' )
@@ -67,6 +69,7 @@ class Demoduler
 
 		this.process( );
 		
+
 		//console.log( event.target.result );
 	} // Demoduler.loadedFile
 	
@@ -135,14 +138,13 @@ class Demoduler
 
 
 	consume( tokens )
-	{
+	{		
 		for( var token of tokens )
 		{
-			if( this.tokens[this.idx].string == token || token!='*' )
+			if( this.tokens[this.idx].string == token || token=='*' )
 				this.idx++;
-			else
-				break;
 		}
+		this.idx--;
 	}
 
 
@@ -155,7 +157,7 @@ class Demoduler
 			if( this.tokens[this.idx].string != ',' )
 				this.importedSymbols.push( this.tokens[this.idx].string );
 
-		this.consume( ['}', 'from', '*'] );
+		this.consume( ['}', 'from', '*', ';'] );
 		
 		return this.tokens[this.idx].end;
 	}
@@ -220,14 +222,14 @@ class Demoduler
 		
 		}
 
-		console.group( 'Imports' );
-		console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
-		console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
-		console.group( `\t sections:` );
-		for( var section of this.importSections )
-			console.log( section.string );
-		console.groupEnd( );
-		console.groupEnd( );
+		// console.group( 'Imports' );
+		// console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
+		// console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
+		// console.group( `\t sections:` );
+		// for( var section of this.importSections )
+			// console.log( section.string );
+		// console.groupEnd( );
+		// console.groupEnd( );
 	}
 	
 	
@@ -277,13 +279,13 @@ class Demoduler
 		
 		}
 
-		console.group( 'Exports' );
-		console.log( `\t symbols: ${this.exportedSymbols.join(' ')}` );
-		console.group( `\t sections:` );
-		for( var section of this.exportSections )
-			console.log( section.string );
-		console.groupEnd( );
-		console.groupEnd( );
+		// console.group( 'Exports' );
+		// console.log( `\t symbols: ${this.exportedSymbols.join(' ')}` );
+		// console.group( `\t sections:` );
+		// for( var section of this.exportSections )
+			// console.log( section.string );
+		// console.groupEnd( );
+		// console.groupEnd( );
 	}
 	
 	
@@ -293,11 +295,25 @@ class Demoduler
 	}
 	
 	
+	removeCode( startPosition, endPosition )
+	{
+		var extract = this.js.substring( startPosition, endPosition );
+		
+		// sanitize by removing all internal /*, */ and //
+		extract = extract.split('/*').join('/ *');
+		extract = extract.split('//').join('/ /');
+		extract = extract.split('*/').join('* /');
+		extract = `/* ${Demoduler.LOGO}\n\r${extract}\n\r*/\n\r`;
+		
+		this.js = this.js.substring( 0, startPosition ) + extract + this.js.substring( endPosition );
+	}
+	
+	
 	appendCode( code )
 	{
 		if( code )
 		{
-			this.js += `${code} ${Demoduler.LOGO}`;
+			this.js += `${code} // ${Demoduler.LOGO}`;
 		}
 		this.js += `\n\r`;
 	}
@@ -306,7 +322,7 @@ class Demoduler
 	prependCode( code )
 	{
 		if( code )
-			this.js = `${code} ${Demoduler.LOGO}\n\r` + this.js;
+			this.js = `${code} // ${Demoduler.LOGO}\n\r` + this.js;
 		else
 			this.js = '\n\r' + this.js;
 	}
@@ -331,22 +347,24 @@ class Demoduler
 			{
 				// if this token is in import section, then do not replace it
 				if( !this.importSections.find( sec => sec.start<=token.start && sec.end>=token.end ) )
-					actions.push( {type:'add', object:token} );
+					actions.push( {type:'insert', object:token} );
 			}
 		}
 
-		console.group( 'Actions' );
 		actions.sort( (a,b) => b.object.start-a.object.start );
-		for( var action of actions )
-			console.log( `\t ${action.object.start} ${action.type} ${action.object.string}` );
+		
+		// console.group( 'Actions' );
+		// for( var action of actions )
+			// console.log( `\t ${action.object.start} ${action.type} ${action.object.string}` );
+		// console.groupEnd( );
 
 		// process actions
 		for( var action of actions )
-			if( action.type=='add' )
+			if( action.type=='insert' )
 				this.insertCode( 'THREE.', action.object.start );
 			else
-			{
-			}
+			if( action.type=='remove' )
+				this.removeCode( action.object.start, action.object.end );
 		
 		// appends after main code (they do not change token positions)
 		this.appendCode( );
@@ -363,9 +381,9 @@ class Demoduler
 		this.prependCode( '( function () {' );
 
 		
-		console.group( 'Result' );
-		console.log( this.js );
-		console.groupEnd( );
+		// console.group( 'Result' );
+		// console.log( this.js );
+		// console.groupEnd( );
 		
 	}
 	
@@ -390,6 +408,18 @@ class Demoduler
 		this.getImports( );
 		this.getExports( );
 		this.demodulize( );
+console.log('###',this.id);
+		document.getElementById( `download-${this.id}` ).innerHTML = `<span onclick="Demoduler.demodulers[${this.id}].download()">download</span>`;
 	}
 	
+	
+	download( )
+	{
+		var blob = new Blob( [this.js], {type: 'text/plain;charset=utf-8'} );
+		
+		var link = document.createElement('a');
+			link.href = URL.createObjectURL( blob );
+			link.download = this.file.name;
+			link.click();
+	}
 }
