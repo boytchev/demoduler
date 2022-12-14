@@ -393,6 +393,8 @@ class Demoduler
 	{
 		console.log( `processing file ${this.file.name}` );
 
+		this.hashIn = cyrb53( this.js );
+
 		if( !this.valideText( ) )
 		{
 			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; contains invalid characters`;
@@ -408,7 +410,11 @@ class Demoduler
 		this.getImports( );
 		this.getExports( );
 		this.demodulize( );
-console.log('###',this.id);
+
+		this.hashOut = cyrb53( this.js );
+
+		console.log( `\t[ '${this.file.name}', ${this.hashIn}, ${this.hashOut}],` );
+		
 		document.getElementById( `download-${this.id}` ).innerHTML = `<span onclick="Demoduler.demodulers[${this.id}].download()">download</span>`;
 	}
 	

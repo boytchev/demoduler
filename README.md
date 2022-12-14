@@ -66,55 +66,16 @@ export { name1, name2, ... };
 ```
 
 
-<!--
-| examples\jsm | file | status |
-| --- | --- | --- |
-| **animation** | | |
-| **cameras** | | |
-| **controls** | | |
-| **csm** | | |
-| **curves** | | |
-| **effects** | | |
-| **environments** | | |
-| **exporters** | | |
-|| ColladaExporter.js ||
-|| DRACOExporter.js ||
-|| EXRExporter.js ||
-|| GLTFExporter.js ||
-|| KTX2Exporter.js | no JS version |
-|| MMDExporter.js ||
-|| OBJExporter.js ||
-|| PLYExporter.js ||
-|| STLExporter.js ||
-|| USDZExporter.js ||
-| **geometries** | | |
-|| BoxLineGeometry.js ||
-|| ConvexGeometry.js ||
-|| DecalGeometry.js ||
-|| LightningStrike.js ||
-|| ParametricGeometries.js ||
-|| ParametricGeometry.js ||
-|| RoundedBoxGeometry.js ||
-|| TeapotGeometry.js ||
-|| TextGeometry.js ||
-| **helpers** | | |
-| **interactive** | | |
-| **libs** | | |
-| **lights** | | |
-| **lines** | | |
-| **loaders** | | |
-| **materials** | | |
-| **math** | | |
-| **misc** | | |
-| **modifiers** | | |
-| **objects** | | |
-| **physics** | | |
-| **postprocessing** | | |
-| **renderers** | | |
-| **shaders** | | |
-| **textures** | | |
-| **utils** | | |
-
-
--->
+| FILE R147 | STATUS R147 |
+| :--- | :--- |
+| **examples\jsm\geometries** | | |
+| BoxLineGeometry.js 		| OK |
+| ConvexGeometry.js 		| OK - Error message not adjusted |
+| DecalGeometry.js 			| OK |
+| LightningStrike.js 		| Fail - No THREE for MathUtils |
+| ParametricGeometries.js 	| OK |
+| ParametricGeometry.js 	| OK |
+| RoundedBoxGeometry.js 	| OK |
+| TeapotGeometry.js 		| OK |
+| TextGeometry.js 			| OK |
 
