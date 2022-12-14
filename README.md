@@ -68,6 +68,15 @@ export { name1, name2, ... };
 
 | FILE R147 | STATUS R147 |
 | :--- | :--- |
+| **examples\jsm\controls** | *pending* |
+| ArcballControls.js		| *pending* |
+| DragControls.js			| OK |
+| FirstPersonControls.js	| OK |
+| FlyControls.js			| *pending* |
+| OrbitControls.js			| *pending* |
+| PointerLockControls.js	| OK |
+| TrackballControls.js		| *pending* |
+| TransformControls.js		| *pending* |
 | **examples\jsm\geometries** | **OK** |
 | BoxLineGeometry.js 		| OK |
 | ConvexGeometry.js 		| OK - Error message not adjusted |

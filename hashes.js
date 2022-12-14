@@ -1,5 +1,17 @@
 var hashes = [
 
+// jsm\controls\*.js
+
+	[ 'TransformControls.js', 2496079475009952, 8857763966509042],
+ 	[ 'OrbitControls.js', 3461413604478402, 6277800330584352],
+ 	[ 'FirstPersonControls.js', 3881222951926969, 1066553780613766],
+ 	[ 'FlyControls.js', 5733191412332319, 7144442495410081],
+ 	[ 'PointerLockControls.js', 7234374874125097, 1219310135732456],
+ 	[ 'DragControls.js', 68330822021333, 2509190058411517],
+ 	[ 'TrackballControls.js', 5995901654950252, 7112954690331703],
+ 	[ 'ArcballControls.js', 5224525621429883, 5760945409071883],
+
+
 // jsm\geometries\*.js
 
  	[ 'BoxLineGeometry.js', 6715624084493554, 8120291510742288],
