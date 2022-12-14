@@ -244,7 +244,7 @@ class Demoduler
 			if( this.tokens[this.idx].string != ',' )
 				this.exportedSymbols.push( this.tokens[this.idx].string );
 
-		this.consume( ['}'] );
+		this.consume( ['}', ';'] );
 		
 		return this.tokens[this.idx].end;
 	}

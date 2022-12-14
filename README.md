@@ -72,16 +72,16 @@ export { name1, name2, ... };
 <!-- ArcballControls.js-->
 - DragControls.js
 - FirstPersonControls.js
-<!-- FlyControls.js-->
-<!-- OrbitControls.js-->
+- FlyControls.js
+- OrbitControls.js
 - PointerLockControls.js
-<!-- TrackballControls.js-->
-<!-- TransformControls.js-->
+- TrackballControls.js
+- TransformControls.js
 
 
 #### Folder `examples\jsm\geometries`
 - BoxLineGeometry.js
-- ConvexGeometry.js &ndash; *OK, but an error message not adjusted*
+- ConvexGeometry.js &rarr; *OK, but an error message not adjusted*
 - DecalGeometry.js
 - LightningStrike.js
 - ParametricGeometries.js
