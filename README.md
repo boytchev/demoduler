@@ -66,25 +66,27 @@ export { name1, name2, ... };
 ```
 
 
-| FILE R147 | STATUS R147 |
-| :--- | :--- |
-| **examples\jsm\controls** | *pending* |
-| ArcballControls.js		| *pending* |
-| DragControls.js			| OK |
-| FirstPersonControls.js	| OK |
-| FlyControls.js			| *pending* |
-| OrbitControls.js			| *pending* |
-| PointerLockControls.js	| OK |
-| TrackballControls.js		| *pending* |
-| TransformControls.js		| *pending* |
-| **examples\jsm\geometries** | **OK** |
-| BoxLineGeometry.js 		| OK |
-| ConvexGeometry.js 		| OK - Error message not adjusted |
-| DecalGeometry.js 			| OK |
-| LightningStrike.js 		| OK |
-| ParametricGeometries.js 	| OK |
-| ParametricGeometry.js 	| OK |
-| RoundedBoxGeometry.js 	| OK |
-| TeapotGeometry.js 		| OK |
-| TextGeometry.js 			| OK |
+### Files from r147 that are demoduled correctly
+
+#### Folder `examples\jsm\controls`
+<!-- ArcballControls.js-->
+- DragControls.js
+- FirstPersonControls.js
+<!-- FlyControls.js-->
+<!-- OrbitControls.js-->
+- PointerLockControls.js
+<!-- TrackballControls.js-->
+<!-- TransformControls.js-->
+
+
+#### Folder `examples\jsm\geometries`
+- BoxLineGeometry.js
+- ConvexGeometry.js &ndash; *OK, but an error message not adjusted*
+- DecalGeometry.js
+- LightningStrike.js
+- ParametricGeometries.js
+- ParametricGeometry.js
+- RoundedBoxGeometry.js
+- TeapotGeometry.js
+- TextGeometry.js
 
