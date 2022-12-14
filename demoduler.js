@@ -1,3 +1,5 @@
+const DEBUG_SHOW_TOKENS = false;
+
 
 class Demoduler
 {
@@ -25,7 +27,7 @@ class Demoduler
 		{
 			this.file = {name:'test-file'};
 			this.js = file;
-			document.getElementById( 'log' ).innerHTML += `<p class="file">test-file <span id="size-${this.id}">(${file.length} bytes)</span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span></p>`;
+			document.getElementById( 'log' ).innerHTML += `<p class="file">test-file</span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span><span class="info" id="info-${this.id}"></span></p>`;
 			this.process( );
 			return;
 		}
@@ -33,7 +35,7 @@ class Demoduler
 		
 		this.file = file;
 		
-		document.getElementById( 'log' ).innerHTML += `<p class="file">${file.name} <span id="size-${this.id}"></span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span></p>`;
+		document.getElementById( 'log' ).innerHTML += `<p class="file">${file.name} <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span><span class="info" id="info-${this.id}"></span></p>`;
 		
 
 		if( file.name.split( '.' ).pop( ) != 'js' )
@@ -65,8 +67,6 @@ class Demoduler
 	{
 		this.js = event.target.result;
 
-		document.getElementById( `size-${this.id}` ).innerHTML = ` (${event.target.result.length} bytes)`;
-
 		this.process( );
 		
 
@@ -95,7 +95,7 @@ class Demoduler
 	getTokens( )
 	{
 		var result;
-		var regex = /[^\s\,\;\(\)]+|\,|\;|\(|\)/g;
+		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.]+|\,|\;|\(|\)|\./g;
 		
 		while( result = regex.exec(this.js) )
 		{
@@ -405,7 +405,7 @@ class Demoduler
 		
 		this.getTokens( );
 		
-		//console.log( this.tokens );
+		if( DEBUG_SHOW_TOKENS ) console.log( this.tokens );
 
 		this.getImports( );
 		this.getExports( );
@@ -413,9 +413,48 @@ class Demoduler
 
 		this.hashOut = cyrb53( this.js );
 
+		this.checkHash( );
 		console.log( `\t[ '${this.file.name}', ${this.hashIn}, ${this.hashOut}],` );
 		
 		document.getElementById( `download-${this.id}` ).innerHTML = `<span onclick="Demoduler.demodulers[${this.id}].download()">download</span>`;
+	}
+	
+	
+	checkHash( )
+	{
+		// get all records for this file name
+		var recs = hashes.filter( rec => rec[0]==this.file.name );
+		
+		if( recs.length == 0 )
+		{
+			console.log( `unknown file name ${this.file.name}` );
+			return;
+		}
+
+		// get all records with this hash code of input source
+		var matches = recs.filter( rec => rec[1]==this.hashIn );
+
+		if( matches.length == 0 )
+		{
+			console.log( `unknown contents of ${this.file.name}` );
+			return;
+		}
+		
+
+		// get all records with this hash code of output source
+		var finals = matches.filter( rec => rec[2]==this.hashOut );
+
+		if( finals.length == 0 )
+		{
+			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; mismatched hash`;
+			console.error( `mismatched output hash code of ${this.file.name}` );
+			return;
+		}
+		
+		
+		document.getElementById( `info-${this.id}` ).innerHTML = `<br>known file, conversion confirmed`;
+		console.log( `matching hash code of ${this.file.name}` );
+		return;
 	}
 	
 	

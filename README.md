@@ -68,11 +68,11 @@ export { name1, name2, ... };
 
 | FILE R147 | STATUS R147 |
 | :--- | :--- |
-| **examples\jsm\geometries** | | |
+| **examples\jsm\geometries** | **OK** |
 | BoxLineGeometry.js 		| OK |
 | ConvexGeometry.js 		| OK - Error message not adjusted |
 | DecalGeometry.js 			| OK |
-| LightningStrike.js 		| Fail - No THREE for MathUtils |
+| LightningStrike.js 		| OK |
 | ParametricGeometries.js 	| OK |
 | ParametricGeometry.js 	| OK |
 | RoundedBoxGeometry.js 	| OK |

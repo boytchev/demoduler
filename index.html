@@ -51,6 +51,11 @@
 			color: crimson;
 		}
 		
+		.info {
+			font-size: 80%;
+			color: gray;
+		}
+		
 		.download {
 			float: right;
 			cursor: pointer;
@@ -74,6 +79,7 @@
 		
 	</style>
 	<script src="demoduler.js"></script>
+	<script src="hashes.js"></script>
 	<script src="cyrb53.js"></script>
 </head>
 
@@ -118,6 +124,7 @@
 ///*********************** TEST ZONE **********
 
 	new Demoduler(test_jsm = `
+import { ConvexHull } from '../math/ConvexHull.js';
 import {
 	BufferGeometry,	
 	Float32BufferAttribute
