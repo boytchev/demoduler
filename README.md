@@ -69,7 +69,7 @@ export { name1, name2, ... };
 ### Files from r147 that are demoduled correctly
 
 #### Folder `examples\jsm\controls`
-<!-- ArcballControls.js-->
+- ArcballControls.js
 - DragControls.js
 - FirstPersonControls.js
 - FlyControls.js

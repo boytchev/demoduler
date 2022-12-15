@@ -12,7 +12,7 @@ var hashes = [
  	{ name: 'PointerLockControls.js',	hashIn: 7234374874125097, hashOut: 534253466008181,  signature: 'r147' },
  	{ name: 'DragControls.js',			hashIn: 68330822021333,   hashOut: 8465009894812906, signature: 'r147' },
  	{ name: 'TrackballControls.js',		hashIn: 5995901654950252, hashOut: 6267983764043843, signature: 'r147' },
- 	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147, unsuported' },
+ 	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147' },
 
 
 // jsm\geometries\*.js
