@@ -26,5 +26,24 @@ var hashes = [
  	{ name: 'RoundedBoxGeometry.js',	hashIn: 5502296987449710, hashOut: 7311095839334729, signature: 'r147' },
  	{ name: 'TeapotGeometry.js',		hashIn: 1270481738028427, hashOut: 8815500691832546, signature: 'r147' },
  	{ name: 'TextGeometry.js',			hashIn: 2530618317268137, hashOut: 6961183132809707, signature: 'r147' },
+
+
+
+// jsm\loaders\*.js
+	{ name: 'LightProbeHelper.js',		hashIn: 6400788453127014, hashOut: 3600597602235927, signature: 'r147' },
+	{ name: 'OctreeHelper.js',			hashIn: 4835047289618362, hashOut: 3352396781641842, signature: 'r147' },
+	{ name: 'PositionalAudioHelper.js',	hashIn: 4485771109068509, hashOut: 3792633801047678, signature: 'r147' },
+	{ name: 'RectAreaLightHelper.js',	hashIn: 2323756755171944, hashOut: 7093708729301997, signature: 'r147' },
+	{ name: 'VertexNormalsHelper.js',	hashIn: 5070185591957948, hashOut: 674242172204673,  signature: 'r147' },
+	{ name: 'VertexTangentsHelper.js',	hashIn: 662534324265405,  hashOut: 205872472201194,  signature: 'r147' },
+	{ name: 'ViewHelper.js',			hashIn: 4660377876647747, hashOut: 4639934960027406, signature: 'r147' },
+
+
+// jsm\modifiers\*.js
+
+	{ name: 'TessellateModifier.js',	hashIn: 8441784596459318, hashOut: 1151084173615225, signature: 'r147-pending' },
+	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 834548623303048,  signature: 'r147-pending' },
+	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 7411075805177974, signature: 'r147-pending' },
+	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 6032546163726066, signature: 'r147-pending' },
 	
 ];

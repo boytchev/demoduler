@@ -417,7 +417,7 @@ class Demoduler
 		this.hashOut = cyrb53( this.js );
 
 		this.checkHash( );
-		console.log( `\t[ '${this.file.name}', ${this.hashIn}, ${this.hashOut}],` );
+		console.log( `\t{ name: '${this.file.name}',\thashIn: ${this.hashIn}, hashOut: ${this.hashOut}, signature: '' },` );
 		
 		var that = this;
 //		document.getElementById( `info-${this.id}` ).innerHTML = `click to download`;

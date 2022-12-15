@@ -90,3 +90,22 @@ export { name1, name2, ... };
 - TeapotGeometry.js
 - TextGeometry.js
 
+
+#### Folder `examples\jsm\loaders`
+- LightProbeHelper.js
+- OctreeHelper.js
+- PositionalAudioHelper.js
+- RectAreaLightHelper.js
+- VertexNormalsHelper.js
+- VertexTangentsHelper.js
+- ViewHelper.js
+
+
+<!--
+#### Folder `examples\jsm\modifiers`
+- TessellateModifier.js
+- CurveModifier.js
+- EdgeSplitModifier.js
+- SimplifyModifier.js
+->
+
