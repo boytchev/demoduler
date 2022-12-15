@@ -91,6 +91,16 @@ export { name1, name2, ... };
 - TextGeometry.js
 
 
+#### Folder `examples\jsm\lines`
+- Line2.js
+- LineGeometry.js
+- LineMaterial.js
+- LineSegments2.js
+- LineSegmentsGeometry.js
+- Wireframe.js
+- WireframeGeometry2.js
+
+
 #### Folder `examples\jsm\loaders`
 - LightProbeHelper.js
 - OctreeHelper.js

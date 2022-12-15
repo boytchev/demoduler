@@ -28,8 +28,19 @@ var hashes = [
  	{ name: 'TextGeometry.js',			hashIn: 2530618317268137, hashOut: 6961183132809707, signature: 'r147' },
 
 
+// jsm\lines\*.js
+
+	{ name: 'Line2.js',					hashIn: 3135289954063428, hashOut: 7765501135355907, signature: 'r147' },
+	{ name: 'LineGeometry.js',			hashIn: 8600814032145600, hashOut: 7773308748004646, signature: 'r147' },
+	{ name: 'LineMaterial.js',			hashIn: 1491028438321448, hashOut: 4088370860958898, signature: 'r147' },
+	{ name: 'LineSegments2.js',			hashIn: 3749850439058021, hashOut: 1346872539046023, signature: 'r147' },
+	{ name: 'WireframeGeometry2.js',	hashIn: 1847977233267918, hashOut: 4489740044747535, signature: 'r147' },
+	{ name: 'LineSegmentsGeometry.js',	hashIn: 2449821987236612, hashOut: 3575789517828356, signature: 'r147' },
+	{ name: 'Wireframe.js',				hashIn: 6605080101837332, hashOut: 4515273103577048, signature: 'r147' },
+
 
 // jsm\loaders\*.js
+
 	{ name: 'LightProbeHelper.js',		hashIn: 6400788453127014, hashOut: 3600597602235927, signature: 'r147' },
 	{ name: 'OctreeHelper.js',			hashIn: 4835047289618362, hashOut: 3352396781641842, signature: 'r147' },
 	{ name: 'PositionalAudioHelper.js',	hashIn: 4485771109068509, hashOut: 3792633801047678, signature: 'r147' },

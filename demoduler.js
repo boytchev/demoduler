@@ -91,7 +91,7 @@ class Demoduler
 	getTokens( )
 	{
 		var result;
-		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.]+|\,|\;|\(|\)|\./g;
+		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.\[]+|\,|\;|\(|\)|\.|\[/g;
 		
 		while( result = regex.exec(this.js) )
 		{
@@ -455,9 +455,9 @@ class Demoduler
 			console.error( `mismatched output hash code of ${this.file.name}` );
 //			return;
 		}
+		else
+			document.getElementById( `info-${this.id}` ).innerHTML = `${finals[0].signature}`;
 		
-		
-		document.getElementById( `info-${this.id}` ).innerHTML = `${finals[0].signature}`;
 //		console.log( `matching hash code of ${this.file.name}` );
 		return;
 	}
