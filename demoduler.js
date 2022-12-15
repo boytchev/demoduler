@@ -22,31 +22,25 @@ class Demoduler
 		this.id = Demoduler.id++;
 		Demoduler.demodulers[ this.id ] = this;
 
-		// if file is string, then this is fake file for debug purposes
-		if( typeof file === 'string' )
-		{
-			this.file = {name:'test-file'};
-			this.js = file;
-			document.getElementById( 'log' ).innerHTML += `<p class="file">test-file</span> <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span><span class="info" id="info-${this.id}"></span></p>`;
-			this.process( );
-			return;
-		}
-			
-		
 		this.file = file;
-		
-		document.getElementById( 'log' ).innerHTML += `<p class="file">${file.name} <span class="error" id="error-${this.id}"></span> <span class="download" id="download-${this.id}"></span><span class="info" id="info-${this.id}"></span></p>`;
+
+		document.getElementById( 'log' ).insertAdjacentHTML( 'beforeend', `
+			<div class="file" id="file-${this.id}">
+				<span class="error" id="error-${this.id}"></span>
+				<span class="info" id="info-${this.id}"></span>
+				${file.name}
+			</div>`
+		);
 		
 
 		if( file.name.split( '.' ).pop( ) != 'js' )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; not a <code>*.js</code> file`;
+			document.getElementById( `error-${this.id}` ).innerHTML = 'bad file name';
 			return;
 		}
 		
 		this.loadFile( );
 		
-//		this.js = js;
 	} // Demoduler.constructor
 	
 	
@@ -54,25 +48,27 @@ class Demoduler
 	// request loading a file (asynchronous load)
 	loadFile( )
 	{
-		var reader = new FileReader();
-		
-		reader.addEventListener( 'load', event => this.loadedFile(event) );
-		reader.readAsText( this.file );
+		if( this.file.contents )
+		{
+			this.js = this.file.contents;
+			this.process( );
+		}
+		else
+		{
+			var reader = new FileReader();
+			
+			reader.addEventListener( 'load', event => this.loadedFile(event) );
+			reader.readAsText( this.file );
+		}
 	} // Demoduler.loadFile
+	
 
 
-
-	// file is loaded
 	loadedFile( event )
 	{
 		this.js = event.target.result;
-
 		this.process( );
-		
-
-		//console.log( event.target.result );
-	} // Demoduler.loadedFile
-	
+	}
 
 
 	// validate a string wether it contains 'expected' characters
@@ -391,13 +387,13 @@ class Demoduler
 	// process a JS file
 	process( )
 	{
-		console.log( `processing file ${this.file.name}` );
+//		console.log( `processing file ${this.file.name}` );
 
 		this.hashIn = cyrb53( this.js );
 
 		if( !this.valideText( ) )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; contains invalid characters`;
+			document.getElementById( `error-${this.id}` ).innerHTML = 'bad file contents';
 			return;
 		}
 			
@@ -411,19 +407,28 @@ class Demoduler
 		this.getExports( );
 		this.demodulize( );
 
+		if( this.importSections.length+this.exportSections.length == 0 )
+		{
+			document.getElementById( `error-${this.id}` ).innerHTML = 'not a module';
+			return;
+		}
+
+
 		this.hashOut = cyrb53( this.js );
 
 		this.checkHash( );
 		console.log( `\t[ '${this.file.name}', ${this.hashIn}, ${this.hashOut}],` );
 		
-		document.getElementById( `download-${this.id}` ).innerHTML = `<span onclick="Demoduler.demodulers[${this.id}].download()">download</span>`;
+		var that = this;
+//		document.getElementById( `info-${this.id}` ).innerHTML = `click to download`;
+		document.getElementById( `file-${this.id}` ).onclick = function(){that.download()};
 	}
 	
 	
 	checkHash( )
 	{
 		// get all records for this file name
-		var recs = hashes.filter( rec => rec[0]==this.file.name );
+		var recs = hashes.filter( rec => rec.name==this.file.name );
 		
 		if( recs.length == 0 )
 		{
@@ -431,8 +436,8 @@ class Demoduler
 			return;
 		}
 
-		// get all records with this hash code of input source
-		var matches = recs.filter( rec => rec[1]==this.hashIn );
+		// get all records with this hash-in code
+		var matches = recs.filter( rec => rec.hashIn==this.hashIn );
 
 		if( matches.length == 0 )
 		{
@@ -441,19 +446,19 @@ class Demoduler
 		}
 		
 
-		// get all records with this hash code of output source
-		var finals = matches.filter( rec => rec[2]==this.hashOut );
+		// get all records with this hash-out code
+		var finals = matches.filter( rec => rec.hashOut==this.hashOut );
 
 		if( finals.length == 0 )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = ` &rarr; mismatched hash`;
+			document.getElementById( `error-${this.id}` ).innerHTML = 'bad signature';
 			console.error( `mismatched output hash code of ${this.file.name}` );
-			return;
+//			return;
 		}
 		
 		
-		document.getElementById( `info-${this.id}` ).innerHTML = `<br>known file, conversion confirmed`;
-		console.log( `matching hash code of ${this.file.name}` );
+		document.getElementById( `info-${this.id}` ).innerHTML = `${finals[0].signature}`;
+//		console.log( `matching hash code of ${this.file.name}` );
 		return;
 	}
 	

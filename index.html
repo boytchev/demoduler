@@ -23,6 +23,7 @@
 			padding: 0;
 			width: 100%;
 			height: 100%;
+			background: whitesmoke;
 		}
 		
 		#drop-zone {
@@ -31,7 +32,6 @@
 			width: 100%;
 			height: 100%;
 			top: 0;
-			background: whitesmoke;
 		}
 		
 		#log {
@@ -47,21 +47,26 @@
 			background: white;
 		}
 		
+		.file:hover {
+			cursor: pointer;
+			font-weight: bold;
+			background: lightgray;
+		}
+		
 		.error {
+			float: right;
+			text-align: right;
+			font-weight: normal;
+			font-size: 90%;
 			color: crimson;
 		}
 		
 		.info {
-			font-size: 80%;
-			color: gray;
-		}
-		
-		.download {
 			float: right;
-			cursor: pointer;
-		}
-		.download:hover {
-			font-weight: bold;
+			text-align: right;
+			font-weight: normal;
+			font-size: 90%;
+			color: gray;
 		}
 		
 		code {
@@ -123,7 +128,7 @@
 
 ///*********************** TEST ZONE **********
 
-	new Demoduler(test_jsm = `
+	new Demoduler({name:'test-file.js', contents:`
 import { ConvexHull } from '../math/ConvexHull.js';
 import {
 	BufferGeometry,	
@@ -198,7 +203,7 @@ class BoxLineGeometry extends BufferGeometry {
 export { BoxLineGeometry };
 
 
-` );
+`} );
 
 </script>
 	
