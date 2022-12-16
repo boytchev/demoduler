@@ -22,17 +22,21 @@ work in progress, more files are being added.
 	AnaglyphEffect.js, AsciiEffect.js, OutlineEffect.js, ParallaxBarrierEffect.js,
 	PeppersGhostEffect.js, StereoEffect.js
 - **`examples\jsm\geometries`**:<br>
-	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js,
+	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js ,
 	ParametricGeometries.js, ParametricGeometry.js, RoundedBoxGeometry.js,
 	TeapotGeometry.js, TextGeometry.js
+- **`examples\jsm\helpers`**:<br>
+	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
+	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
 - **`examples\jsm\lights`**:<br>
 	LightProbeGenerator.js, RectAreaLightUniformsLib.js
 - **`examples\jsm\lines`**:<br>
 	Line2.js, LineGeometry.js, LineMaterial.js, LineSegments2.js, LineSegmentsGeometry.js,
 	Wireframe.js, WireframeGeometry2.js
-- **`examples\jsm\loaders`**:<br>
-	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
-	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
+- **`examples\jsm\materials`**:<br>
+	MeshGouraudMaterial.js
+- **`examples\jsm\modifiers`**:<br>
+	CurveModifier.js, EdgeSplitModifier.js, SimplifyModifier.js, TessellateModifier.js
 - **`examples\jsm\objects`**:<br>
 	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
 	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
@@ -98,6 +102,7 @@ Currently Demoduler processes only one of them:
 ```js
 export { name1, name2, ... };
 export class name1 ...
+export function name1 ...
 ```
 
 <!--

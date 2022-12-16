@@ -26,6 +26,7 @@ var hashes = [
 	{ name: 'PeppersGhostEffect.js',	hashIn: 8449197647267113, hashOut: 2948822358444019, signature: 'r147' },
 	{ name: 'StereoEffect.js',			hashIn: 5569155035758829, hashOut: 8246708936356330, signature: 'r147' },
 
+
 // jsm\geometries\*.js
 
  	{ name: 'BoxLineGeometry.js',		hashIn: 6715624084493554, hashOut: 8861167976725231, signature: 'r147' },
@@ -39,7 +40,19 @@ var hashes = [
  	{ name: 'TextGeometry.js',			hashIn: 2530618317268137, hashOut: 6961183132809707, signature: 'r147' },
 
 
+// jsm\helpers\*.js
+
+	{ name: 'LightProbeHelper.js',		hashIn: 6400788453127014, hashOut: 3600597602235927, signature: 'r147' },
+	{ name: 'OctreeHelper.js',			hashIn: 4835047289618362, hashOut: 3352396781641842, signature: 'r147' },
+	{ name: 'PositionalAudioHelper.js',	hashIn: 4485771109068509, hashOut: 3792633801047678, signature: 'r147' },
+	{ name: 'RectAreaLightHelper.js',	hashIn: 2323756755171944, hashOut: 7093708729301997, signature: 'r147' },
+	{ name: 'VertexNormalsHelper.js',	hashIn: 5070185591957948, hashOut: 674242172204673,  signature: 'r147' },
+	{ name: 'VertexTangentsHelper.js',	hashIn: 662534324265405,  hashOut: 205872472201194,  signature: 'r147' },
+	{ name: 'ViewHelper.js',			hashIn: 4660377876647747, hashOut: 4639934960027406, signature: 'r147' },
+
+
 // jsm\lights\*.js
+
 	{ name: 'LightProbeGenerator.js',		hashIn: 6177039655558016, hashOut: 698274494607814, signature: 'r147' },
 	{ name: 'RectAreaLightUniformsLib.js',	hashIn: 7797007073339547, hashOut: 620191334569173, signature: 'r147' },
 
@@ -55,23 +68,16 @@ var hashes = [
 	{ name: 'Wireframe.js',				hashIn: 6605080101837332, hashOut: 4515273103577048, signature: 'r147' },
 
 
-// jsm\loaders\*.js
-
-	{ name: 'LightProbeHelper.js',		hashIn: 6400788453127014, hashOut: 3600597602235927, signature: 'r147' },
-	{ name: 'OctreeHelper.js',			hashIn: 4835047289618362, hashOut: 3352396781641842, signature: 'r147' },
-	{ name: 'PositionalAudioHelper.js',	hashIn: 4485771109068509, hashOut: 3792633801047678, signature: 'r147' },
-	{ name: 'RectAreaLightHelper.js',	hashIn: 2323756755171944, hashOut: 7093708729301997, signature: 'r147' },
-	{ name: 'VertexNormalsHelper.js',	hashIn: 5070185591957948, hashOut: 674242172204673,  signature: 'r147' },
-	{ name: 'VertexTangentsHelper.js',	hashIn: 662534324265405,  hashOut: 205872472201194,  signature: 'r147' },
-	{ name: 'ViewHelper.js',			hashIn: 4660377876647747, hashOut: 4639934960027406, signature: 'r147' },
+// jsm\materials\*.js
+	{ name: 'MeshGouraudMaterial.js',	hashIn: 2670340595270464, hashOut: 3018929098612251, signature: 'r147' },
 
 
 // jsm\modifiers\*.js
 
-	{ name: 'TessellateModifier.js',	hashIn: 8441784596459318, hashOut: 1151084173615225, signature: 'r147-pending' },
-	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 834548623303048,  signature: 'r147-pending' },
-	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 7411075805177974, signature: 'r147-pending' },
-	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 6032546163726066, signature: 'r147-pending' },
+	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 4923276743757209, signature: 'r147' },
+	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 2525991716015486, signature: 'r147' },
+	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 7089325051573543, signature: 'r147-fail' },
+	{ name: 'TessellateModifier.js',	hashIn: 8441784596459318, hashOut: 1151084173615225, signature: 'r147' },
 	
 	
 // jsm\objects\*.js

@@ -1,6 +1,6 @@
 const DEBUG_SHOW_TOKENS = false;
-const DEBUG_SHOW_IMPORTS = false;
-const DEBUG_SHOW_EXPORTS = false;
+const DEBUG_SHOW_IMPORTS = !false;
+const DEBUG_SHOW_EXPORTS = !false;
 
 
 class Demoduler
@@ -168,7 +168,7 @@ class Demoduler
 		if( this.tokens[this.idx+2].string != 'as' ) return null;
 		if( this.tokens[this.idx+4].string != 'from' ) return null;
 
-		this.importedNamespaces.push( this.tokens[this.idx+3].string );
+		this.importedSymbols.push( this.tokens[this.idx+3].string );
 		this.idx += 6;
 		
 		return this.tokens[this.idx].end;
@@ -262,6 +262,17 @@ class Demoduler
 	}
 
 
+	// export function symbol ...
+	getExport_Function( )
+	{
+		if( this.tokens[this.idx+1].string != 'function' ) return null;
+		
+		this.exportedSymbols.push( this.tokens[this.idx+2].string );
+
+		return this.tokens[this.idx].end;
+	}
+
+
 	getExports( )
 	{
 		// extract exported symbols
@@ -279,6 +290,10 @@ class Demoduler
 			// export class symbol
 			if( exportEnd == null )
 			exportEnd = this.getExport_Class( );
+
+			// export function symbol
+			if( exportEnd == null )
+			exportEnd = this.getExport_Function( );
 
 			if( exportEnd != null )
 			{
