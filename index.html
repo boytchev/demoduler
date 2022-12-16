@@ -129,78 +129,53 @@
 ///*********************** TEST ZONE **********
 
 	new Demoduler({name:'test-file.js', contents:`
-import { ConvexHull } from '../math/ConvexHull.js';
-import {
-	BufferGeometry,	
-	Float32BufferAttribute
-} from 'three';
+import { Mesh, IcosahedronGeometry, ShaderMaterial, DoubleSide } from 'three';
 
+/**
+ * Ground projected env map adapted from @react-three/drei.
+ * https://github.com/pmndrs/drei/blob/master/src/core/Environment.tsx
+ */
+export class GroundProjectedEnv extends Mesh {
 
+	constructor( texture, options ) {
 
-class BoxLineGeometry extends BufferGeometry {
+		const isCubeMap = texture.isCubeTexture;
+		const w =
+			( isCubeMap ? texture.image[ 0 ]?.width : texture.image.width ) ?? 1024;
+		const cubeSize = w / 4;
+		const _lodMax = Math.floor( Math.log2( cubeSize ) );
+		const _cubeSize = Math.pow( 2, _lodMax );
+		const width = 3 * Math.max( _cubeSize, 16 * 7 );
+		const height = 4 * _cubeSize;
+		super( geometry, material );
 
-	constructor( width = 1, height = 1, depth = 1, widthSegments = 1, heightSegments = 1, depthSegments = 1 ) {
+	}
 
-		super();
+	set radius( radius ) {
 
-		widthSegments = Math.floor( widthSegments );
-		heightSegments = Math.floor( heightSegments );
-		depthSegments = Math.floor( depthSegments );
+		this.material.uniforms.radius.value = radius;
 
-		const widthHalf = width / 2;
-		const heightHalf = height / 2;
-		const depthHalf = depth / 2;
+	}
 
-		const segmentWidth = width / widthSegments;
-		const segmentHeight = height / heightSegments;
-		const segmentDepth = depth / depthSegments;
+	get radius() {
 
-		const vertices = [];
+		return this.material.uniforms.radius.value;
 
-		let x = - widthHalf;
-		let y = - heightHalf;
-		let z = - depthHalf;
+	}
 
-		for ( let i = 0; i <= widthSegments; i ++ ) {
+	set height( height ) {
 
-			vertices.push( x, - heightHalf, - depthHalf, x, heightHalf, - depthHalf );
-			vertices.push( x, heightHalf, - depthHalf, x, heightHalf, depthHalf );
-			vertices.push( x, heightHalf, depthHalf, x, - heightHalf, depthHalf );
-			vertices.push( x, - heightHalf, depthHalf, x, - heightHalf, - depthHalf );
+		this.material.uniforms.height.value = height;
 
-			x += segmentWidth;
+	}
 
-		}
+	get height() {
 
-		for ( let i = 0; i <= heightSegments; i ++ ) {
-
-			vertices.push( - widthHalf, y, - depthHalf, widthHalf, y, - depthHalf );
-			vertices.push( widthHalf, y, - depthHalf, widthHalf, y, depthHalf );
-			vertices.push( widthHalf, y, depthHalf, - widthHalf, y, depthHalf );
-			vertices.push( - widthHalf, y, depthHalf, - widthHalf, y, - depthHalf );
-
-			y += segmentHeight;
-
-		}
-
-		for ( let i = 0; i <= depthSegments; i ++ ) {
-
-			vertices.push( - widthHalf, - heightHalf, z, - widthHalf, heightHalf, z );
-			vertices.push( - widthHalf, heightHalf, z, widthHalf, heightHalf, z );
-			vertices.push( widthHalf, heightHalf, z, widthHalf, - heightHalf, z );
-			vertices.push( widthHalf, - heightHalf, z, - widthHalf, - heightHalf, z );
-
-			z += segmentDepth;
-
-		}
-
-		this.setAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		return this.material.uniforms.height.value;
 
 	}
 
 }
-
-export { BoxLineGeometry };
 
 
 `} );

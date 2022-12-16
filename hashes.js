@@ -73,4 +73,20 @@ var hashes = [
 	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 7411075805177974, signature: 'r147-pending' },
 	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 6032546163726066, signature: 'r147-pending' },
 	
+	
+// jsm\objects\*.js
+
+	{ name: 'GroundProjectedEnv.js',	hashIn: 3209647647024930, hashOut: 243069015256079,  signature: 'r147' },
+	{ name: 'Lensflare.js',				hashIn: 933464714826082,  hashOut: 6954238707737649, signature: 'r147' },
+	{ name: 'LightningStorm.js',		hashIn: 6616917369283776, hashOut: 1022073699062166, signature: 'r147' },
+	{ name: 'Reflector.js',				hashIn: 4871058277040602, hashOut: 888175106352713,  signature: 'r147' },
+	{ name: 'MarchingCubes.js',			hashIn: 4667258537036907, hashOut: 5532718995014579, signature: 'r147' },
+	{ name: 'ReflectorForSSRPass.js',	hashIn: 6977488871853286, hashOut: 2771238122644462, signature: 'r147' },
+	{ name: 'Refractor.js',				hashIn: 3935440023460978, hashOut: 7033534258479891, signature: 'r147' },
+	{ name: 'ShadowMesh.js',			hashIn: 68183448930033,   hashOut: 2949595428802182, signature: 'r147' },
+	{ name: 'Sky.js',					hashIn: 249847175026169,  hashOut: 2558137094218159, signature: 'r147' },
+	{ name: 'Water.js',					hashIn: 1067915028797984, hashOut: 712711564490518,  signature: 'r147' },
+	{ name: 'Water2.js',				hashIn: 2120526706889228, hashOut: 8732319691887990, signature: 'r147' },
+
+
 ];

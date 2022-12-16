@@ -33,6 +33,11 @@ work in progress, more files are being added.
 - **`examples\jsm\loaders`**:<br>
 	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
 	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
+- **`examples\jsm\objects`**:<br>
+	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
+	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
+	Water.js, Water2.js
+	
 
 
 <!--
@@ -49,7 +54,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel.
+two phases run in parrallel (10% complete, 51 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This
@@ -92,6 +97,7 @@ Three.js r147 uses quite a lot types of [export patterns](https://developer.mozi
 Currently Demoduler processes only one of them:
 ```js
 export { name1, name2, ... };
+export class name1 ...
 ```
 
 <!--

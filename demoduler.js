@@ -1,4 +1,6 @@
 const DEBUG_SHOW_TOKENS = false;
+const DEBUG_SHOW_IMPORTS = false;
+const DEBUG_SHOW_EXPORTS = false;
 
 
 class Demoduler
@@ -218,14 +220,17 @@ class Demoduler
 		
 		}
 
-		// console.group( 'Imports' );
-		// console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
-		// console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
-		// console.group( `\t sections:` );
-		// for( var section of this.importSections )
-			// console.log( section.string );
-		// console.groupEnd( );
-		// console.groupEnd( );
+		if( DEBUG_SHOW_IMPORTS )
+		{
+			console.group( 'Imports' );
+			console.log( `\t symbols: ${this.importedSymbols.join(' ')}` );
+			console.log( `\t namespaces: ${this.importedNamespaces.join(' ')}` );
+			console.group( `\t sections:` );
+			for( var section of this.importSections )
+				console.log( section.string );
+			console.groupEnd( );
+			console.groupEnd( );
+		}
 	}
 	
 	
@@ -246,6 +251,17 @@ class Demoduler
 	}
 
 
+	// export class symbol ...
+	getExport_Class( )
+	{
+		if( this.tokens[this.idx+1].string != 'class' ) return null;
+		
+		this.exportedSymbols.push( this.tokens[this.idx+2].string );
+
+		return this.tokens[this.idx].end;
+	}
+
+
 	getExports( )
 	{
 		// extract exported symbols
@@ -260,9 +276,9 @@ class Demoduler
 			// export { symbol , symbol , ... };
 			exportEnd = this.getExport_SymbolList( );
 
-////			// import * as namespace from 'string';
-////			if( importEnd == null )
-////			importEnd = this.getImport_Namespace( );
+			// export class symbol
+			if( exportEnd == null )
+			exportEnd = this.getExport_Class( );
 
 			if( exportEnd != null )
 			{
@@ -275,13 +291,16 @@ class Demoduler
 		
 		}
 
-		// console.group( 'Exports' );
-		// console.log( `\t symbols: ${this.exportedSymbols.join(' ')}` );
-		// console.group( `\t sections:` );
-		// for( var section of this.exportSections )
-			// console.log( section.string );
-		// console.groupEnd( );
-		// console.groupEnd( );
+		if( DEBUG_SHOW_EXPORTS )
+		{
+			console.group( 'Exports' );
+			console.log( `\t symbols: ${this.exportedSymbols.join(' ')}` );
+			console.group( `\t sections:` );
+			for( var section of this.exportSections )
+				console.log( section.string );
+			console.groupEnd( );
+			console.groupEnd( );
+		}
 	}
 	
 	
