@@ -1,6 +1,15 @@
 
 var hashes = [
 	
+
+// jsm\animation\*.js
+
+	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147' },
+	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 3350830873159705, signature: 'r147' },
+	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 4948089450992826, signature: '' },
+	{ name: 'MMDPhysics.js',			hashIn: 3517359931114889, hashOut: 7499978108447581, signature: 'r147' },
+
+
 // jsm\cameras\*.js
 	{ name: 'CinematicCamera.js',		hashIn: 8657467710839774, hashOut: 5730324717484419, signature: 'r147' },
 	
@@ -76,7 +85,7 @@ var hashes = [
 
 	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 4923276743757209, signature: 'r147' },
 	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 2525991716015486, signature: 'r147' },
-	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 7089325051573543, signature: 'r147-fail' },
+	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 7089325051573543, signature: 'r147' },
 	{ name: 'TessellateModifier.js',	hashIn: 8441784596459318, hashOut: 1151084173615225, signature: 'r147' },
 	
 	
@@ -94,5 +103,74 @@ var hashes = [
 	{ name: 'Water.js',					hashIn: 1067915028797984, hashOut: 712711564490518,  signature: 'r147' },
 	{ name: 'Water2.js',				hashIn: 2120526706889228, hashOut: 8732319691887990, signature: 'r147' },
 
+
+// jsm\shaders\*.js
+	{ name: 'ACESFilmicToneMappingShader.js',	hashIn: 5258378719643215, hashOut: 3317902934456707, signature: 'r147' },
+	{ name: 'AfterimageShader.js',		hashIn: 1853522238344266, hashOut: 1036581519118649, signature: 'r147' },
+	
+	{ name: 'BasicShader.js',			hashIn: 6171277070307398, hashOut: 2002560184745876, signature: 'r147' },
+	{ name: 'BleachBypassShader.js',	hashIn: 8695360369077117, hashOut: 7029425841183617, signature: 'r147' },
+	{ name: 'BlendShader.js',			hashIn: 7843294192220771, hashOut: 3342083449252165, signature: 'r147' },
+	{ name: 'BokehShader.js',			hashIn: 4703011871283499, hashOut: 157836022820183, signature: 'r147' },
+	{ name: 'BokehShader2.js',			hashIn: 1977334425116581, hashOut: 5396667625338936, signature: 'r147' },
+	{ name: 'BrightnessContrastShader.js',	hashIn: 3967265984788799, hashOut: 2358526049380075, signature: 'r147' },
+	
+	{ name: 'ColorCorrectionShader.js',	hashIn: 5055259411793326, hashOut: 6590322515405828, signature: 'r147' },
+	{ name: 'ColorifyShader.js',		hashIn: 153489079315625,  hashOut: 6382597169065982, signature: 'r147' },
+	{ name: 'ConvolutionShader.js',		hashIn: 5974258379535476, hashOut: 485908628382688,  signature: 'r147' },
+	{ name: 'CopyShader.js',			hashIn: 8069323330935930, hashOut: 4010972446276340, signature: 'r147' },
+	
+	{ name: 'DOFMipMapShader.js',		hashIn: 3059587087095805, hashOut: 4680435379908302, signature: 'r147' },
+	{ name: 'DepthLimitedBlurShader.js',hashIn: 2570419379241619, hashOut: 1916946377194660, signature: 'r147' },
+	{ name: 'DigitalGlitch.js',			hashIn: 3240701949089782, hashOut: 8603348631761156, signature: 'r147' },
+	{ name: 'DotScreenShader.js',		hashIn: 1820637089993678, hashOut: 7389813360795599, signature: 'r147' },
+	
+	{ name: 'FXAAShader.js',			hashIn: 5277748508273219, hashOut: 6901070472968357, signature: 'r147' },
+	{ name: 'FilmShader.js',			hashIn: 4904460898327878, hashOut: 6768407777951243, signature: 'r147' },
+	{ name: 'FocusShader.js',			hashIn: 6213423017407100, hashOut: 8483935674792700, signature: 'r147' },
+	{ name: 'FreiChenShader.js',		hashIn: 5070010603073323, hashOut: 6356390143480617, signature: 'r147' },
+	
+	{ name: 'GammaCorrectionShader.js',	hashIn: 3454969009186858, hashOut: 582113574246248,  signature: 'r147' },
+	{ name: 'GodRaysShader.js',			hashIn: 2401867666235434, hashOut: 2798896236447159, signature: 'r147' },
+	
+	{ name: 'HalftoneShader.js',		hashIn: 47155110157681,   hashOut: 3378201717609767, signature: 'r147' },
+	{ name: 'HorizontalBlurShader.js',	hashIn: 6234880670881553, hashOut: 2201917459687553, signature: 'r147' },
+	{ name: 'HorizontalTiltShiftShader.js',	hashIn: 10538750070480,hashOut: 211777929111573, signature: 'r147' },
+	{ name: 'HueSaturationShader.js',	hashIn: 8518298462313437, hashOut: 7353575343397985, signature: 'r147' },
+	
+	{ name: 'KaleidoShader.js',			hashIn: 6128008827164570, hashOut: 7555178727106116, signature: 'r147' },
+	
+	{ name: 'LuminosityHighPassShader.js', hashIn: 2780705295520947,hashOut: 62593864058149, signature: 'r147' },
+	{ name: 'LuminosityShader.js',		hashIn: 6278979903195307, hashOut: 422580035089278,  signature: 'r147' },
+	
+	{ name: 'MMDToonShader.js',			hashIn: 5729257508387137, hashOut: 8714249088752168, signature: 'r147' },
+	{ name: 'MirrorShader.js',			hashIn: 6935752437031718, hashOut: 7631280483356669, signature: 'r147' },
+	
+	{ name: 'NormalMapShader.js',		hashIn: 6623486650005275, hashOut: 3023837186198741, signature: 'r147' },
+	
+	{ name: 'RGBShiftShader.js',		hashIn: 6488934629672525, hashOut: 6446501902115415, signature: 'r147' },
+	
+	{ name: 'SAOShader.js',				hashIn: 4509662881104571, hashOut: 7341093554953721, signature: 'r147' },
+	{ name: 'SMAAShader.js',			hashIn: 7171081707607249, hashOut: 160761357699808,  signature: 'r147' },
+	{ name: 'SSAOShader.js',			hashIn: 4514944621678800, hashOut: 4052665314780446, signature: 'r147' },
+	{ name: 'SSRShader.js',				hashIn: 5908592751262896, hashOut: 3796192715054877, signature: 'r147' },
+	{ name: 'SepiaShader.js',			hashIn: 1415710288835149, hashOut: 8754947513932719, signature: 'r147' },
+	{ name: 'SobelOperatorShader.js',	hashIn: 2456630343939578, hashOut: 2842948134168369, signature: 'r147' },
+	{ name: 'SubsurfaceScatteringShader.js', hashIn: 8491180681271036, hashOut: 7841578875331788, signature: 'r147' },
+	
+	{ name: 'TechnicolorShader.js',		hashIn: 6427976170541877, hashOut: 8936986527657645, signature: 'r147' },
+	{ name: 'ToneMapShader.js',			hashIn: 122960329870117,  hashOut: 2388173745438001, signature: 'r147' },
+	{ name: 'ToonShader.js',			hashIn: 7501434952691393, hashOut: 3763820921640163, signature: 'r147' },
+	{ name: 'TriangleBlurShader.js',	hashIn: 277835109696312,  hashOut: 4216337555715115, signature: 'r147' },
+	
+	{ name: 'UnpackDepthRGBAShader.js',	hashIn: 983825312039527,  hashOut: 159295952492590,  signature: 'r147' },
+	
+	{ name: 'VelocityShader.js',		hashIn: 1068095141001080, hashOut: 4287112586084650, signature: 'r147' },
+	{ name: 'VerticalBlurShader.js',	hashIn: 7743851693116371, hashOut: 5200615354655531, signature: 'r147' },
+	{ name: 'VerticalTiltShiftShader.js',hashIn: 1033330917334101,hashOut: 1811377788722827, signature: 'r147' },
+	{ name: 'VignetteShader.js',		hashIn: 2792448367336573, hashOut: 3400156942148079, signature: 'r147' },
+	{ name: 'VolumeShader.js',			hashIn: 6320047063890666, hashOut: 4529607936444149, signature: 'r147' },
+	
+	{ name: 'WaterRefractionShader.js',	hashIn: 7273399850368277, hashOut: 4215338308211416, signature: 'r147' },
 
 ];

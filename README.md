@@ -13,6 +13,9 @@ able to create them. Hopefully.
 This list contains the files from r147 that are demoduled correctly. As it is a
 work in progress, more files are being added.
 
+- **`examples\jsm\animation`**:<br>
+	<!--AnimationClipCreator.js, CCDIKSolver.js, MMDAnimationHelper.js, MMDPhysics.js-->
+	
 - **`examples\jsm\cameras`**:<br>
 	CinematicCamera.js
 - **`examples\jsm\controls`**:<br>
@@ -41,7 +44,8 @@ work in progress, more files are being added.
 	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
 	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
 	Water.js, Water2.js
-	
+- **`examples\jsm\shaders`**:<br>
+	ACESFilmicToneMappingShader.js, AfterimageShader.js, BasicShader.js, BleachBypassShader.js, BlendShader.js, BokehShader.js, BokehShader2.js, BrightnessContrastShader.js, ColorCorrectionShader.js, ColorifyShader.js, ConvolutionShader.js, CopyShader.js, DepthLimitedBlurShader.js, DigitalGlitch.js, DOFMipMapShader.js, DotScreenShader.js, FilmShader.js, FocusShader.js, FreiChenShader.js, FXAAShader.js, ammaCorrectionShader.js, GodRaysShader.js, GHalftoneShader.js, HorizontalBlurShader.js, HorizontalTiltShiftShader.js, HueSaturationShader.js, KaleidoShader.js, LuminosityHighPassShader.js, LuminosityShader.js, MirrorShader.js, MMDToonShader.js, NormalMapShader.js, RGBShiftShader.js, SAOShader.js, SepiaShader.js, SMAAShader.js, SobelOperatorShader.js, SSAOShader.js, SSRShader.js, SubsurfaceScatteringShader.js, TechnicolorShader.js, ToneMapShader.js, ToonShader.js, TriangleBlurShader.js, UnpackDepthRGBAShader.js, VelocityShader.js, VerticalBlurShader.js, VerticalTiltShiftShader.js, VignetteShader.js, VolumeShader.js, WaterRefractionShader.js
 
 
 <!--
@@ -58,7 +62,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (10% complete, 51 of 493 files).
+two phases run in parrallel (21% complete, 106 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

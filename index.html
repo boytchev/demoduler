@@ -127,55 +127,19 @@
 	}
 
 ///*********************** TEST ZONE **********
-/*
+
 	new Demoduler({name:'test-file.js', contents:`
-import { Mesh, IcosahedronGeometry, ShaderMaterial, DoubleSide } from 'three';
 
-export class GroundProjectedEnv extends Mesh {
+throw new Error( 'Audio \'' + audio.name + '\' has not been set yet.' );
 
-	constructor( texture, options ) {
+import { CCDIKSolver } from '../animation/CCDIKSolver.js';
+import { test } from '../animation\'/MMDPhysics.js';
+import { MMDPhysics } from '../animation/MMDPhysics.js';
 
-		const isCubeMap = texture.isCubeTexture;
-		const w =
-			( isCubeMap ? texture.image[ 0 ]?.width : texture.image.width ) ?? 1024;
-		const cubeSize = w / 4;
-		const _lodMax = Math.floor( Math.log2( cubeSize ) );
-		const _cubeSize = Math.pow( 2, _lodMax );
-		const width = 3 * Math.max( _cubeSize, 16 * 7 );
-		const height = 4 * _cubeSize;
-		super( geometry, material );
-
-	}
-
-	set radius( radius ) {
-
-		this.material.uniforms.radius.value = radius;
-
-	}
-
-	get radius() {
-
-		return this.material.uniforms.radius.value;
-
-	}
-
-	set height( height ) {
-
-		this.material.uniforms.height.value = height;
-
-	}
-
-	get height() {
-
-		return this.material.uniforms.height.value;
-
-	}
-
-}
 
 
 `} );
-*/
+
 </script>
 	
 </body>

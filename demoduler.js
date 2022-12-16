@@ -1,6 +1,6 @@
-const DEBUG_SHOW_TOKENS = false;
-const DEBUG_SHOW_IMPORTS = !false;
-const DEBUG_SHOW_EXPORTS = !false;
+const DEBUG_SHOW_TOKENS = !false;
+const DEBUG_SHOW_IMPORTS = false;
+const DEBUG_SHOW_EXPORTS = false;
 
 
 class Demoduler
@@ -102,6 +102,7 @@ class Demoduler
 				string = this.js.substring( start, end );
 				
 			this.tokens.push({ string: string, start: start, end: end});
+			if( string.substring(0,3) == 'Ani' ) console.log(this.js.substring( start, end+10 ));
 		}
 	}
 	
