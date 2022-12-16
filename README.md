@@ -1,36 +1,76 @@
-# THIS IS UNDER CONSTRUCTION
-### Do not use <a href="https://boytchev.github.io/demoduler/">Demoduler</a>, yet. Don't!
+# THREE.JS DEMODULER
+
+The [**Demoduler**](https://boytchev.github.io/demoduler/) is a simple tool that
+converts Three.js JavaScript modules from the `examples\jsm` folder into ordinary
+old-fashioned JavaScript scripts from the `examples\js` folder. Three.js r147
+will be the last release that has both JSM and JS examples. In some very specific
+circumstances Three.js users may still need JS files and Demoduler might be
+able to create them. Hopefully.
 
 
-When finished, the **demoduler** will be a simple tool that converts Three.js
-JavaScript modules from the `examples\jsm` folder into JavaScript scripts from
-the `examples\js` folder. Three.js r147 will be the last release that has both
-JSM and JS examples. In some very specific circumstances Three.js users may
-still need JS files. The **demoduler**  could create them. Hopefully.
+### Deoduled files
+
+This list contains the files from r147 that are demoduled correctly. As it is a
+work in progress, more files are being added.
+
+- **`examples\jsm\controls`**:<br>
+	ArcballControls.js, DragControls.js, FirstPersonControls.js, FlyControls.js,
+	OrbitControls.js, PointerLockControls.js, TrackballControls.js, TransformControls.js
+- **`examples\jsm\effects`**:<br>
+	AnaglyphEffect.js, AsciiEffect.js, OutlineEffect.js, ParallaxBarrierEffect.js,
+	PeppersGhostEffect.js, StereoEffect.js
+- **`examples\jsm\geometries`**:<br>
+	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js,
+	ParametricGeometries.js, ParametricGeometry.js, RoundedBoxGeometry.js,
+	TeapotGeometry.js, TextGeometry.js
+- **`examples\jsm\lines`**:<br>
+	Line2.js, LineGeometry.js, LineMaterial.js, LineSegments2.js, LineSegmentsGeometry.js,
+	Wireframe.js, WireframeGeometry2.js
+- **`examples\jsm\loaders`**:<br>
+	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
+	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
+
+
+<!--
+#### Folder `examples\jsm\modifiers`
+- TessellateModifier.js
+- CurveModifier.js
+- EdgeSplitModifier.js
+- SimplifyModifier.js
+-->
+
+
+
 
 ### Metodology
 
-The (author of) demoduler will learn how to convert modules to non-modules by
-comparing corresponding files from `examples\jsm` and `examples\js` in r147.
+The development and usage of Demoduler is in four phases. Currently the first
+two phases run in parrallel.
 
-Files from `examples\jsm` in future releases will be converted based on this
-knowledge. The demoduler relies on the consistency of Three.js's source code
-and hopes it will not change drastically in the future.
+- **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
+studied in order to extract the simplest transformation from `jsm` to `js`. This
+relies on the consistency of Three.js's source code and hopes it will not change
+drastically in the future.
+- **Testing phase**: Files from `examples\jsm` are converted, minimized, reformatted
+and compared against minimized-and-reformatted version from `examples\js`. They
+are carefully compared to verify transformation correctness: files are either
+identical, or the differences are acceptible (e.g. modules often have extra
+parentheses).
+- **Using phase**: Demoduler is used to convert modules from future Three.js
+releases.
+- **Dying phase**: R.I.P.
 
 
 ### Notable restrictions
 
-- Conversion will be done by plain text replacement, there will be no any
-sophisticated parsing.
-- Conversion will not work for any module out there. It will work for those
-Three.js modules, that we use. It is expected, that other Three.js modules may
-also be demoduled by the demoduler.
-- Conversion will not process cross-modules dependencies (imports and exports),
-as our goal is to make the simplest tool that helps us, instead of the most
-general tool. However, depending on our spare time, at some point in the future
-we might improve the demoduler into something better and more useer-friendly.
+Conversion is done by plain text transformation without any sophisticated source
+code parsing and analysis. Conversion is focused only on Three.js modules starting
+from the ones that we used most often. Conversion does not process cross-module
+dependencies (imports and exports). Depending on our spare time, at some point
+in the future we might improve Demoduler into a general tool for demoduling.
 
-### Parsing `import` statements
+
+#### `import` statements
 
 Thankfully, Three.js r147 uses only a limited set of import statments, instead
 of the full [zoo of imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
@@ -42,10 +82,15 @@ import name1 from "module-name";
 import { name1, name2, ... } from "module-name";
 ```
 
-### Parsing `export` statements
+#### `export` statements
 
 Three.js r147 uses quite a lot types of [export patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export):
+Currently Demoduler processes only one of them:
+```js
+export { name1, name2, ... };
+```
 
+<!--
 ```js
 export { name1, name2, ... };
 export class name { ...
@@ -59,63 +104,6 @@ export * from 'module-name';
 export { name } from 'module-name';
 export { default as name } from 'module-name';
 ```
+-->
 
-Demoduler processes only this:
-```js
-export { name1, name2, ... };
-```
-
-
-### Files from r147 that are demoduled correctly
-
-#### Folder `examples\jsm\controls`
-- ArcballControls.js
-- DragControls.js
-- FirstPersonControls.js
-- FlyControls.js
-- OrbitControls.js
-- PointerLockControls.js
-- TrackballControls.js
-- TransformControls.js
-
-
-#### Folder `examples\jsm\geometries`
-- BoxLineGeometry.js
-- ConvexGeometry.js &rarr; *OK, but an error message not adjusted*
-- DecalGeometry.js
-- LightningStrike.js
-- ParametricGeometries.js
-- ParametricGeometry.js
-- RoundedBoxGeometry.js
-- TeapotGeometry.js
-- TextGeometry.js
-
-
-#### Folder `examples\jsm\lines`
-- Line2.js
-- LineGeometry.js
-- LineMaterial.js
-- LineSegments2.js
-- LineSegmentsGeometry.js
-- Wireframe.js
-- WireframeGeometry2.js
-
-
-#### Folder `examples\jsm\loaders`
-- LightProbeHelper.js
-- OctreeHelper.js
-- PositionalAudioHelper.js
-- RectAreaLightHelper.js
-- VertexNormalsHelper.js
-- VertexTangentsHelper.js
-- ViewHelper.js
-
-
-<!--
-#### Folder `examples\jsm\modifiers`
-- TessellateModifier.js
-- CurveModifier.js
-- EdgeSplitModifier.js
-- SimplifyModifier.js
-->
 

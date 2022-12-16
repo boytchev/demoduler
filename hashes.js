@@ -15,6 +15,15 @@ var hashes = [
  	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147' },
 
 
+// jsm\effects\*.js
+
+	{ name: 'AnaglyphEffect.js',		hashIn: 8494041100070890, hashOut: 6806847312914103, signature: 'r147' },
+	{ name: 'AsciiEffect.js',			hashIn: 2409110624323613, hashOut: 7688735697818189, signature: 'r147' },
+	{ name: 'OutlineEffect.js',			hashIn: 174470279120084,  hashOut: 666433738717835,  signature: 'r147' },
+	{ name: 'ParallaxBarrierEffect.js',	hashIn: 4611171881184362, hashOut: 4712923974677065, signature: 'r147' },
+	{ name: 'PeppersGhostEffect.js',	hashIn: 8449197647267113, hashOut: 2948822358444019, signature: 'r147' },
+	{ name: 'StereoEffect.js',			hashIn: 5569155035758829, hashOut: 8246708936356330, signature: 'r147' },
+
 // jsm\geometries\*.js
 
  	{ name: 'BoxLineGeometry.js',		hashIn: 6715624084493554, hashOut: 8861167976725231, signature: 'r147' },
