@@ -1,8 +1,10 @@
 
-//	[ filename, hashIn, hashOut, okStatus, signarute ]
-
 var hashes = [
 	
+// jsm\cameras\*.js
+	{ name: 'CinematicCamera.js',		hashIn: 8657467710839774, hashOut: 5730324717484419, signature: 'r147' },
+	
+
 // jsm\controls\*.js
 
 	{ name: 'TransformControls.js', 	hashIn: 2496079475009952, hashOut: 6657645048355341, signature: 'r147' },
@@ -35,6 +37,11 @@ var hashes = [
  	{ name: 'RoundedBoxGeometry.js',	hashIn: 5502296987449710, hashOut: 7311095839334729, signature: 'r147' },
  	{ name: 'TeapotGeometry.js',		hashIn: 1270481738028427, hashOut: 8815500691832546, signature: 'r147' },
  	{ name: 'TextGeometry.js',			hashIn: 2530618317268137, hashOut: 6961183132809707, signature: 'r147' },
+
+
+// jsm\lights\*.js
+	{ name: 'LightProbeGenerator.js',		hashIn: 6177039655558016, hashOut: 698274494607814, signature: 'r147' },
+	{ name: 'RectAreaLightUniformsLib.js',	hashIn: 7797007073339547, hashOut: 620191334569173, signature: 'r147' },
 
 
 // jsm\lines\*.js

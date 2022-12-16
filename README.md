@@ -13,6 +13,8 @@ able to create them. Hopefully.
 This list contains the files from r147 that are demoduled correctly. As it is a
 work in progress, more files are being added.
 
+- **`examples\jsm\cameras`**:<br>
+	CinematicCamera.js
 - **`examples\jsm\controls`**:<br>
 	ArcballControls.js, DragControls.js, FirstPersonControls.js, FlyControls.js,
 	OrbitControls.js, PointerLockControls.js, TrackballControls.js, TransformControls.js
@@ -23,6 +25,8 @@ work in progress, more files are being added.
 	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js,
 	ParametricGeometries.js, ParametricGeometry.js, RoundedBoxGeometry.js,
 	TeapotGeometry.js, TextGeometry.js
+- **`examples\jsm\lights`**:<br>
+	LightProbeGenerator.js, RectAreaLightUniformsLib.js
 - **`examples\jsm\lines`**:<br>
 	Line2.js, LineGeometry.js, LineMaterial.js, LineSegments2.js, LineSegmentsGeometry.js,
 	Wireframe.js, WireframeGeometry2.js

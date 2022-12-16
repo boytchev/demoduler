@@ -91,7 +91,7 @@ class Demoduler
 	getTokens( )
 	{
 		var result;
-		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.\[]+|\,|\;|\(|\)|\.|\[/g;
+		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.\[\:]+|\,|\;|\(|\)|\.|\[|\:/g;
 		
 		while( result = regex.exec(this.js) )
 		{
