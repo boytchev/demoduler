@@ -20,9 +20,14 @@ work in progress, more files are being added.
 - **`examples\jsm\controls`**:<br>
 	ArcballControls.js, DragControls.js, FirstPersonControls.js, FlyControls.js,
 	OrbitControls.js, PointerLockControls.js, TrackballControls.js, TransformControls.js
+- **`examples\jsm\controls`**:<br>
+	CSM.js, CSMFrustum.js, CSMHelper.js, CSMShader.js
 - **`examples\jsm\effects`**:<br>
 	AnaglyphEffect.js, AsciiEffect.js, OutlineEffect.js, ParallaxBarrierEffect.js,
 	PeppersGhostEffect.js, StereoEffect.js
+- **`examples\jsm\exporters`**:<br>
+	ColladaExporter.js, DRACOExporter.js, EXRExporter.js, GLTFExporter.js, KTX2Exporter.js
+	MMDExporter.js, OBJExporter.js, PLYExporter.js, STLExporter.js, USDZExporter.js
 - **`examples\jsm\geometries`**:<br>
 	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js ,
 	ParametricGeometries.js, ParametricGeometry.js, RoundedBoxGeometry.js,
@@ -61,7 +66,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (21% complete, 106 of 493 files).
+two phases run in parrallel (25% complete, 124 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

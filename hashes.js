@@ -26,6 +26,14 @@ var hashes = [
  	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147' },
 
 
+// jsm\csm\*.js
+
+	{ name: 'CSM.js',					hashIn: 6434818151254405, hashOut: 2753891380550471, signature: 'r147' },
+	{ name: 'CSMFrustum.js',			hashIn: 1426916298755981, hashOut: 812024260606097,  signature: 'r147' },
+	{ name: 'CSMShader.js',				hashIn: 2623585483244840, hashOut: 3839493011915698, signature: 'r147' },
+	{ name: 'CSMHelper.js',				hashIn: 95514300219672,   hashOut: 6615675358907333, signature: 'r147' },
+
+
 // jsm\effects\*.js
 
 	{ name: 'AnaglyphEffect.js',		hashIn: 8494041100070890, hashOut: 6806847312914103, signature: 'r147' },
@@ -34,6 +42,20 @@ var hashes = [
 	{ name: 'ParallaxBarrierEffect.js',	hashIn: 4611171881184362, hashOut: 4712923974677065, signature: 'r147' },
 	{ name: 'PeppersGhostEffect.js',	hashIn: 8449197647267113, hashOut: 2948822358444019, signature: 'r147' },
 	{ name: 'StereoEffect.js',			hashIn: 5569155035758829, hashOut: 8246708936356330, signature: 'r147' },
+
+
+// jsm\exporters\*.js
+
+	{ name: 'ColladaExporter.js',		hashIn: 2040032360564170, hashOut: 5227371727001555, signature: 'r147' },
+	{ name: 'DRACOExporter.js',			hashIn: 1917974346732773, hashOut: 391086298448543,  signature: 'r147' },
+	{ name: 'EXRExporter.js',			hashIn: 2211521531772346, hashOut: 3532023270548790, signature: 'r147' },
+	{ name: 'GLTFExporter.js',			hashIn: 7097485653378711, hashOut: 3460781311257655, signature: 'r147' },
+	{ name: 'KTX2Exporter.js',			hashIn: 3368305390814835, hashOut: 1929217081613360, signature: 'r147' },
+	{ name: 'MMDExporter.js',			hashIn: 346341606190126,  hashOut: 5311766141910379, signature: 'r147' },
+	{ name: 'OBJExporter.js',			hashIn: 5196360952527578, hashOut: 373058448930680,  signature: 'r147' },
+	{ name: 'PLYExporter.js',			hashIn: 2885756046710828, hashOut: 7029313742956203, signature: 'r147' },
+	{ name: 'STLExporter.js',			hashIn: 1962334263618299, hashOut: 8791824661524967, signature: 'r147' },
+	{ name: 'USDZExporter.js',			hashIn: 5081691085947601, hashOut: 8702964794222611, signature: 'r147' },
 
 
 // jsm\geometries\*.js
