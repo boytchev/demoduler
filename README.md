@@ -14,8 +14,7 @@ This list contains the files from r147 that are demoduled correctly. As it is a
 work in progress, more files are being added.
 
 - **`examples\jsm\animation`**:<br>
-	<!--AnimationClipCreator.js, CCDIKSolver.js, MMDAnimationHelper.js, MMDPhysics.js-->
-	
+	AnimationClipCreator.js, CCDIKSolver.js, MMDAnimationHelper.js, MMDPhysics.js
 - **`examples\jsm\cameras`**:<br>
 	CinematicCamera.js
 - **`examples\jsm\controls`**:<br>

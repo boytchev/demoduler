@@ -6,7 +6,7 @@ var hashes = [
 
 	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147' },
 	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 3350830873159705, signature: 'r147' },
-	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 4948089450992826, signature: '' },
+	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 3795127789446360, signature: 'r147' },
 	{ name: 'MMDPhysics.js',			hashIn: 3517359931114889, hashOut: 7499978108447581, signature: 'r147' },
 
 
