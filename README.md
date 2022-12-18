@@ -25,6 +25,8 @@ work in progress, more files are being added.
 - **`examples\jsm\effects`**:<br>
 	AnaglyphEffect.js, AsciiEffect.js, OutlineEffect.js, ParallaxBarrierEffect.js,
 	PeppersGhostEffect.js, StereoEffect.js
+- **`examples\jsm\environments`**:<br>
+	DebugEnvironment.js, RoomEnvironment.js
 - **`examples\jsm\exporters`**:<br>
 	ColladaExporter.js, DRACOExporter.js, EXRExporter.js, GLTFExporter.js, KTX2Exporter.js
 	MMDExporter.js, OBJExporter.js, PLYExporter.js, STLExporter.js, USDZExporter.js

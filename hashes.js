@@ -44,6 +44,12 @@ var hashes = [
 	{ name: 'StereoEffect.js',			hashIn: 5569155035758829, hashOut: 8246708936356330, signature: 'r147' },
 
 
+// jsm\environments\*.js
+
+	{ name: 'RoomEnvironment.js',		hashIn: 5802007185481666, hashOut: 2943116661036073, signature: 'r147' },
+	{ name: 'DebugEnvironment.js',		hashIn: 6492595570066171, hashOut: 1502295319298227, signature: 'r147' },
+	
+
 // jsm\exporters\*.js
 
 	{ name: 'ColladaExporter.js',		hashIn: 2040032360564170, hashOut: 5227371727001555, signature: 'r147' },
