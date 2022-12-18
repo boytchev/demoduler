@@ -52,15 +52,9 @@ work in progress, more files are being added.
 	Water.js, Water2.js
 - **`examples\jsm\shaders`**:<br>
 	ACESFilmicToneMappingShader.js, AfterimageShader.js, BasicShader.js, BleachBypassShader.js, BlendShader.js, BokehShader.js, BokehShader2.js, BrightnessContrastShader.js, ColorCorrectionShader.js, ColorifyShader.js, ConvolutionShader.js, CopyShader.js, DepthLimitedBlurShader.js, DigitalGlitch.js, DOFMipMapShader.js, DotScreenShader.js, FilmShader.js, FocusShader.js, FreiChenShader.js, FXAAShader.js, ammaCorrectionShader.js, GodRaysShader.js, GHalftoneShader.js, HorizontalBlurShader.js, HorizontalTiltShiftShader.js, HueSaturationShader.js, KaleidoShader.js, LuminosityHighPassShader.js, LuminosityShader.js, MirrorShader.js, MMDToonShader.js, NormalMapShader.js, RGBShiftShader.js, SAOShader.js, SepiaShader.js, SMAAShader.js, SobelOperatorShader.js, SSAOShader.js, SSRShader.js, SubsurfaceScatteringShader.js, TechnicolorShader.js, ToneMapShader.js, ToonShader.js, TriangleBlurShader.js, UnpackDepthRGBAShader.js, VelocityShader.js, VerticalBlurShader.js, VerticalTiltShiftShader.js, VignetteShader.js, VolumeShader.js, WaterRefractionShader.js
+- **`examples\jsm\utils`**:<br>
+	BufferGeometryUtils.js, CameraUtils.js, GeometryCompressionUtils.js, GeometryUtils.js, GPUStatsPanel.js, LDrawUtils.js, PackedPhongMaterial.js, SceneUtils.js, ShadowMapViewer.js, SkeletonUtils.js, UVsDebug.js, WorkerPool.js
 
-
-<!--
-#### Folder `examples\jsm\modifiers`
-- TessellateModifier.js
-- CurveModifier.js
-- EdgeSplitModifier.js
-- SimplifyModifier.js
--->
 
 
 
@@ -68,7 +62,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (25% complete, 124 of 493 files).
+two phases run in parrallel (28% complete, 140 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

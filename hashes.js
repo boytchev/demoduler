@@ -133,6 +133,7 @@ var hashes = [
 
 
 // jsm\shaders\*.js
+
 	{ name: 'ACESFilmicToneMappingShader.js',	hashIn: 5258378719643215, hashOut: 3317902934456707, signature: 'r147' },
 	{ name: 'AfterimageShader.js',		hashIn: 1853522238344266, hashOut: 1036581519118649, signature: 'r147' },
 	
@@ -200,5 +201,23 @@ var hashes = [
 	{ name: 'VolumeShader.js',			hashIn: 6320047063890666, hashOut: 4529607936444149, signature: 'r147' },
 	
 	{ name: 'WaterRefractionShader.js',	hashIn: 7273399850368277, hashOut: 4215338308211416, signature: 'r147' },
+
+
+
+// jsm\utils\*.js
+
+	{ name: 'BufferGeometryUtils.js',	hashIn: 7014196652191254, hashOut: 4478498462487348, signature: 'r147' },
+	{ name: 'CameraUtils.js',			hashIn: 362012460112664,  hashOut: 1667508449377211, signature: 'r147' },
+	{ name: 'GPUStatsPanel.js',			hashIn: 7849635543326202, hashOut: 8518362217355809, signature: 'r147' },
+	{ name: 'GeometryCompressionUtils.js',hashIn:2952293075389709,hashOut: 8338267574310261, signature: 'r147' },
+	{ name: 'GeometryUtils.js',			hashIn: 3028883636171673, hashOut: 4360446744906453, signature: 'r147' },
+	{ name: 'LDrawUtils.js',			hashIn: 4678907742689053, hashOut: 1649942618301254, signature: 'r147' },
+	{ name: 'PackedPhongMaterial.js',	hashIn: 6970196574512597, hashOut: 2826086413052148, signature: 'r147' },
+	{ name: 'SceneUtils.js',			hashIn: 800211159559702,  hashOut: 7243966955611208, signature: 'r147' },
+	{ name: 'ShadowMapViewer.js',		hashIn: 6590898882115409, hashOut: 5424733363202046, signature: 'r147' },
+	{ name: 'SkeletonUtils.js',			hashIn: 3534120956770652, hashOut: 297335428320915,  signature: 'r147' },
+	{ name: 'UVsDebug.js',				hashIn: 8105347050356548, hashOut: 6663772268431673, signature: 'r147' },
+	{ name: 'WorkerPool.js',			hashIn: 3246011286632014, hashOut: 783692235551946,  signature: 'r147' },
+
 
 ];
