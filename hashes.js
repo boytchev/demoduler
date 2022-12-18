@@ -233,6 +233,8 @@ var hashes = [
 	{ name: 'WaterRefractionShader.js',	hashIn: 7273399850368277, hashOut: 4215338308211416, signature: 'r147' },
 
 
+// jsm\textures\*.js
+	{ name: 'FlakesTexture.js',			hashIn: 4582515071681576, hashOut: 8402823063941429, signature: 'r147' },
 
 // jsm\utils\*.js
 
