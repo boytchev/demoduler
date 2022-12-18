@@ -132,6 +132,36 @@ var hashes = [
 	{ name: 'Water2.js',				hashIn: 2120526706889228, hashOut: 8732319691887990, signature: 'r147' },
 
 
+// jsm\postprocessing\*.js
+	{ name: 'AdaptiveToneMappingPass.js',hashIn: 2364970081330801,hashOut: 5599991563324348, signature: 'r147' },
+	{ name: 'AfterimagePass.js',		hashIn: 7653725564678955, hashOut: 3352420493560622, signature: 'r147' },
+	{ name: 'BloomPass.js',				hashIn: 5134099620091276, hashOut: 5323953240874273, signature: 'r147' },
+	{ name: 'BokehPass.js',				hashIn: 7407330994318264, hashOut: 3911492235336931, signature: 'r147' },
+	{ name: 'ClearPass.js',				hashIn: 3179283397434010, hashOut: 3406065309805403, signature: 'r147' },
+	{ name: 'CubeTexturePass.js',		hashIn: 4846912716183097, hashOut: 8666533997924014, signature: 'r147' },
+	{ name: 'DotScreenPass.js',			hashIn: 6061038516236221, hashOut: 565630309179435,  signature: 'r147' },
+	{ name: 'EffectComposer.js',		hashIn: 6447861811187505, hashOut: 5905050568889170, signature: 'r147' },
+	{ name: 'FilmPass.js',				hashIn: 5578919757601172, hashOut: 2121330939589775, signature: 'r147' },
+	{ name: 'GlitchPass.js',			hashIn: 8312595776594738, hashOut: 6257538433351437, signature: 'r147' },
+	{ name: 'HalftonePass.js',			hashIn: 7629117879539993, hashOut: 2708171060795899, signature: 'r147' },
+	{ name: 'LUTPass.js',				hashIn: 3243928235390895, hashOut: 6181074452900292, signature: 'r147' },
+	{ name: 'MaskPass.js',				hashIn: 1333654107434139, hashOut: 8267734874329596, signature: 'r147' },
+	{ name: 'OutlinePass.js',			hashIn: 4708797621364561, hashOut: 3198139561429586, signature: 'r147' },
+	{ name: 'Pass.js',					hashIn: 3154920630396720, hashOut: 4064811221804372, signature: 'r147' },
+	{ name: 'RenderPass.js',			hashIn: 8210427678242849, hashOut: 1731156248757721, signature: 'r147' },
+	{ name: 'RenderPixelatedPass.js',	hashIn: 7188498385698559, hashOut: 8265344145956456, signature: 'r147' },
+	{ name: 'SAOPass.js',				hashIn: 1158702175465290, hashOut: 6130409662300277, signature: 'r147' },
+	{ name: 'SMAAPass.js',				hashIn: 152998597593694,  hashOut: 8589778776161150, signature: 'r147' },
+	{ name: 'SSAARenderPass.js',		hashIn: 5570188049648057, hashOut: 3845352702228598, signature: 'r147' },
+	{ name: 'SSAOPass.js',				hashIn: 3689986794206844, hashOut: 984689668651417,  signature: 'r147' },
+	{ name: 'SSRPass.js',				hashIn: 2809967475621701, hashOut: 6900833753991918, signature: 'r147' },
+	{ name: 'SavePass.js',				hashIn: 791685695598490,  hashOut: 3681879478760896, signature: 'r147' },
+	{ name: 'ShaderPass.js',			hashIn: 2914158575483121, hashOut: 5879691536794496, signature: 'r147' },
+	{ name: 'TAARenderPass.js',			hashIn: 6546205943478792, hashOut: 7385786089780327, signature: 'r147' },
+	{ name: 'TexturePass.js',			hashIn: 2002512202019259, hashOut: 878485824922162,  signature: 'r147' },
+	{ name: 'UnrealBloomPass.js',		hashIn: 622222350514699,  hashOut: 2810488985597342, signature: 'r147' },
+
+
 // jsm\shaders\*.js
 
 	{ name: 'ACESFilmicToneMappingShader.js',	hashIn: 5258378719643215, hashOut: 3317902934456707, signature: 'r147' },

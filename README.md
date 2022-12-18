@@ -50,6 +50,13 @@ work in progress, more files are being added.
 	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
 	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
 	Water.js, Water2.js
+- **`examples\jsm\postprocessing`**:<br>
+	AdaptiveToneMappingPass.js, AfterimagePass.js, BloomPass.js, BokehPass.js, ClearPass.js,
+	CubeTexturePass.js, DotScreenPass.js, EffectComposer.js, FilmPass.js, GlitchPass.js,
+	HalftonePass.js, LUTPass.js, MaskPass.js, OutlinePass.js, Pass.js, RenderPass.js,
+	RenderPixelatedPass.js, SAOPass.js, SavePass.js, ShaderPass.js, SMAAPass.js,
+	SSAARenderPass.js, SSAOPass.js, SSRPass.js, TAARenderPass.js, TexturePass.js,
+	UnrealBloomPass.js
 - **`examples\jsm\shaders`**:<br>
 	ACESFilmicToneMappingShader.js, AfterimageShader.js, BasicShader.js, BleachBypassShader.js, BlendShader.js, BokehShader.js, BokehShader2.js, BrightnessContrastShader.js, ColorCorrectionShader.js, ColorifyShader.js, ConvolutionShader.js, CopyShader.js, DepthLimitedBlurShader.js, DigitalGlitch.js, DOFMipMapShader.js, DotScreenShader.js, FilmShader.js, FocusShader.js, FreiChenShader.js, FXAAShader.js, ammaCorrectionShader.js, GodRaysShader.js, GHalftoneShader.js, HorizontalBlurShader.js, HorizontalTiltShiftShader.js, HueSaturationShader.js, KaleidoShader.js, LuminosityHighPassShader.js, LuminosityShader.js, MirrorShader.js, MMDToonShader.js, NormalMapShader.js, RGBShiftShader.js, SAOShader.js, SepiaShader.js, SMAAShader.js, SobelOperatorShader.js, SSAOShader.js, SSRShader.js, SubsurfaceScatteringShader.js, TechnicolorShader.js, ToneMapShader.js, ToonShader.js, TriangleBlurShader.js, UnpackDepthRGBAShader.js, VelocityShader.js, VerticalBlurShader.js, VerticalTiltShiftShader.js, VignetteShader.js, VolumeShader.js, WaterRefractionShader.js
 - **`examples\jsm\utils`**:<br>
@@ -62,7 +69,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (28% complete, 140 of 493 files).
+two phases run in parrallel (34% complete, 168 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This
