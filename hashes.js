@@ -88,6 +88,14 @@ var hashes = [
 	{ name: 'ViewHelper.js',			hashIn: 4660377876647747, hashOut: 4639934960027406, signature: 'r147' },
 
 
+// jsm\interactive\*.js
+
+	{ name: 'HTMLMesh.js',				hashIn: 1878649372860153, hashOut: 3192597895142587, signature: 'r147' },
+	{ name: 'InteractiveGroup.js',		hashIn: 1211502322032098, hashOut: 8467776172842284, signature: 'r147' },
+	{ name: 'SelectionBox.js',			hashIn: 7064250896203132, hashOut: 7488209743941230, signature: 'r147' },
+	{ name: 'SelectionHelper.js',		hashIn: 2604057417266652, hashOut: 1236952692415177, signature: 'r147' },
+
+
 // jsm\lights\*.js
 
 	{ name: 'LightProbeGenerator.js',		hashIn: 6177039655558016, hashOut: 698274494607814, signature: 'r147' },

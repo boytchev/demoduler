@@ -37,6 +37,8 @@ work in progress, more files are being added.
 - **`examples\jsm\helpers`**:<br>
 	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
 	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
+- **`examples\jsm\interactive`**:<br>
+	HTMLMesh.js, InteractiveGroup.js, SelectionBox.js, SelectionHelper.js
 - **`examples\jsm\lights`**:<br>
 	LightProbeGenerator.js, RectAreaLightUniformsLib.js
 - **`examples\jsm\lines`**:<br>
@@ -71,7 +73,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (34% complete, 168 of 493 files).
+two phases run in parrallel (35% complete, 171 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This
