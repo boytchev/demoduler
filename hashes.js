@@ -130,6 +130,22 @@ var hashes = [
 	{ name: 'SimplexNoise.js',			hashIn: 313130152119344,  hashOut: 3168858546443066, signature: 'r147' },
 
 
+// jsm\misc\*.js
+
+	{ name: 'ConvexObjectBreaker.js',	hashIn: 2987161165189093, hashOut: 8929165597813995, signature: 'r147' },
+	{ name: 'GPUComputationRenderer.js',hashIn: 1894481260558729, hashOut: 5262059506867153, signature: 'r147' },
+	{ name: 'Gyroscope.js',				hashIn: 3063251394555570, hashOut: 5760639262413468, signature: 'r147' },
+	{ name: 'MD2Character.js',			hashIn: 6623186545850287, hashOut: 6634136292271183, signature: 'r147' },
+	{ name: 'MD2CharacterComplex.js',	hashIn: 7509488030443826, hashOut: 2159455090720704, signature: 'r147' },
+	{ name: 'MorphAnimMesh.js',			hashIn: 371275972047758,  hashOut: 4390419688620672, signature: 'r147' },
+	{ name: 'MorphBlendMesh.js',		hashIn: 2645368413028812, hashOut: 1977338054594739, signature: 'r147' },
+	{ name: 'ProgressiveLightMap.js',	hashIn: 4662929733634732, hashOut: 2394280390715176, signature: 'r147' },
+	{ name: 'RollerCoaster.js',			hashIn: 4968034576584817, hashOut: 6698144221527486, signature: 'r147' },
+	{ name: 'TubePainter.js',			hashIn: 4706751632377804, hashOut: 7332834514313893, signature: 'r147' },
+	{ name: 'Volume.js',				hashIn: 4185603872654050, hashOut: 4068919581451385, signature: 'r147' },
+	{ name: 'VolumeSlice.js',			hashIn: 5921125576207369, hashOut: 2864729225536748, signature: 'r147' },
+
+
 // jsm\modifiers\*.js
 
 	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 4923276743757209, signature: 'r147' },

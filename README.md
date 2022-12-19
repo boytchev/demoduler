@@ -49,6 +49,10 @@ work in progress, more files are being added.
 - **`examples\jsm\math`**:<br>
 	Capsule.js, ColorConverter.js, ConvexHull.js, ImprovedNoise.js, Lut.js,
 	MeshSurfaceSampler.js, OBB.js, Octree.js, SimplexNoise.js
+- **`examples\jsm\misc`**:<br>
+	ConvexObjectBreaker.js, GPUComputationRenderer.js, Gyroscope.js, MD2Character.js,
+	MD2CharacterComplex.js, MorphAnimMesh.js, MorphBlendMesh.js, ProgressiveLightMap.js,
+	RollerCoaster.js, TubePainter.js, Volume.js, VolumeSlice.js
 - **`examples\jsm\modifiers`**:<br>
 	CurveModifier.js, EdgeSplitModifier.js, SimplifyModifier.js, TessellateModifier.js
 - **`examples\jsm\objects`**:<br>
@@ -78,7 +82,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (69% complete, 184 of 267 `examples\js` files).
+two phases run in parrallel (73% complete, 196 of 267 `examples\js` files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This
