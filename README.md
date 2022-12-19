@@ -46,6 +46,9 @@ work in progress, more files are being added.
 	Wireframe.js, WireframeGeometry2.js
 - **`examples\jsm\materials`**:<br>
 	MeshGouraudMaterial.js
+- **`examples\jsm\math`**:<br>
+	Capsule.js, ColorConverter.js, ConvexHull.js, ImprovedNoise.js, Lut.js,
+	MeshSurfaceSampler.js, OBB.js, Octree.js, SimplexNoise.js
 - **`examples\jsm\modifiers`**:<br>
 	CurveModifier.js, EdgeSplitModifier.js, SimplifyModifier.js, TessellateModifier.js
 - **`examples\jsm\objects`**:<br>
@@ -75,7 +78,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (35% complete, 175 of 493 files).
+two phases run in parrallel (69% complete, 184 of 267 `examples\js` files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

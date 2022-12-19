@@ -117,6 +117,19 @@ var hashes = [
 	{ name: 'MeshGouraudMaterial.js',	hashIn: 2670340595270464, hashOut: 3018929098612251, signature: 'r147' },
 
 
+// jsm\math\*.js
+
+	{ name: 'OBB.js',					hashIn: 2135207588843929, hashOut: 6624993466955481, signature: 'r147' },
+	{ name: 'Capsule.js',				hashIn: 4997626879274240, hashOut: 8413714414397691, signature: 'r147' },
+	{ name: 'ColorConverter.js',		hashIn: 5844967795436179, hashOut: 3187359492214079, signature: 'r147' },
+	{ name: 'ConvexHull.js',			hashIn: 8974035973211290, hashOut: 3052918960303382, signature: 'r147' },
+	{ name: 'ImprovedNoise.js',			hashIn: 4254330716041642, hashOut: 1175196362348590, signature: 'r147' },
+	{ name: 'Lut.js',					hashIn: 5890901043033984, hashOut: 5091633800361764, signature: 'r147' },
+	{ name: 'MeshSurfaceSampler.js',	hashIn: 3546265222360370, hashOut: 1593821863726880, signature: 'r147' },
+	{ name: 'Octree.js',				hashIn: 6053182518677834, hashOut: 7302867661003629, signature: 'r147' },
+	{ name: 'SimplexNoise.js',			hashIn: 313130152119344,  hashOut: 3168858546443066, signature: 'r147' },
+
+
 // jsm\modifiers\*.js
 
 	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 4923276743757209, signature: 'r147' },
