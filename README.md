@@ -52,6 +52,8 @@ work in progress, more files are being added.
 	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
 	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
 	Water.js, Water2.js
+- **`examples\jsm\physics`**:<br>
+	AmmoPhysics.js, OimoPhysics.js
 - **`examples\jsm\postprocessing`**:<br>
 	AdaptiveToneMappingPass.js, AfterimagePass.js, BloomPass.js, BokehPass.js, ClearPass.js,
 	CubeTexturePass.js, DotScreenPass.js, EffectComposer.js, FilmPass.js, GlitchPass.js,
@@ -73,7 +75,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (35% complete, 171 of 493 files).
+two phases run in parrallel (35% complete, 175 of 493 files).
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

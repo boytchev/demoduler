@@ -140,6 +140,12 @@ var hashes = [
 	{ name: 'Water2.js',				hashIn: 2120526706889228, hashOut: 8732319691887990, signature: 'r147' },
 
 
+// jsm\physics\*.js
+
+	{ name: 'AmmoPhysics.js',			hashIn: 7517264819391925, hashOut: 6615522549059090, signature: 'r147' },
+ 	{ name: 'OimoPhysics.js',			hashIn: 2613689718091502, hashOut: 3002843339918750, signature: 'r147' },
+
+
 // jsm\postprocessing\*.js
 	{ name: 'AdaptiveToneMappingPass.js',hashIn: 2364970081330801,hashOut: 5599991563324348, signature: 'r147' },
 	{ name: 'AfterimagePass.js',		hashIn: 7653725564678955, hashOut: 3352420493560622, signature: 'r147' },
