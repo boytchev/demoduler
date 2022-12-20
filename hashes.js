@@ -104,6 +104,30 @@ var hashes = [
 	{ name: 'SelectionHelper.js',		hashIn: 2604057417266652, hashOut: 1236952692415177, signature: 'r147' },
 
 
+// jsm\libs\*.js
+	{ name: 'chevrotain.module.min.js',	hashIn: 8610778070704401, hashOut: 2181733518121743, signature: 'not Three.js' },
+	{ name: 'ecsy.module.js',			hashIn: 2143193075671949, hashOut: 2855799025138990, signature: 'not Three.js' },
+	{ name: 'fflate.module.js',			hashIn: 2873969778761120, hashOut: 6223503074093484, signature: 'not Three.js' },
+	{ name: 'flow.module.js',			hashIn: 8962083420513474, hashOut: 1894893191019385, signature: 'not Three.js' },
+	{ name: 'ktx-parse.module.js',		hashIn: 8668226453980035, hashOut: 7271678376224768, signature: 'not Three.js' },
+	{ name: 'lil-gui.module.min.js',	hashIn: 7214462785814887, hashOut: 7054343677832408, signature: 'not Three.js' },
+	{ name: 'lottie_canvas.module.js',	hashIn: 2245927073147872, hashOut: 5153989288124340, signature: 'not Three.js' },
+	{ name: 'meshopt_decoder.module.js',hashIn: 801166090116187,  hashOut: 2448267990077663, signature: 'not Three.js' },
+	{ name: 'mikktspace.module.js',		hashIn: 8719419322244607, hashOut: 616149660818570,  signature: 'not Three.js' },
+	{ name: 'mmdparser.module.js',		hashIn: 8202443895328062, hashOut: 3622136400949581, signature: 'not Three.js' },
+	{ name: 'motion-controllers.module.js',hashIn: 5709579865562258,hashOut: 5681181871857957,signature: 'not Three.js' },
+	{ name: 'opentype.module.js',		hashIn: 848534191210722,  hashOut: 560837276447764,  signature: 'not Three.js' },
+	{ name: 'potpack.module.js',		hashIn: 1283655972451878, hashOut: 5200029942189273, signature: 'not Three.js' },
+	{ name: 'stats.module.js',			hashIn: 4205307359432763, hashOut: 717116555038742,  signature: 'not Three.js' },
+	{ name: 'tween.module.min.js',		hashIn: 561090084058616,  hashOut: 3540154676240152, signature: 'not Three.js' },
+	{ name: 'utif.module.js',			hashIn: 5715595447783189, hashOut: 2329173948366792, signature: 'not Three.js' },
+	{ name: 'zstddec.module.js',		hashIn: 6877927829665610, hashOut: 6419293948366379, signature: 'not Three.js' },
+// jsm\libs\OimoPhysics\*.js
+	{ name: 'index.js',					hashIn: 4429172777201225, hashOut: 1217336635563562, signature: 'not Three.js' },
+	{ name: 'OimoPhysics.js',			hashIn: 338989220735410,  hashOut: 3916132481343801, signature: 'not Three.js' },
+// jsm\libs\rhino3dm\*.js
+	{ name: 'rhino3dm.module.js',		hashIn: 5477667109273140, hashOut: 1733520317928640, signature: 'not Three.js' },
+
 // jsm\lights\*.js
 
 	{ name: 'LightProbeGenerator.js',		hashIn: 6177039655558016, hashOut: 698274494607814, signature: 'r147' },
@@ -285,7 +309,9 @@ var hashes = [
 
 
 // jsm\textures\*.js
+
 	{ name: 'FlakesTexture.js',			hashIn: 4582515071681576, hashOut: 8402823063941429, signature: 'r147' },
+
 
 // jsm\utils\*.js
 

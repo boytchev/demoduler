@@ -32,7 +32,6 @@ class Demoduler
 
 		document.getElementById( 'log' ).insertAdjacentHTML( 'beforeend', `
 			<div class="file" id="file-${this.id}">
-				<span class="error" id="error-${this.id}"></span>
 				<span class="info" id="info-${this.id}"></span>
 				${file.name}
 			</div>`
@@ -41,7 +40,7 @@ class Demoduler
 
 		if( file.name.split( '.' ).pop( ) != 'js' )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = 'bad file name';
+			document.getElementById( `info-${this.id}` ).innerHTML = 'not JS file';
 			return;
 		}
 		
@@ -99,7 +98,7 @@ class Demoduler
 		
 		var result;
 //		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.\[\:]+|\,|\;|\(|\)|\.|\[|\:/g;
-		var regex = /'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:]+|\,|\;|\(|\)|\.|\[|\:/g;
+		var regex = /'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:\{\}]+|\,|\;|\(|\)|\.|\[|\:|\{|\}/g;
 		
 		while( result = regex.exec(this.js) )
 		{
@@ -281,6 +280,19 @@ class Demoduler
 	}
 
 
+	// export default symbol;
+	getExport_Default( )
+	{
+		if( this.tokens[this.idx+1].string != 'default' ) return null;
+		
+		this.exportedSymbols.push( this.tokens[this.idx+2].string );
+
+		this.consume( ['default', '*', ';'] );
+
+		return this.tokens[this.idx].end;
+	}
+
+
 	getExports( )
 	{
 		// extract exported symbols
@@ -302,6 +314,10 @@ class Demoduler
 			// export function symbol
 			if( exportEnd == null )
 			exportEnd = this.getExport_Function( );
+
+			// export default symbol;
+			if( exportEnd == null )
+			exportEnd = this.getExport_Default( );
 
 			if( exportEnd != null )
 			{
@@ -444,7 +460,7 @@ class Demoduler
 
 		if( !this.valideText( ) )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = 'bad file contents';
+			document.getElementById( `info-${this.id}` ).innerHTML = 'not text file';
 			return;
 		}
 			
@@ -464,7 +480,7 @@ class Demoduler
 
 		if( this.importSections.length+this.exportSections.length == 0 )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = 'not a module';
+			document.getElementById( `info-${this.id}` ).innerHTML = 'not module';
 			return;
 		}
 
@@ -513,7 +529,7 @@ class Demoduler
 
 		if( finals.length == 0 )
 		{
-			document.getElementById( `error-${this.id}` ).innerHTML = 'bad signature';
+			document.getElementById( `info-${this.id}` ).innerHTML = 'bad signature';
 			console.error( `mismatched output hash code of ${this.file.name}` );
 //			return;
 		}
