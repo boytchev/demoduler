@@ -34,6 +34,14 @@ var hashes = [
 	{ name: 'CSMHelper.js',				hashIn: 95514300219672,   hashOut: 6615675358907333, signature: 'r147' },
 
 
+// jsm\curves\*.js
+
+	{ name: 'NURBSCurve.js',			hashIn: 1481469610032845, hashOut: 4504212626417790, signature: 'r147' },
+	{ name: 'CurveExtras.js',			hashIn: 8174127866409531, hashOut: 7013266783512900, signature: 'r147' },
+	{ name: 'NURBSSurface.js',			hashIn: 5935856335412392, hashOut: 7490315855827020, signature: 'r147' },
+	{ name: 'NURBSUtils.js',			hashIn: 1382614706821951, hashOut: 4725962503857902, signature: 'r147' },
+
+
 // jsm\effects\*.js
 
 	{ name: 'AnaglyphEffect.js',		hashIn: 8494041100070890, hashOut: 6806847312914103, signature: 'r147' },
@@ -114,7 +122,7 @@ var hashes = [
 
 
 // jsm\materials\*.js
-	{ name: 'MeshGouraudMaterial.js',	hashIn: 2670340595270464, hashOut: 3018929098612251, signature: 'r147' },
+	{ name: 'MeshGouraudMaterial.js',	hashIn: 2670340595270464, hashOut: 6746845651059425, signature: 'r147' },
 
 
 // jsm\math\*.js
