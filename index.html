@@ -36,7 +36,7 @@
 		
 		#log {
 			width: 40%;
-			min-width: 20em;
+			min-width: 30em;
 			margin: 0.5em auto auto auto;
 		}
 		
@@ -126,15 +126,20 @@
 		}
 	}
 
-///*********************** TEST ZONE **********
+	///*********************** TEST ZONE **********
 /*
 	new Demoduler({name:'test-file.js', contents:`
 
-aaa '..\\Boza.js'
-aaa '..\\'Boza.js'
-aaa gugu.class
-`} );
+import {Matrix4} from 'three';
+// ensure the object's matrix is up to date
+// before saving the transform
+a = 'boza';
+transMat = transMat || new Matrix4();
+transMat.copy( o.matrix );
+
+	`} );
 */
+
 </script>
 	
 </body>

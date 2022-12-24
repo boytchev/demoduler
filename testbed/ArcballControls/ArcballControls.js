@@ -3219,9 +3219,9 @@ class ArcballControls extends THREE.EventDispatcher {
 }
 
 /* ^..^
-export { ArcballControls }
+export { ArcballControls };
 */
-;
+
 
 	THREE.ArcballControls = ArcballControls; // ^..^
 

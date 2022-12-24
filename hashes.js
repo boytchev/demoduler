@@ -5,8 +5,8 @@ var hashes = [
 // jsm\animation\*.js
 
 	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147' },
-	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 3350830873159705, signature: 'r147' },
-	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 3795127789446360, signature: 'r147' },
+	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 1432833081281724, signature: 'r147' },
+	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 7711676366751655, signature: 'r147' },
 	{ name: 'MMDPhysics.js',			hashIn: 3517359931114889, hashOut: 7499978108447581, signature: 'r147' },
 
 
@@ -36,7 +36,7 @@ var hashes = [
 
 // jsm\curves\*.js
 
-	{ name: 'NURBSCurve.js',			hashIn: 1481469610032845, hashOut: 4504212626417790, signature: 'r147' },
+	{ name: 'NURBSCurve.js',			hashIn: 1481469610032845, hashOut: 1594058175648828, signature: 'r147' },
 	{ name: 'CurveExtras.js',			hashIn: 8174127866409531, hashOut: 7013266783512900, signature: 'r147' },
 	{ name: 'NURBSSurface.js',			hashIn: 5935856335412392, hashOut: 7490315855827020, signature: 'r147' },
 	{ name: 'NURBSUtils.js',			hashIn: 1382614706821951, hashOut: 4725962503857902, signature: 'r147' },
@@ -63,8 +63,8 @@ var hashes = [
 	{ name: 'ColladaExporter.js',		hashIn: 2040032360564170, hashOut: 5227371727001555, signature: 'r147' },
 	{ name: 'DRACOExporter.js',			hashIn: 1917974346732773, hashOut: 391086298448543,  signature: 'r147' },
 	{ name: 'EXRExporter.js',			hashIn: 2211521531772346, hashOut: 3532023270548790, signature: 'r147' },
-	{ name: 'GLTFExporter.js',			hashIn: 7097485653378711, hashOut: 3460781311257655, signature: 'r147' },
-	{ name: 'KTX2Exporter.js',			hashIn: 3368305390814835, hashOut: 1929217081613360, signature: 'r147' },
+	{ name: 'GLTFExporter.js',			hashIn: 7097485653378711, hashOut: 3363199132645821, signature: 'r147' },
+	{ name: 'KTX2Exporter.js',			hashIn: 3368305390814835, hashOut: 3517880226381192, signature: 'r147' },
 	{ name: 'MMDExporter.js',			hashIn: 346341606190126,  hashOut: 5311766141910379, signature: 'r147' },
 	{ name: 'OBJExporter.js',			hashIn: 5196360952527578, hashOut: 373058448930680,  signature: 'r147' },
 	{ name: 'PLYExporter.js',			hashIn: 2885756046710828, hashOut: 7029313742956203, signature: 'r147' },
@@ -77,7 +77,7 @@ var hashes = [
  	{ name: 'BoxLineGeometry.js',		hashIn: 6715624084493554, hashOut: 8861167976725231, signature: 'r147' },
  	{ name: 'ConvexGeometry.js',		hashIn: 7147676395705516, hashOut: 3916208406701340, signature: 'r147' },
  	{ name: 'DecalGeometry.js',			hashIn: 1507980540546980, hashOut: 7888227951955648, signature: 'r147' },
-	{ name: 'LightningStrike.js',		hashIn: 1191645353049985, hashOut: 6540857009032687, signature: 'r147' },
+	{ name: 'LightningStrike.js',		hashIn: 1191645353049985, hashOut: 2624903429688936, signature: 'r147' },
  	{ name: 'ParametricGeometries.js',	hashIn: 107533732253491,  hashOut: 815149824560642,  signature: 'r147' },
  	{ name: 'ParametricGeometry.js',	hashIn: 8085017494352590, hashOut: 7874298973850542, signature: 'r147' },
  	{ name: 'RoundedBoxGeometry.js',	hashIn: 5502296987449710, hashOut: 7311095839334729, signature: 'r147' },
@@ -164,23 +164,23 @@ var hashes = [
 
 // jsm\misc\*.js
 
-	{ name: 'ConvexObjectBreaker.js',	hashIn: 2987161165189093, hashOut: 8929165597813995, signature: 'r147' },
-	{ name: 'GPUComputationRenderer.js',hashIn: 1894481260558729, hashOut: 5262059506867153, signature: 'r147' },
+	{ name: 'ConvexObjectBreaker.js',	hashIn: 2987161165189093, hashOut: 7009488046621534, signature: 'r147' },
+	{ name: 'GPUComputationRenderer.js',hashIn: 1894481260558729, hashOut: 377894397519675,  signature: 'r147' },
 	{ name: 'Gyroscope.js',				hashIn: 3063251394555570, hashOut: 5760639262413468, signature: 'r147' },
 	{ name: 'MD2Character.js',			hashIn: 6623186545850287, hashOut: 6634136292271183, signature: 'r147' },
 	{ name: 'MD2CharacterComplex.js',	hashIn: 7509488030443826, hashOut: 2159455090720704, signature: 'r147' },
 	{ name: 'MorphAnimMesh.js',			hashIn: 371275972047758,  hashOut: 4390419688620672, signature: 'r147' },
 	{ name: 'MorphBlendMesh.js',		hashIn: 2645368413028812, hashOut: 1977338054594739, signature: 'r147' },
-	{ name: 'ProgressiveLightMap.js',	hashIn: 4662929733634732, hashOut: 2394280390715176, signature: 'r147' },
+	{ name: 'ProgressiveLightMap.js',	hashIn: 4662929733634732, hashOut: 81272709478695,   signature: 'r147' },
 	{ name: 'RollerCoaster.js',			hashIn: 4968034576584817, hashOut: 6698144221527486, signature: 'r147' },
 	{ name: 'TubePainter.js',			hashIn: 4706751632377804, hashOut: 7332834514313893, signature: 'r147' },
-	{ name: 'Volume.js',				hashIn: 4185603872654050, hashOut: 4068919581451385, signature: 'r147' },
+	{ name: 'Volume.js',				hashIn: 4185603872654050, hashOut: 7373291575608959, signature: 'r147' },
 	{ name: 'VolumeSlice.js',			hashIn: 5921125576207369, hashOut: 2864729225536748, signature: 'r147' },
 
 
 // jsm\modifiers\*.js
 
-	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 4923276743757209, signature: 'r147' },
+	{ name: 'CurveModifier.js',			hashIn: 2161126201929561, hashOut: 2232249837049942, signature: 'r147' },
 	{ name: 'EdgeSplitModifier.js',		hashIn: 4661968250764111, hashOut: 2525991716015486, signature: 'r147' },
 	{ name: 'SimplifyModifier.js',		hashIn: 8325670109126825, hashOut: 7089325051573543, signature: 'r147' },
 	{ name: 'TessellateModifier.js',	hashIn: 8441784596459318, hashOut: 1151084173615225, signature: 'r147' },
@@ -190,12 +190,12 @@ var hashes = [
 
 	{ name: 'GroundProjectedEnv.js',	hashIn: 3209647647024930, hashOut: 243069015256079,  signature: 'r147' },
 	{ name: 'Lensflare.js',				hashIn: 933464714826082,  hashOut: 6954238707737649, signature: 'r147' },
-	{ name: 'LightningStorm.js',		hashIn: 6616917369283776, hashOut: 1022073699062166, signature: 'r147' },
+	{ name: 'LightningStorm.js',		hashIn: 6616917369283776, hashOut: 864874431866378,  signature: 'r147' },
 	{ name: 'Reflector.js',				hashIn: 4871058277040602, hashOut: 888175106352713,  signature: 'r147' },
 	{ name: 'MarchingCubes.js',			hashIn: 4667258537036907, hashOut: 5532718995014579, signature: 'r147' },
 	{ name: 'ReflectorForSSRPass.js',	hashIn: 6977488871853286, hashOut: 2771238122644462, signature: 'r147' },
 	{ name: 'Refractor.js',				hashIn: 3935440023460978, hashOut: 7033534258479891, signature: 'r147' },
-	{ name: 'ShadowMesh.js',			hashIn: 68183448930033,   hashOut: 2949595428802182, signature: 'r147' },
+	{ name: 'ShadowMesh.js',			hashIn: 68183448930033,   hashOut: 8611885472979811, signature: 'r147' },
 	{ name: 'Sky.js',					hashIn: 249847175026169,  hashOut: 2558137094218159, signature: 'r147' },
 	{ name: 'Water.js',					hashIn: 1067915028797984, hashOut: 712711564490518,  signature: 'r147' },
 	{ name: 'Water2.js',				hashIn: 2120526706889228, hashOut: 8732319691887990, signature: 'r147' },
@@ -218,7 +218,7 @@ var hashes = [
 	{ name: 'EffectComposer.js',		hashIn: 6447861811187505, hashOut: 5905050568889170, signature: 'r147' },
 	{ name: 'FilmPass.js',				hashIn: 5578919757601172, hashOut: 2121330939589775, signature: 'r147' },
 	{ name: 'GlitchPass.js',			hashIn: 8312595776594738, hashOut: 6257538433351437, signature: 'r147' },
-	{ name: 'HalftonePass.js',			hashIn: 7629117879539993, hashOut: 2708171060795899, signature: 'r147' },
+	{ name: 'HalftonePass.js',			hashIn: 7629117879539993, hashOut: 7083245433838368, signature: 'r147' },
 	{ name: 'LUTPass.js',				hashIn: 3243928235390895, hashOut: 6181074452900292, signature: 'r147' },
 	{ name: 'MaskPass.js',				hashIn: 1333654107434139, hashOut: 8267734874329596, signature: 'r147' },
 	{ name: 'OutlinePass.js',			hashIn: 4708797621364561, hashOut: 3198139561429586, signature: 'r147' },
@@ -227,7 +227,7 @@ var hashes = [
 	{ name: 'RenderPixelatedPass.js',	hashIn: 7188498385698559, hashOut: 8265344145956456, signature: 'r147' },
 	{ name: 'SAOPass.js',				hashIn: 1158702175465290, hashOut: 6130409662300277, signature: 'r147' },
 	{ name: 'SMAAPass.js',				hashIn: 152998597593694,  hashOut: 8589778776161150, signature: 'r147' },
-	{ name: 'SSAARenderPass.js',		hashIn: 5570188049648057, hashOut: 3845352702228598, signature: 'r147' },
+	{ name: 'SSAARenderPass.js',		hashIn: 5570188049648057, hashOut: 4819531753089386, signature: 'r147' },
 	{ name: 'SSAOPass.js',				hashIn: 3689986794206844, hashOut: 984689668651417,  signature: 'r147' },
 	{ name: 'SSRPass.js',				hashIn: 2809967475621701, hashOut: 6900833753991918, signature: 'r147' },
 	{ name: 'SavePass.js',				hashIn: 791685695598490,  hashOut: 3681879478760896, signature: 'r147' },
@@ -315,7 +315,7 @@ var hashes = [
 
 // jsm\utils\*.js
 
-	{ name: 'BufferGeometryUtils.js',	hashIn: 7014196652191254, hashOut: 4478498462487348, signature: 'r147' },
+	{ name: 'BufferGeometryUtils.js',	hashIn: 7014196652191254, hashOut: 6412407108164034, signature: 'r147' },
 	{ name: 'CameraUtils.js',			hashIn: 362012460112664,  hashOut: 1667508449377211, signature: 'r147' },
 	{ name: 'GPUStatsPanel.js',			hashIn: 7849635543326202, hashOut: 8518362217355809, signature: 'r147' },
 	{ name: 'GeometryCompressionUtils.js',hashIn:2952293075389709,hashOut: 8338267574310261, signature: 'r147' },
