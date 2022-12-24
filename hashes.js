@@ -237,6 +237,13 @@ var hashes = [
 	{ name: 'UnrealBloomPass.js',		hashIn: 622222350514699,  hashOut: 2810488985597342, signature: 'r147' },
 
 
+// jsm\renderers\*.js
+	{ name: 'CSS2DRenderer.js',			hashIn: 5761697393480706, hashOut: 2343738057319828, signature: 'r147' },
+	{ name: 'CSS3DRenderer.js',			hashIn: 5213607906990352, hashOut: 7366260962428179, signature: 'r147' },
+	{ name: 'Projector.js',				hashIn: 4874510425331828, hashOut: 3421560008749342, signature: 'r147' },
+	{ name: 'SVGRenderer.js',			hashIn: 8409222279450335, hashOut: 1540426567003354, signature: 'r147' },
+	
+
 // jsm\shaders\*.js
 
 	{ name: 'ACESFilmicToneMappingShader.js',	hashIn: 5258378719643215, hashOut: 3317902934456707, signature: 'r147' },
