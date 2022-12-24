@@ -242,7 +242,46 @@ var hashes = [
 	{ name: 'CSS3DRenderer.js',			hashIn: 5213607906990352, hashOut: 7366260962428179, signature: 'r147' },
 	{ name: 'Projector.js',				hashIn: 4874510425331828, hashOut: 3421560008749342, signature: 'r147' },
 	{ name: 'SVGRenderer.js',			hashIn: 8409222279450335, hashOut: 1540426567003354, signature: 'r147' },
-	
+// jsm\renderers\webgl\nodes\*.js
+	{ name: 'SlotNode.js',				hashIn: 6246269276999764, hashOut: 5574910273872138, signature: '(approx) r147' },
+	{ name: 'WebGLNodeBuilder.js',		hashIn: 7603786283542514, hashOut: 3811833020584754, signature: '(approx) r147' },
+	{ name: 'WebGLNodes.js',			hashIn: 6102206417239882, hashOut: 6792703053183744, signature: '(approx) r147' },	
+// jsm\renderers\webgpu\*.js
+ 	{ name: 'WebGPUAnimation.js',		hashIn: 4396707476536727, hashOut: 6059007472941729, signature: '(approx) r147' },
+ 	{ name: 'WebGPUAttributes.js',		hashIn: 8260799714901852, hashOut: 7180654057736436, signature: '(approx) r147' },
+ 	{ name: 'WebGPUBackground.js',		hashIn: 8602578334808291, hashOut: 5457405022729735, signature: '(approx) r147' },
+ 	{ name: 'WebGPUBinding.js',			hashIn: 1052849230428151, hashOut: 1520991417530505, signature: '(approx) r147' },
+ 	{ name: 'WebGPUBindings.js',		hashIn: 6390769329634040, hashOut: 8071769768594988, signature: '(approx) r147' },
+ 	{ name: 'WebGPUBuffer.js',			hashIn: 1128114772154585, hashOut: 3442582429346934, signature: '(approx) r147' },
+ 	{ name: 'WebGPUBufferUtils.js',		hashIn: 5582104232779032, hashOut: 5968375678232184, signature: '(approx) r147' },
+ 	{ name: 'WebGPUComputePipelines.js',hashIn: 304143103404491,  hashOut: 8427786889418933, signature: '(approx) r147' },
+ 	{ name: 'WebGPUGeometries.js',		hashIn: 703305899898364,  hashOut: 1678255175788060, signature: '(approx) r147' },
+ 	{ name: 'WebGPUInfo.js',			hashIn: 135504537623419,  hashOut: 1501893377929083, signature: '(approx) r147' },
+ 	{ name: 'WebGPUObjects.js',			hashIn: 920700533351342,  hashOut: 779440371716419,  signature: '(approx) r147' },
+ 	{ name: 'WebGPUProgrammableStage.js',hashIn: 842663305465827, hashOut: 7510340213511128, signature: '(approx) r147' },
+ 	{ name: 'WebGPUProperties.js',		hashIn: 6920639407860960, hashOut: 8210134604702535, signature: '(approx) r147' },
+ 	{ name: 'WebGPURenderLists.js',		hashIn: 2600605215882859, hashOut: 227123805837987,  signature: '(approx) r147' },
+ 	{ name: 'WebGPURenderPipeline.js',	hashIn: 8886684872891921, hashOut: 7259276178378050, signature: '(approx) r147' },
+ 	{ name: 'WebGPURenderPipelines.js',	hashIn: 6071989857243972, hashOut: 4718692502288010, signature: '(approx) r147' },
+ 	{ name: 'WebGPURenderStates.js',	hashIn: 4238935362379250, hashOut: 1232561016529127, signature: '(approx) r147' },
+ 	{ name: 'WebGPURenderer.js',		hashIn: 3105965882093147, hashOut: 8236578075007431, signature: '(approx) r147' },
+ 	{ name: 'WebGPUSampledTexture.js',	hashIn: 1044834228631084, hashOut: 2161359546613042, signature: '(approx) r147' },
+ 	{ name: 'WebGPUSampler.js',			hashIn: 4379276160546224, hashOut: 7374028534699927, signature: '(approx) r147' },
+ 	{ name: 'WebGPUStorageBuffer.js',	hashIn: 8879012140483729, hashOut: 837092752893438,  signature: '(approx) r147' },
+ 	{ name: 'WebGPUTextureRenderer.js',	hashIn: 3644421805341548, hashOut: 2829278118382515, signature: '(approx) r147' },
+ 	{ name: 'WebGPUTextureUtils.js',	hashIn: 6209481707381743, hashOut: 7601542675599434, signature: '(approx) r147' },
+ 	{ name: 'WebGPUTextures.js',		hashIn: 4993903402759818, hashOut: 4417885382540306, signature: '(approx) r147' },
+ 	{ name: 'WebGPUUniform.js',			hashIn: 7573108404564106, hashOut: 5074264400380264, signature: '(approx) r147' },
+ 	{ name: 'WebGPUUniformBuffer.js',	hashIn: 2678477547380328, hashOut: 5101516112642716, signature: '(approx) r147' },
+ 	{ name: 'WebGPUUniformsGroup.js',	hashIn: 7548286641043798, hashOut: 8027541965283301, signature: '(approx) r147' },
+ 	{ name: 'WebGPUUtils.js',			hashIn: 401528447373683,  hashOut: 4462071849638358, signature: '(approx) r147' },
+// jsm\renderers\webgpu\nodes\*.js
+	{ name: 'WebGPUNodeBuilder.js',		hashIn: 5630792256502948, hashOut: 6044084589054602, signature: '(approx) r147' },
+	{ name: 'WebGPUNodeSampledTexture.js',hashIn:4182530203320379,hashOut: 7869343793535983, signature: '(approx) r147' },
+	{ name: 'WebGPUNodeSampler.js',		hashIn: 2952521742598095, hashOut: 4855234977267165, signature: '(approx) r147' },
+	{ name: 'WebGPUNodeUniform.js',		hashIn: 1197191436633885, hashOut: 3333588586681962, signature: '(approx) r147' },
+	{ name: 'WebGPUNodes.js',			hashIn: 8910817616796492, hashOut: 814458688602712,  signature: '(approx) r147' },
+
 
 // jsm\shaders\*.js
 
