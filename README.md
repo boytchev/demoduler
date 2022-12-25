@@ -46,6 +46,19 @@ work in progress, more files are being added.
 - **`examples\jsm\lines`**:<br>
 	Line2.js, LineGeometry.js, LineMaterial.js, LineSegments2.js, LineSegmentsGeometry.js,
 	Wireframe.js, WireframeGeometry2.js
+- **`examples\jsm\loaders`**:<br>
+	3DMLoader.js, 3MFLoader.js, AMFLoader.js, BasisTextureLoader.js, BVHLoader.js,
+	ColladaLoader.js, DDSLoader.js, DRACOLoader.js, EXRLoader.js, FBXLoader.js,
+	FontLoader.js, GCodeLoader.js, GLTFLoader.js, HDRCubeTextureLoader.js, IFCLoader.js,
+	KMZLoader.js, KTX2Loader.js, KTXLoader.js, LDrawLoader.js, LogLuvLoader.js,
+	LottieLoader.js, LUT3dlLoader.js, LUTCubeLoader.js, LWOLoader.js, MaterialXLoader.js,
+	MD2Loader.js, MDDLoader.js, MMDLoader.js, MTLLoader.js, NRRDLoader.js, OBJLoader.js,
+	PCDLoader.js, PDBLoader.js, PLYLoader.js, PRWMLoader.js, PVRLoader.js, RGBELoader.js,
+	RGBMLoader.js, STLLoader.js, SVGLoader.js, TDSLoader.js, TGALoader.js, TIFFLoader.js,
+	TiltLoader.js, TTFLoader.js, USDZLoader.js, VOXLoader.js, VRMLLoader.js,
+	VTKLoader.js, XYZLoader.js
+- **`examples\jsm\loaders\lwo`**:<br>
+	IFFParser.js, LWO2Parser.js, LWO3Parser.js
 - **`examples\jsm\materials`**:<br>
 	MeshGouraudMaterial.js
 - **`examples\jsm\math`**:<br>
@@ -86,7 +99,7 @@ work in progress, more files are being added.
 ### Metodology
 
 The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel (75% complete, 200 of 267 `examples\js` files).
+two phases run in parrallel.
 
 - **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
 studied in order to extract the simplest transformation from `jsm` to `js`. This

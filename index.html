@@ -53,12 +53,44 @@
 			background: lightgray;
 		}
 		
-		.error {
-			float: right;
-			text-align: right;
-			font-weight: normal;
-			font-size: 90%;
-			color: crimson;
+		.bull-ignore {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			width: 0.7em;
+			height: 0.7em;
+			border-radius: 0.7em;
+			background: lightgray;
+		}
+		
+		.bull-error {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			width: 0.7em;
+			height: 0.7em;
+			border-radius: 0.7em;
+			background: crimson;
+		}
+		
+		.bull-ok {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			width: 0.7em;
+			height: 0.7em;
+			border-radius: 0.7em;
+			background: seagreen;
+		}
+		
+		.bull-warning {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			width: 0.7em;
+			height: 0.7em;
+			border-radius: 0.7em;
+			background: orange;
 		}
 		
 		.info {
@@ -130,16 +162,9 @@
 /*
 	new Demoduler({name:'test-file.js', contents:`
 
-import {Matrix4} from 'three';
-// ensure the object's matrix is up to date
-// before saving the transform
-a = 'boza';
-transMat = transMat || new Matrix4();
-transMat.copy( o.matrix );
 
 	`} );
 */
-
 </script>
 	
 </body>
