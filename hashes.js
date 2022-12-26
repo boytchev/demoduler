@@ -7,40 +7,42 @@ var hashes = [
 
 // jsm\animation\*.js
 
-	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147' },
-	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 1432833081281724, signature: 'r147' },
-	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 7711676366751655, signature: 'r147' },
-	{ name: 'MMDPhysics.js',			hashIn: 3517359931114889, hashOut: 7499978108447581, signature: 'r147' },
+	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147-r148' },
+	{ name: 'CCDIKSolver.js',			hashIn: 6987903500913477, hashOut: 1432833081281724, signature: 'r147-r148' },
+	{ name: 'MMDAnimationHelper.js',	hashIn: 4051486523834537, hashOut: 7711676366751655, signature: 'r147-r148' },
+	{ name: 'MMDPhysics.js',			hashIn: 3517359931114889, hashOut: 7499978108447581, signature: 'r147-r148' },
 
 
 // jsm\cameras\*.js
-	{ name: 'CinematicCamera.js',		hashIn: 8657467710839774, hashOut: 5730324717484419, signature: 'r147' },
+	{ name: 'CinematicCamera.js',		hashIn: 8657467710839774, hashOut: 5730324717484419, signature: 'r147-r148' },
 	
 
 // jsm\capabilities\*.js
 
-	{ name: 'WebGL.js',					hashIn: 1806524370189791, hashOut: 4870279779579904, signature: 'r147', warning: NOT_CONFIRMED },
-	{ name: 'WebGPU.js',				hashIn: 7382216207052479, hashOut: 1598428415000864, signature: 'r147', warning: NOT_CONFIRMED },
+	{ name: 'WebGL.js',					hashIn: 1806524370189791, hashOut: 4870279779579904, signature: 'r147-r148', warning: NOT_CONFIRMED },
+	{ name: 'WebGPU.js',				hashIn: 7382216207052479, hashOut: 1598428415000864, signature: 'r147-r148', warning: NOT_CONFIRMED },
 
 
 // jsm\controls\*.js
 
+ 	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147-r148' },
+ 	{ name: 'DragControls.js',			hashIn: 68330822021333,   hashOut: 8465009894812906, signature: 'r147-r148' },
+ 	{ name: 'FirstPersonControls.js',	hashIn: 3881222951926969, hashOut: 8794825488562693, signature: 'r147-r148' },
+ 	{ name: 'FlyControls.js', 			hashIn: 5733191412332319, hashOut: 6216594149040715, signature: 'r147-r148' },
+ 	{ name: 'OrbitControls.js', 		hashIn: 3461413604478402, hashOut: 3508093428857771, signature: 'r147-r148' },
+ 	{ name: 'PointerLockControls.js',	hashIn: 7234374874125097, hashOut: 534253466008181,  signature: 'r147-r148' },
+ 	{ name: 'TrackballControls.js',		hashIn: 5995901654950252, hashOut: 6267983764043843, signature: 'r147-r148' },
 	{ name: 'TransformControls.js', 	hashIn: 2496079475009952, hashOut: 6657645048355341, signature: 'r147' },
- 	{ name: 'OrbitControls.js', 		hashIn: 3461413604478402, hashOut: 3508093428857771, signature: 'r147' },
- 	{ name: 'FirstPersonControls.js',	hashIn: 3881222951926969, hashOut: 8794825488562693, signature: 'r147' },
- 	{ name: 'FlyControls.js', 			hashIn: 5733191412332319, hashOut: 6216594149040715, signature: 'r147' },
- 	{ name: 'PointerLockControls.js',	hashIn: 7234374874125097, hashOut: 534253466008181,  signature: 'r147' },
- 	{ name: 'DragControls.js',			hashIn: 68330822021333,   hashOut: 8465009894812906, signature: 'r147' },
- 	{ name: 'TrackballControls.js',		hashIn: 5995901654950252, hashOut: 6267983764043843, signature: 'r147' },
- 	{ name: 'ArcballControls.js',		hashIn: 5224525621429883, hashOut: 6689598522756220, signature: 'r147' },
+	{ name: 'TransformControls.js',		hashIn: 2867994341181097, hashOut: 7365048463741066, signature: 'r148' },
 
 
 // jsm\csm\*.js
 
-	{ name: 'CSM.js',					hashIn: 6434818151254405, hashOut: 2753891380550471, signature: 'r147' },
-	{ name: 'CSMFrustum.js',			hashIn: 1426916298755981, hashOut: 812024260606097,  signature: 'r147' },
+	{ name: 'CSM.js',					hashIn: 6434818151254405, hashOut: 2753891380550471, signature: 'r147-r148' },
+	{ name: 'CSMFrustum.js',			hashIn: 1426916298755981, hashOut: 812024260606097,  signature: 'r147-r148' },
 	{ name: 'CSMShader.js',				hashIn: 2623585483244840, hashOut: 3839493011915698, signature: 'r147' },
-	{ name: 'CSMHelper.js',				hashIn: 95514300219672,   hashOut: 6615675358907333, signature: 'r147' },
+	{ name: 'CSMShader.js',				hashIn: 6808812247645686, hashOut: 2407777480630806, signature: 'r148' },
+	{ name: 'CSMHelper.js',				hashIn: 95514300219672,   hashOut: 6615675358907333, signature: 'r147-r148' },
 
 
 // jsm\curves\*.js
