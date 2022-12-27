@@ -4,9 +4,9 @@
 <head>
 	<title>Demoduler</title>
 	<meta charset="utf-8">
-	<!--link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet"-->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 	<style>
 		* {
 			margin: 0;
@@ -61,6 +61,7 @@
 			height: 0.7em;
 			border-radius: 0.7em;
 			background: lightgray;
+			margin: 0 0.5em 0 0.5em;
 		}
 		
 		.bull-error {
@@ -71,6 +72,8 @@
 			height: 0.7em;
 			border-radius: 0.7em;
 			background: crimson;
+			box-shadow: 0 0 2px crimson;
+			margin: 0 0.5em 0 0.5em;
 		}
 		
 		.bull-ok {
@@ -81,6 +84,8 @@
 			height: 0.7em;
 			border-radius: 0.7em;
 			background: seagreen;
+			box-shadow: 0 0 2px seagreen;
+			margin: 0 0.5em 0 0.5em;
 		}
 		
 		.bull-warning {
@@ -90,7 +95,9 @@
 			width: 0.7em;
 			height: 0.7em;
 			border-radius: 0.7em;
-			background: orange;
+			background: gold;
+			box-shadow: 0 0 2px gold;
+			margin: 0 0.5em 0 0.5em;
 		}
 		
 		.info {
@@ -159,12 +166,18 @@
 	}
 
 	///*********************** TEST ZONE **********
+
 /*
 	new Demoduler({name:'test-file.js', contents:`
-
+	
+export {aaa};
+// convert the colors to srgb before export
+// colors are always written as floats
+const arr = new Float32Array( attr.count * 3 );
 
 	`} );
 */
+
 </script>
 	
 </body>

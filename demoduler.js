@@ -102,7 +102,8 @@ class Demoduler
 		var result;
 //		var regex = /'[^']*'|"[^"]*"|[^\s\,\;\(\)\.\[\:]+|\,|\;|\(|\)|\.|\[|\:/g;
 //		var regex = /\/\*|\*\/|'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:\{\}]+|\,|\;|\(|\)|\.|\[|\:|\{|\}/g;
-		var regex = /\/\*[^]*?\*+\/|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:\{\}]+|\,|\;|\(|\)|\.|\[|\:|\{|\}/g;
+//		var regex = /\/\*[^]*?\*+\/|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:\{\}]+|\,|\;|\(|\)|\.|\[|\:|\{|\}/g;
+		var regex = /\/\/[^\n]*\n|\/\*[^]*?\*+\/|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|"(?:[^"\\]|\\.)*"|[^\s\,\;\(\)\.\[\:\{\}]+|\,|\;|\(|\)|\.|\[|\:|\{|\}/g;
 		
 		while( result = regex.exec(this.js) )
 		{
@@ -284,6 +285,28 @@ class Demoduler
 	}
 
 
+	// export const symbol ...
+	getExport_Const( )
+	{
+		if( this.tokens[this.idx+1].string != 'const' ) return null;
+		
+		this.exportedSymbols.push( this.tokens[this.idx+2].string );
+
+		return this.tokens[this.idx].end;
+	}
+
+
+	// export let symbol ...
+	getExport_Let( )
+	{
+		if( this.tokens[this.idx+1].string != 'let' ) return null;
+		
+		this.exportedSymbols.push( this.tokens[this.idx+2].string );
+
+		return this.tokens[this.idx].end;
+	}
+
+
 	// export default symbol;
 	getExport_Default( )
 	{
@@ -291,7 +314,7 @@ class Demoduler
 		
 		this.exportedSymbols.push( this.tokens[this.idx+2].string );
 
-		this.consume( ['default', '*', ';'] );
+		this.consume( ['export', 'default', '*', ';'] );
 
 		return this.tokens[this.idx].end;
 	}
@@ -299,6 +322,8 @@ class Demoduler
 
 	getExports( )
 	{
+		var result = true;
+		
 		// extract exported symbols
 		for( this.idx=0; this.idx<this.tokens.length; this.idx++ )
 		{
@@ -319,9 +344,26 @@ class Demoduler
 			if( exportEnd == null )
 			exportEnd = this.getExport_Function( );
 
+			// export const symbol
+			if( exportEnd == null )
+			exportEnd = this.getExport_Const( );
+
+			// export let symbol
+			if( exportEnd == null )
+			exportEnd = this.getExport_Let( );
+
 			// export default symbol;
 			if( exportEnd == null )
 			exportEnd = this.getExport_Default( );
+
+			if( exportEnd == null )
+			{
+				var dump = [];
+				for( var j=-20; j<20; j++ ) dump.push( this.tokens[this.idx+j].string );
+				console.error( `unsupported export ${this.file.name}\n${dump.join('_')}` );
+				document.getElementById( `info-${this.id}` ).innerHTML = 'unsupported export <span class="bull-error">&nbsp;</span>';
+				result = false;
+			}
 
 			if( exportEnd != null )
 			{
@@ -331,7 +373,6 @@ class Demoduler
 					end: exportEnd
 				} );
 			}
-		
 		}
 
 		if( DEBUG_SHOW_EXPORTS )
@@ -344,6 +385,8 @@ class Demoduler
 			console.groupEnd( );
 			console.groupEnd( );
 		}
+		
+		return result;
 	}
 	
 	
@@ -473,12 +516,21 @@ class Demoduler
 	process( )
 	{
 //		console.log( `processing file ${this.file.name}` );
-
 		this.hashIn = cyrb53( this.js );
 
 		if( !this.valideText( ) )
 		{
 			document.getElementById( `info-${this.id}` ).innerHTML = 'not a text file <span class="bull-ignore">&nbsp;</span>';
+			return;
+		}
+
+		var recs = hashes.filter( rec => rec.name==this.file.name && rec.hashIn==this.hashIn && rec.warning==NOT_THREE_JS);
+		if( recs.length > 0 )
+		{
+			var prefix = recs[0].prefix || '',
+				suffix = recs[0].warning || ' <span class="bull-ignore">&nbsp;</span>';
+			
+			document.getElementById( `info-${this.id}` ).innerHTML = prefix + recs[0].signature + suffix;
 			return;
 		}
 			
@@ -493,7 +545,7 @@ class Demoduler
 		}
 
 		this.getImports( );
-		this.getExports( );
+		if( !this.getExports( ) ) return;
 		this.demodulize( );
 
 		if( this.importSections.length+this.exportSections.length == 0 )
@@ -528,8 +580,8 @@ class Demoduler
 		
 		if( recs.length == 0 )
 		{
-			console.log( `unknown file name ${this.file.name}` );
-			document.getElementById( `info-${this.id}` ).innerHTML = 'unknown <span class="bull-error">&nbsp;</span>';
+			console.error( `new file name ${this.file.name}` );
+			document.getElementById( `info-${this.id}` ).innerHTML = 'new file name <span class="bull-error">&nbsp;</span>';
 			return;
 		}
 
@@ -538,8 +590,8 @@ class Demoduler
 
 		if( matches.length == 0 )
 		{
-			console.log( `unknown contents of ${this.file.name}` );
-			document.getElementById( `info-${this.id}` ).innerHTML = 'unknown file <span class="bull-warning">&nbsp;</span>';
+			console.warn( `changed contents of ${this.file.name}` );
+			document.getElementById( `info-${this.id}` ).innerHTML = 'changed contents <span class="bull-warning">&nbsp;</span>';
 			return;
 		}
 		
@@ -550,15 +602,15 @@ class Demoduler
 		if( finals.length == 0 )
 		{
 			document.getElementById( `info-${this.id}` ).innerHTML = 'bad signature <span class="bull-error">&nbsp;</span>';
-			console.error( `mismatched output hash code of ${this.file.name}` );
+			console.error( `bad signature ${this.file.name}` );
 //			return;
 		}
 		else
 		{
-			if( finals[0].warning )
-				document.getElementById( `info-${this.id}` ).innerHTML = finals[0].signature + finals[0].warning;
-			else
-				document.getElementById( `info-${this.id}` ).innerHTML = finals[0].signature + ' <span class="bull-ok">&nbsp;</span>';
+			var prefix = finals[0].prefix || '',
+				suffix = finals[0].warning || ' <span class="bull-ok">&nbsp;</span>';
+			
+			document.getElementById( `info-${this.id}` ).innerHTML = prefix + finals[0].signature + suffix;
 		}
 		
 //		console.log( `matching hash code of ${this.file.name}` );
