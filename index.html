@@ -148,6 +148,17 @@
 			font-weight: light;
 		}
 		
+		.subinfo {
+			margin-top: 20%;
+			padding: 10% 0 10% 0;
+			text-align: center;
+			font-size: 100%;
+			color: gray;
+			background: white;
+			
+			/* https://kovart.github.io/dashed-border-generator/ */
+			background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='1' stroke-dasharray='12%2c6' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+		}
 	</style>
 	<script src="demoduler.js"></script>
 	<script src="hashes.js"></script>
@@ -157,9 +168,19 @@
 <body>
 	<div id="drop-zone" ondrop="drop(event)" ondragover="dragOver(event)">
 		<h1>Demoduler</h1>
-		<h3>Drag-and-drop here any <code>*.js</code> file from Three.js's folder <code>examples\jsm</code></h3>
+		<h3>
+			Converts Three.js modules into non-modules (<code>jsm</code> &rarr; <code>js</code>)<br>
+		</h3>
 
-		<div id="log"></div>
+		<div id="log">
+			<div id="subinfo" class="subinfo">
+					Drag-and-drop here a Three.js file from folder <code>examples/jsm</code>.
+					<br><br>
+					When/if the file is converted, click on it to download it.
+					<br><br>
+					[ <a href="https://github.com/boytchev/demoduler" style="text-decoration: none;">More info</a> ]
+			</div>
+		</div>
 		
 		<div id="stats">
 			<span class="bull-ok in-stats"></span> <span id="stats-ok"></span> |

@@ -1,165 +1,69 @@
 # THREE.JS DEMODULER
 
-The [**Demoduler**](https://boytchev.github.io/demoduler/) is a simple tool that
-converts Three.js JavaScript modules from the `examples\jsm` folder into ordinary
-old-fashioned JavaScript scripts from the `examples\js` folder. Three.js r147
-will be the last release that has both JSM and JS examples. In some very specific
-circumstances Three.js users may still need JS files and Demoduler might be
-able to create them. Hopefully.
+**Demoduler** is an online tool that converts Three.js JavaScript modules from
+folder `examples\jsm` into ordinary old-fashioned JavaScript files for the now
+extinct folder `examples\js`. Three.js r147 is the last release that has
+both JSM and JS examples.
+
+In some cases seasonal Three.js users may still need JS files. **Demoduler**
+might be able to recreate them.
 
 
-### Deoduled files
+## How to convert 
 
-This list contains the files from r147 that are demoduled correctly. As it is a
-work in progress, more files are being added.
+Conversion in done in three steps:
 
-- **`examples\jsm\animation`**:<br>
-	AnimationClipCreator.js, CCDIKSolver.js, MMDAnimationHelper.js, MMDPhysics.js
-- **`examples\jsm\cameras`**:<br>
-	CinematicCamera.js
-- **`examples\jsm\controls`**:<br>
-	ArcballControls.js, DragControls.js, FirstPersonControls.js, FlyControls.js,
-	OrbitControls.js, PointerLockControls.js, TrackballControls.js, TransformControls.js
-- **`examples\jsm\controls`**:<br>
-	CSM.js, CSMFrustum.js, CSMHelper.js, CSMShader.js
-- **`examples\jsm\curves`**:<br>
-	NURBSCurve.js, CurveExtras.js, NURBSSurface.js, NURBSUtils.js
-- **`examples\jsm\effects`**:<br>
-	AnaglyphEffect.js, AsciiEffect.js, OutlineEffect.js, ParallaxBarrierEffect.js,
-	PeppersGhostEffect.js, StereoEffect.js
-- **`examples\jsm\environments`**:<br>
-	DebugEnvironment.js, RoomEnvironment.js
-- **`examples\jsm\exporters`**:<br>
-	ColladaExporter.js, DRACOExporter.js, EXRExporter.js, GLTFExporter.js, KTX2Exporter.js
-	MMDExporter.js, OBJExporter.js, PLYExporter.js, STLExporter.js, USDZExporter.js
-- **`examples\jsm\geometries`**:<br>
-	BoxLineGeometry.js, ConvexGeometry.js, DecalGeometry.js, LightningStrike.js ,
-	ParametricGeometries.js, ParametricGeometry.js, RoundedBoxGeometry.js,
-	TeapotGeometry.js, TextGeometry.js
-- **`examples\jsm\helpers`**:<br>
-	LightProbeHelper.js, OctreeHelper.js, PositionalAudioHelper.js, RectAreaLightHelper.js,
-	VertexNormalsHelper.js, VertexTangentsHelper.js, ViewHelper.js
-- **`examples\jsm\interactive`**:<br>
-	HTMLMesh.js, InteractiveGroup.js, SelectionBox.js, SelectionHelper.js
-- **`examples\jsm\lights`**:<br>
-	LightProbeGenerator.js, RectAreaLightUniformsLib.js
-- **`examples\jsm\lines`**:<br>
-	Line2.js, LineGeometry.js, LineMaterial.js, LineSegments2.js, LineSegmentsGeometry.js,
-	Wireframe.js, WireframeGeometry2.js
-- **`examples\jsm\loaders`**:<br>
-	3DMLoader.js, 3MFLoader.js, AMFLoader.js, BasisTextureLoader.js, BVHLoader.js,
-	ColladaLoader.js, DDSLoader.js, DRACOLoader.js, EXRLoader.js, FBXLoader.js,
-	FontLoader.js, GCodeLoader.js, GLTFLoader.js, HDRCubeTextureLoader.js, IFCLoader.js,
-	KMZLoader.js, KTX2Loader.js, KTXLoader.js, LDrawLoader.js, LogLuvLoader.js,
-	LottieLoader.js, LUT3dlLoader.js, LUTCubeLoader.js, LWOLoader.js, MaterialXLoader.js,
-	MD2Loader.js, MDDLoader.js, MMDLoader.js, MTLLoader.js, NRRDLoader.js, OBJLoader.js,
-	PCDLoader.js, PDBLoader.js, PLYLoader.js, PRWMLoader.js, PVRLoader.js, RGBELoader.js,
-	RGBMLoader.js, STLLoader.js, SVGLoader.js, TDSLoader.js, TGALoader.js, TIFFLoader.js,
-	TiltLoader.js, TTFLoader.js, USDZLoader.js, VOXLoader.js, VRMLLoader.js,
-	VTKLoader.js, XYZLoader.js
-- **`examples\jsm\loaders\lwo`**:<br>
-	IFFParser.js, LWO2Parser.js, LWO3Parser.js
-- **`examples\jsm\materials`**:<br>
-	MeshGouraudMaterial.js
-- **`examples\jsm\math`**:<br>
-	Capsule.js, ColorConverter.js, ConvexHull.js, ImprovedNoise.js, Lut.js,
-	MeshSurfaceSampler.js, OBB.js, Octree.js, SimplexNoise.js
-- **`examples\jsm\misc`**:<br>
-	ConvexObjectBreaker.js, GPUComputationRenderer.js, Gyroscope.js, MD2Character.js,
-	MD2CharacterComplex.js, MorphAnimMesh.js, MorphBlendMesh.js, ProgressiveLightMap.js,
-	RollerCoaster.js, TubePainter.js, Volume.js, VolumeSlice.js
-- **`examples\jsm\modifiers`**:<br>
-	CurveModifier.js, EdgeSplitModifier.js, SimplifyModifier.js, TessellateModifier.js
-- **`examples\jsm\objects`**:<br>
-	GroundProjectedEnv.js, Lensflare.js, LightningStorm.js, MarchingCubes.js, 
-	Reflector.js, ReflectorForSSRPass.js, Refractor.js, ShadowMesh.js, Sky.js,
-	Water.js, Water2.js
-- **`examples\jsm\physics`**:<br>
-	AmmoPhysics.js, OimoPhysics.js
-- **`examples\jsm\postprocessing`**:<br>
-	AdaptiveToneMappingPass.js, AfterimagePass.js, BloomPass.js, BokehPass.js, ClearPass.js,
-	CubeTexturePass.js, DotScreenPass.js, EffectComposer.js, FilmPass.js, GlitchPass.js,
-	HalftonePass.js, LUTPass.js, MaskPass.js, OutlinePass.js, Pass.js, RenderPass.js,
-	RenderPixelatedPass.js, SAOPass.js, SavePass.js, ShaderPass.js, SMAAPass.js,
-	SSAARenderPass.js, SSAOPass.js, SSRPass.js, TAARenderPass.js, TexturePass.js,
-	UnrealBloomPass.js
-- **`examples\jsm\renderers`**:<br>
-	CSS2DRenderer.js, CSS3DRenderer.js, Projector.js, SVGRenderer.js
-- **`examples\jsm\shaders`**:<br>
-	ACESFilmicToneMappingShader.js, AfterimageShader.js, BasicShader.js, BleachBypassShader.js, BlendShader.js, BokehShader.js, BokehShader2.js, BrightnessContrastShader.js, ColorCorrectionShader.js, ColorifyShader.js, ConvolutionShader.js, CopyShader.js, DepthLimitedBlurShader.js, DigitalGlitch.js, DOFMipMapShader.js, DotScreenShader.js, FilmShader.js, FocusShader.js, FreiChenShader.js, FXAAShader.js, ammaCorrectionShader.js, GodRaysShader.js, GHalftoneShader.js, HorizontalBlurShader.js, HorizontalTiltShiftShader.js, HueSaturationShader.js, KaleidoShader.js, LuminosityHighPassShader.js, LuminosityShader.js, MirrorShader.js, MMDToonShader.js, NormalMapShader.js, RGBShiftShader.js, SAOShader.js, SepiaShader.js, SMAAShader.js, SobelOperatorShader.js, SSAOShader.js, SSRShader.js, SubsurfaceScatteringShader.js, TechnicolorShader.js, ToneMapShader.js, ToonShader.js, TriangleBlurShader.js, UnpackDepthRGBAShader.js, VelocityShader.js, VerticalBlurShader.js, VerticalTiltShiftShader.js, VignetteShader.js, VolumeShader.js, WaterRefractionShader.js
-- **`examples\jsm\textures`**:<br>
-	FlakesTexture.js
-- **`examples\jsm\utils`**:<br>
-	BufferGeometryUtils.js, CameraUtils.js, GeometryCompressionUtils.js, GeometryUtils.js, GPUStatsPanel.js, LDrawUtils.js, PackedPhongMaterial.js, SceneUtils.js, ShadowMapViewer.js, SkeletonUtils.js, UVsDebug.js, WorkerPool.js
+1. Open **Demoduler** from [**https://boytchev.github.io/demoduler/**](https://boytchev.github.io/demoduler/)
+2. Drag-and-drop JavaScript files from Three.js's folder `examples\jsm`
+3. When the files are converted, click on their names to download them.
+
+That's all. 
+
+The status of conversion of each file is indicated with a color dot:
+
+| Status | Meaning | Description |
+| --- | --- | --- |
+| Green | Success | Most likely the conversion is successful. The file has been visually inspected in the past, and at that time it appeared to be consistent with the non-module version of the same file from release r147. |
+| Yellow | Warning | Hopefully the conversion is successful. There is no corresponding file from release r147, so the conversion is done by applying conversion patterns from other files &ndash; i.e. the so called *blind conversion*. |
+| Red | Error | The file is not converted, because it contains code patterns that have never been used in release r147. |
+| Gray | Ignore | The file is ignored and not converted, because it is not a JavaScript file, it is no a part from Three.js native files, or dowd not follow the default THree.js style for modules. |
+
+The indicator contains a short text, describing the result. If the text is `r???`, then the file is recognized as belonging to this specific Three.js release. If the text is `r???~r???`, then the file did not change in this interval of releases.
+
+
+## Supported Three.js releases
+
+Currently **Demoduler** is aware of example files from releases r147 and r148.
+The following tables lists the number of files and their conversion status.
+
+| Conversion | r147  | r148  |
+| ---------- | ----: | ----: |
+| Success    | 254   | 253   |
+| Warning    | 211   | 221   |
+| Error      | 2     | 2     |
+| Ignored    | 29    | 43    |
+| **TOTAL**  |**496**|**519**|
+
+The initial plan are to support future releases either till the end of 2023, or
+until the difference from r147 becames too big.
+
+
+
+## Disclaimers, restrictions and usage
+
+You may use Demoduler for free. Treat the generated files the way you treat all
+other Three.js source files.
+
+That conversion is done by plain text transformation without any sophisticated
+source code analysis. There is no guarantee that the converted files work well.
+
+We would be glad for any constructive or informative feedback, especially whether
+the converted files worked in your situation.
 
 
 
 
 
-### Metodology
 
-The development and usage of Demoduler is in four phases. Currently the first
-two phases run in parrallel.
-
-- **Learning phase**:<br>Files from `examples\jsm` and `examples\js` are carefully
-studied in order to extract the simplest transformation from `jsm` to `js`. This
-relies on the consistency of Three.js's source code and hopes it will not change
-drastically in the future.
-- **Testing phase**: Files from `examples\jsm` are converted, minimized, reformatted
-and compared against minimized-and-reformatted version from `examples\js`. They
-are carefully compared to verify transformation correctness: files are either
-identical, or the differences are acceptible (e.g. modules often have extra
-parentheses).
-- **Using phase**: Demoduler is used to convert modules from future Three.js
-releases.
-- **Dying phase**: R.I.P.
-
-
-### Notable restrictions
-
-Conversion is done by plain text transformation without any sophisticated source
-code parsing and analysis. Conversion is focused only on Three.js modules starting
-from the ones that we used most often. Conversion does not process cross-module
-dependencies (imports and exports). Depending on our spare time, at some point
-in the future we might improve Demoduler into a general tool for demoduling.
-
-
-#### `import` statements
-
-Thankfully, Three.js r147 uses only a limited set of import statments, instead
-of the full [zoo of imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
-Demoduler processes only this limited set:
-
-```js
-import * as name1 from "module-name";
-import name1 from "module-name";
-import { name1, name2, ... } from "module-name";
-```
-
-#### `export` statements
-
-Three.js r147 uses quite a lot types of [export patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export):
-Currently Demoduler processes only one of them:
-```js
-export { name1, name2, ... };
-export class name1 ...
-export function name1 ...
-```
-
-<!--
-```js
-export { name1, name2, ... };
-export class name { ...
-export class name1 extends name2 { ...
-export function name ( ...
-export { name as default };
-export let name = ...
-export const name = ...
-export default name;
-export * from 'module-name';
-export { name } from 'module-name';
-export { default as name } from 'module-name';
-```
--->
 
 

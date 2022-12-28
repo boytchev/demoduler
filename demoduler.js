@@ -19,6 +19,8 @@ class Demoduler
 	
 	constructor ( file )
 	{
+		document.getElementById( 'subinfo' ).style.display = 'none';
+
 		this.idx = -1;
 		this.tokens = [];
 		this.importedSymbols = [];
