@@ -34,9 +34,13 @@ class Demoduler
 		this.file = file;
 
 		document.getElementById( 'log' ).insertAdjacentHTML( 'beforeend', `
+			<div>
+			<span class="file-number">${Demoduler.id}.</span>
 			<div class="file" id="file-${this.id}">
+				
 				<span class="info" id="info-${this.id}"></span>
 				${file.name}
+			</div>
 			</div>`
 		);
 		
@@ -60,6 +64,7 @@ class Demoduler
 		{
 			this.js = this.file.contents;
 			this.process( );
+			this.showStats( );
 		}
 		else
 		{
@@ -76,9 +81,27 @@ class Demoduler
 	{
 		this.js = event.target.result;
 		this.process( );
+		this.showStats( );
 	}
 
 
+	showStats( )
+	{
+		// -1 because one copy is used in the stats
+		var ok = document.getElementsByClassName('bull-ok').length - 1,
+			ignore = document.getElementsByClassName('bull-ignore').length - 1,
+			warning = document.getElementsByClassName('bull-warning').length - 1,
+			error = document.getElementsByClassName('bull-error').length - 1,
+			total = ok + warning + error + ignore;
+
+		if( total > 0 ) document.getElementById( 'stats' ).style.display = 'block';
+		
+		document.getElementById( 'stats-ok' ).innerHTML = ok ? `${ok} (${Math.round(ok/total*100)}%)` : 'none';
+		document.getElementById( 'stats-warning' ).innerHTML = warning ? `${warning} (${Math.round(warning/total*100)}%)` : 'none';
+		document.getElementById( 'stats-error' ).innerHTML = error ? `${error} (${Math.round(error/total*100)}%)` : 'none';
+		document.getElementById( 'stats-ignore' ).innerHTML = ignore ? `${ignore} (${Math.round(ignore/total*100)}%)` : 'none';
+	}
+	
 	// validate a string wether it contains 'expected' characters
 	valideText( )
 	{
@@ -568,6 +591,7 @@ class Demoduler
 		}
 		
 		var that = this;
+
 //		document.getElementById( `info-${this.id}` ).innerHTML = `click to download`;
 		document.getElementById( `file-${this.id}` ).onclick = function(){that.download()};
 	}

@@ -36,15 +36,17 @@
 		
 		#log {
 			width: 40%;
-			min-width: 30em;
 			margin: 0.5em auto auto auto;
+			min-width: 30em;
 		}
 		
 		.file {
+			display: inline-block;
 			text-align: left;
 			padding: 0.25em;
 			margin: 0.25em;
 			background: white;
+			width: 25em;
 		}
 		
 		.file:hover {
@@ -100,12 +102,26 @@
 			margin: 0 0.5em 0 0.5em;
 		}
 		
+		.in-stats {
+			top: 0;
+		}
+		
 		.info {
 			float: right;
 			text-align: right;
-			font-weight: normal;
+			font-weight: light;
 			font-size: 90%;
 			color: gray;
+		}
+		
+		.file-number {
+			display: inline-block;
+			width: 3em;
+			text-align: right;
+			font-weight: light;
+			font-size: 90%;
+			color: gray;
+			background: whitesmoke;
 		}
 		
 		code {
@@ -121,6 +137,17 @@
 			font-weight: normal;
 		}
 		
+		#stats {
+			display: none;
+			border-top: dotted lightgray 1px;
+			margin-top: 1em;
+			margin-bottom: 1em;
+			padding: 0.5em;
+			font-size: 80%;
+			color: gray;
+			font-weight: light;
+		}
+		
 	</style>
 	<script src="demoduler.js"></script>
 	<script src="hashes.js"></script>
@@ -132,7 +159,13 @@
 		<h1>Demoduler</h1>
 		<h3>Drag-and-drop here any <code>*.js</code> file from Three.js's folder <code>examples\jsm</code></h3>
 
-		<div id="log">
+		<div id="log"></div>
+		
+		<div id="stats">
+			<span class="bull-ok in-stats"></span> <span id="stats-ok"></span> |
+			<span class="bull-warning in-stats"></span> <span id="stats-warning"></span> |
+			<span class="bull-error in-stats"></span> <span id="stats-error"></span> |
+			<span class="bull-ignore in-stats"></span> <span id="stats-ignore"></span> 
 		</div>
 	</div>
 
