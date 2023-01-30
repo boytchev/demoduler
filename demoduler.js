@@ -277,6 +277,7 @@ class Demoduler
 	getExport_SymbolList( )
 	{
 		if( this.tokens[this.idx+1].string != '{' ) return null;
+		if( this.tokens[this.idx+2].string == 'default' ) return null;
 		
 		for( this.idx=this.idx+2; this.idx<this.tokens.length && this.tokens[this.idx].string!='}'; this.idx++ )
 			if( this.tokens[this.idx].string != ',' )
@@ -384,8 +385,8 @@ class Demoduler
 			if( exportEnd == null )
 			{
 				var dump = [];
-				for( var j=-20; j<20; j++ ) dump.push( this.tokens[this.idx+j].string );
-				console.error( `unsupported export ${this.file.name}\n${dump.join('_')}` );
+				for( var j=-20; j<20; j++ ) dump.push( (j==0)?' >>>> ':''+this.tokens[this.idx+j].string );
+				console.error( `unsupported export ${this.file.name} hashIn:${this.hashIn}\n${dump.join('_')}` );
 				document.getElementById( `info-${this.id}` ).innerHTML = 'unsupported export <span class="bull-error">&nbsp;</span>';
 				result = false;
 			}
@@ -540,7 +541,6 @@ class Demoduler
 	// process a JS file
 	process( )
 	{
-//		console.log( `processing file ${this.file.name}` );
 		this.hashIn = cyrb53( this.js );
 
 		if( !this.valideText( ) )
@@ -555,6 +555,18 @@ class Demoduler
 			var prefix = recs[0].prefix || '',
 				suffix = recs[0].warning || ' <span class="bull-ignore">&nbsp;</span>';
 			
+			console.log( `processing file ${this.file.name} hashin:${this.hashIn}` );
+			document.getElementById( `info-${this.id}` ).innerHTML = prefix + recs[0].signature + suffix;
+			return;
+		}
+			
+		var recs = hashes.filter( rec => rec.name==this.file.name && rec.hashIn==this.hashIn && rec.warning==CANNOT_CONVERT);
+		if( recs.length > 0 )
+		{
+			var prefix = recs[0].prefix || '',
+				suffix = recs[0].warning || ' <span class="bull-error">&nbsp;</span>';
+			
+			console.log( `processing file ${this.file.name} hashin:${this.hashIn}` );
 			document.getElementById( `info-${this.id}` ).innerHTML = prefix + recs[0].signature + suffix;
 			return;
 		}

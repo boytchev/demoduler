@@ -33,16 +33,16 @@ The indicator contains a short text, describing the result. If the text is `r???
 
 ## Supported Three.js releases
 
-Currently **Demoduler** is aware of example files from releases r147 and r148.
+Currently **Demoduler** is aware of example files from releases r147 to r149.
 The following table lists the number of files and their conversion status.
 
-| Conversion | r147  | r148  |
-| ---------- | ----: | ----: |
-| Success    | 254   | 253   |
-| Warning    | 211   | 221   |
-| Error      | 2     | 2     |
-| Ignored    | 29    | 43    |
-| **TOTAL**  |**496**|**519**|
+| Conversion | r147  | r148  | r149  |
+| ---------- | ----: | ----: | ----: |
+| Success    | 254   | 253   | 252   |
+| Warning    | 211   | 221   | 231   |
+| Error      | 2     | 2     | 2     |
+| Ignored    | 29    | 34    | 34    |
+| **TOTAL**  |**496**|**510**|**519**|
 
 The initial plan is to support future releases either till the end of 2023, or
 until the difference from r147 becomes too big.
