@@ -7,6 +7,11 @@ const ESTIMATED = ' [estimated] ';
 var hashes = [
 	
 
+// build\*.js
+
+	{ name: 'three.module.js',	hashIn: 3418431085877075, hashOut: 572481020836476, signature: 'r149' },
+
+
 // jsm\animation\*.js
 
 	{ name: 'AnimationClipCreator.js',	hashIn: 1226843274980437, hashOut: 7116389223769906, signature: 'r147~r149' },
