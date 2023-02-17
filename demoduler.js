@@ -471,6 +471,29 @@ class Demoduler
 	// transform js->jsm
 	demodulize( )
 	{
+		// in debug mode modify the three.module.js by replacing all GL constants
+		// with their names. this is done only to make the manual check easier,
+		// such generated files are not executable, because it is not possible to
+		// identify whether to use "gl" or "_gl".
+		
+		var urlParams = new URLSearchParams( window.location.search );
+		if( this.isThreeJS() && urlParams.has('debug') )
+		{
+			var cvs = document.createElement( 'canvas' ),
+				ctx = cvs.getContext( 'webgl2' );
+
+			for( var key in ctx ) if( Number.isInteger(ctx[key]) )
+			{
+				if( ctx[key] < 10 ) continue;
+				
+				//console.log(`${key} = ${ctx[key]}`);
+				
+				INCLUDE_TOKENS.push( ctx[key]+'' );
+				INCLUDE_TOKENS_TO.push( 'gl.'+key );
+			}	
+			
+		}
+		
 		// remove import and export sections, add namespaces to symbol
 		// do this backwards, because these modifications destroy known positions of tokens
 		var actions = [];
@@ -700,7 +723,7 @@ class Demoduler
 		
 		var link = document.createElement('a');
 			link.href = URL.createObjectURL( blob );
-			link.download = this.file.name;
+			link.download = this.isThreeJS() ? 'three.js' : this.file.name;
 			link.click();
 	}
 }
