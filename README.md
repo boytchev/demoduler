@@ -5,6 +5,8 @@ folder `examples\jsm` into ordinary old-fashioned JavaScript files for the now
 extinct folder `examples\js`. Three.js r147 is the last release that has
 both JSM and JS examples.
 
+It can also convert `build\three.module.js` into `three.js`.
+
 In some cases seasonal Three.js users may still need JS files. **Demoduler**
 might be able to recreate them.
 
@@ -54,7 +56,7 @@ until the difference from r147 becomes too big.
 You may use Demoduler for free. Treat the generated files the way you treat all
 other Three.js source files.
 
-That conversion is done by plain text transformation without any sophisticated
+The conversion is done by plain text transformation without any sophisticated
 source code analysis. There is no guarantee that the converted files work well.
 
 We would be glad for any constructive or informative feedback, especially whether
