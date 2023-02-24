@@ -398,7 +398,9 @@ class Demoduler
 			if( exportEnd == null )
 			{
 				var dump = [];
-				for( var j=-20; j<20; j++ ) dump.push( (j==0)?' >>>> ':''+this.tokens[this.idx+j].string );
+				for( var j=-20; j<20; j++ )
+					if( (this.idx+j>=0) && (this.idx+j<this.tokens.length) )
+						dump.push( (j==0)?' >>>> ':''+this.tokens[this.idx+j].string );
 				console.error( `unsupported export ${this.file.name} hashIn:${this.hashIn}\n${dump.join('_')}` );
 				document.getElementById( `info-${this.id}` ).innerHTML = 'unsupported export <span class="bull-error">&nbsp;</span>';
 				result = false;
