@@ -11,10 +11,15 @@ var hashes = [
 
 	{ name: 'three.module.js',	hashIn: 2340088931094189, hashOut: 7401641734355085, signature: 'r147' }, // debug mode
 	{ name: 'three.module.js',	hashIn: 2340088931094189, hashOut: 4354204085491623, signature: 'r147' }, // normal mode
+	
 	{ name: 'three.module.js',	hashIn: 8206269217664674, hashOut: 2069818104690616, signature: 'r148' }, // debug mode
 	{ name: 'three.module.js',	hashIn: 8206269217664674, hashOut: 7261310370223862, signature: 'r148' }, // normal mode
+	
 	{ name: 'three.module.js',	hashIn: 3418431085877075, hashOut: 4355588814216040, signature: 'r149' }, // debug mode
 	{ name: 'three.module.js',	hashIn: 3418431085877075, hashOut: 3727258555033782, signature: 'r149' }, // normal mode
+	
+	{ name: 'three.module.js',	hashIn: 4073485943750582, hashOut: 3060098335498890, signature: 'r150' }, // debug mode
+	{ name: 'three.module.js',	hashIn: 4073485943750582, hashOut: 1931680927955748, signature: 'r150' }, // normal mode
 
 
 // jsm\animation\*.js
