@@ -44,7 +44,7 @@ The following table lists the number of files and their conversion status.
 | Warning    | 211   | 221   | 231   | 229   | 188   | 199   |
 | Error      | 2     | 2     | 2     | 2     | 3     | 2     |
 | Ignored    | 29    | 34    | 34    | 34    | 28    | 26    |
-| **TOTAL**  |**496**|**510**|**519**|**516**|**475**|**279**|
+| **TOTAL**  |**496**|**510**|**519**|**516**|**475**|**479**|
 
 The initial plan is to support future releases either till the end of 2023, or
 until the difference from r147 becomes too big.
