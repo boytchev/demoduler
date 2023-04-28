@@ -657,8 +657,8 @@ class Demoduler
 
 		this.hashOut = cyrb53( this.js );
 
-		this.checkHash( );
-		console.log( `\t{ name: '${this.file.name}',\thashIn: ${this.hashIn}, hashOut: ${this.hashOut}, signature: '' },` );
+		if( this.checkHash( ) )
+			console.log( `${this.file.name}: [\n\t\t\t${this.hashIn}, ${this.hashOut} , ${RLAST},\n\t\t],` );
 
 		if( DEBUG_SHOW_RESULT )
 		{
@@ -683,7 +683,7 @@ class Demoduler
 		{
 			console.error( `new file name ${this.file.name}` );
 			document.getElementById( `info-${this.id}` ).innerHTML = 'new file name <span class="bull-error">&nbsp;</span>';
-			return;
+			return true;
 		}
 
 		// get all records with this hash-in code
@@ -693,10 +693,12 @@ class Demoduler
 		{
 			console.warn( `changed contents of ${this.file.name}` );
 			document.getElementById( `info-${this.id}` ).innerHTML = 'changed contents <span class="bull-warning">&nbsp;</span>';
-			return;
+			return true;
 		}
 		
 
+		var result;
+		
 		// get all records with this hash-out code
 		var finals = matches.filter( rec => rec.hashOut==this.hashOut );
 
@@ -705,6 +707,7 @@ class Demoduler
 			document.getElementById( `info-${this.id}` ).innerHTML = 'bad signature <span class="bull-error">&nbsp;</span>';
 			console.error( `bad signature ${this.file.name}` );
 //			return;
+			result = true;
 		}
 		else
 		{
@@ -712,10 +715,11 @@ class Demoduler
 				suffix = finals[0].warning || ' <span class="bull-ok">&nbsp;</span>';
 			
 			document.getElementById( `info-${this.id}` ).innerHTML = prefix + finals[0].signature + suffix;
+			result = false;
 		}
 		
 //		console.log( `matching hash code of ${this.file.name}` );
-		return;
+		return result;
 	}
 	
 	
