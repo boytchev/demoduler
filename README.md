@@ -35,16 +35,16 @@ The indicator contains a short text, describing the result. If the text is `r???
 
 ## Supported Three.js releases
 
-Currently **Demoduler** is aware of example files from releases r147 to r154.
+Currently **Demoduler** is aware of example files from releases r147 to r155.
 The following table lists the number of files and their conversion status.
 
-| Conversion | r147  | r148  | r149  | r150  | r151  | r152  | r153  | r154  |
-| ---------- | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: |
-| Success    | 254   | 253   | 252   | 251   | 256   | 252   | 248   | 250   |
-| Warning    | 211   | 221   | 231   | 229   | 188   | 199   | 216   | 223   |
-| Error      | 2     | 2     | 2     | 2     | 3     | 2     | 3     | 3     |
-| Ignored    | 29    | 34    | 34    | 34    | 28    | 26    | 26    | 26    |
-| **TOTAL**  |**496**|**510**|**519**|**516**|**475**|**479**|**493**|**502**|
+| Conversion | r147  | r148  | r149  | r150  | r151  | r152  | r153  | r154  | r155  |
+| ---------- | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: |
+| Success    | 254   | 253   | 252   | 251   | 256   | 252   | 248   | 250   | 249   |
+| Warning    | 211   | 221   | 231   | 229   | 188   | 199   | 216   | 223   | 224   |
+| Error      | 2     | 2     | 2     | 2     | 3     | 2     | 3     | 3     | 3     |
+| Ignored    | 29    | 34    | 34    | 34    | 28    | 26    | 26    | 26    | 26    |
+| **TOTAL**  |**496**|**510**|**519**|**516**|**475**|**479**|**493**|**502**|**502**|
 
 The initial plan is to support future releases either till the end of 2023, or
 until the difference from r147 becomes too big.
