@@ -49,7 +49,7 @@ The following table lists the number of files and their conversion status.
 The initial plan was to support future releases either till the end of 2023, or
 until the difference from r147 becomes too big. In October, 2023, at release r158,
 the number of sucesses drops below the combined number of warnings and errors.
-So, this is the end of updating the Demoduler. However, iIt will remain operational,
+So, this is the end of updating the Demoduler. However, it will remain operational,
 as some files from future release might still be well demoduled.
 
 
@@ -62,8 +62,6 @@ other Three.js source files.
 The conversion is done by plain text transformation without any sophisticated
 source code analysis. There is no guarantee that the converted files work well.
 
-We would be glad for any constructive or informative feedback, especially whether
-the converted files worked in your situation.
 
 
 
