@@ -1,3 +1,8 @@
+<span style="color: crimson; font-size: 150%;">This project
+is archieved. It was used during the Three.js transition to
+ES6. These times are now gone, and it is time for the Demoduler
+to retire. </span>
+
 # THREE.JS DEMODULER
 
 **Demoduler** is an online tool that converts Three.js JavaScript modules from
