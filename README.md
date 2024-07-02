@@ -1,7 +1,6 @@
-<span style="color: crimson; font-size: 150%;">This project
-is archieved. It was used during the Three.js transition to
-ES6. These times are now gone, and it is time for the Demoduler
-to retire. </span>
+> This project is archieved. It was used during the Three.js
+transition to ES6. These times are now gone, and it is time
+for the Demoduler to retire.
 
 # THREE.JS DEMODULER
 
